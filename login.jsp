@@ -46,9 +46,9 @@
 <form action="loginPro.jsp" id="join" method="post">
 <fieldset>
 <legend>Login Info</legend>
-<label>User ID</label>
+<label>ID</label>
 <input type="text" name="id"><br>
-<label>Password</label>
+<label>비밀번호</label>
 <input type="password" name="pass"><br>
 </fieldset>
 <div class="clear"></div>
