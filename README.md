@@ -13,4 +13,9 @@
 220627
   updatdForm.jsp 회원가입 구현, 회원정보 수정은 틀만
   주소검색 API 삽입
-  템플릿 분석 top.jsp bottom.jsp 적용
+  템플릿 분류, 새 프로젝트에 top.jsp bottom.jsp 적용
+
+220628
+  <새 프로젝트>
+  contact.jsp(회원가입) login.jsp 화면 구성
+  주소검색 API 추가
