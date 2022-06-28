@@ -19,3 +19,5 @@
   <새 프로젝트>
   contact.jsp(회원가입) login.jsp 화면 구성
   주소검색 API 추가
+  main.jsp 이미지 업로드 성공!
+  top bottom 경로 설정 모르겠어서 폴더없이 파일 풀어놓음
