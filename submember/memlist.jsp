@@ -1,53 +1,107 @@
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="java.util.List"%>
+<%@page import="member.MemberDTO"%>
+<%@page import="member.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>memlist.jsp</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>submember/memlist.jsp</title>
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Bootstrap icons-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/sub.css" rel="stylesheet" />
+<%	// 데이터 있거나 admin계정 아니면 로그인 페이지로 이동
+	String id=(String)session.getAttribute("id");
+	if(id.equals("admin") && id != null){	
+	} else{
+		response.sendRedirect("../main/main.jsp");
+	}
+%>
 </head>
-<body>
-<h2>관리자 모드 - 회원 목록(관리자 제외)</h2>
-<%
-//1단계 JDBC 프로그램 불러오기
-Class.forName("com.mysql.cj.jdbc.Driver");
-// 2단계 JDBC 프로그램 이용해서 디비서버에 접속 => 연결정보 저장
-// 디비서버에 접근할 디비주소
-String dbUrl="jdbc:mysql://localhost:3306/projectdb1?serverTimezone=UTC";
-// 디비에 접근할 아이디
-String dbId="root";
-// 디비에 접근할 비밀번호
-String dbPass="1234";
-// 디비연결 정보를 Connection형 con변수에 저장
-Connection con =DriverManager.getConnection(dbUrl, dbId, dbPass);
-// 3단계 연결정보를 이용해서 sql구문을 만들기 => PreparedStatement 내장객체 준비
-// String sql="select * from 테이블이름";
-String sql="select * from memvu where id not like 'admin'";
-PreparedStatement pstmt=con.prepareStatement(sql);
-// 4단계 sql구문을 실행=> 실행 결과 저장(select) 
-//=> sql구문을 실행한 결과 저장하는 내장객체 ResultSet
-ResultSet rs=pstmt.executeQuery();
-// 5단계 결과를 가지고 출력하거나 배열변수 저장(select)
-// rs.next() 결과에서 다음행 이동하고 데이터 있으면 true/없으면 false 
-// while(rs.next()){
-	// 데이터 있으면 true => 열접근
-%>
-<table border="1">
-<tr><td>ID</td><td>이름</td><td>phone</td><td>mail</td><td>주소</td><td>상세주소</td><td>가입날짜</td><td>관리</td></tr>
-<%
-while(rs.next()){
-	%>
-<tr><td><%=rs.getString("id") %></td><td><%=rs.getString("name") %></td>
-	<td><%=rs.getString("mobile") %></td><td><%=rs.getString("email") %></td>
-	<td><%=rs.getString("address") %></td><td><%=rs.getString("address2") %></td>
-    <td><%=rs.getString("date") %></td><td><button onclick="">삭제</button></td></tr>	
-	<%
-}
-%>
-</table>
+<body class="d-flex flex-column">
+ <main class="flex-shrink-0">
+     <!-- Navigation-->
+   <jsp:include page="../inc/top.jsp"></jsp:include>
+     <!-- Page Content-->
+     <section class="py-21">
+         <div class="container px-5 my-5">
+             <div class="row gx-5">
+                 <div class="col-lg-12">
+                     <!-- Post content-->
+                     <h1 class="fw-bolder mb-1">관리자 페이지</h1>
+                     
+   <jsp:include page="../inc/menuadmin.jsp"></jsp:include>
+     <section class="py-2">
+         <div class="container px-5 my-5">
+             <div class="row gx-5">
+                 <div class="col-lg-12">
+                     <!-- Post content-->
+                     <h4 class="fw-bolder mb-1">회원 목록</h4>
+                     <section>
+                         <div class="card bg-light">
+                         <form action="deleteAdminPro.jsp">
+                          <table>
+								<tr>
+									<th>ID</th>
+									<th>이름</th>
+									<th>phone</th>
+									<th>mail</th>
+									<th>주소</th>
+									<th>상세주소</th>
+									<th>가입날짜</th>
+									<th>관리</th>
+								</tr>
+								<%
+								 MemberDAO boardDAO=new MemberDAO();
+								 List boardList=boardDAO.memList();
+								 MemberDTO memberDTO=new MemberDTO();
+								%>
+								<%
+								// SimpleDateFormat dateFormat=new SimpleDateFormat("YYYY.MM.dd.");
+								
+								for(int i=0;i<boardList.size();i++){
+									memberDTO=(MemberDTO)boardList.get(i);
+								%>
+								<tr>
+									<td><%=memberDTO.getId() %></td>
+									<input type="text" name="dID" value="<%=memberDTO.getId() %>" hidden>
+									<td><%=memberDTO.getName() %></td>
+									<td><%=memberDTO.getMobile() %></td>
+									<td><%=memberDTO.getEmail() %></td>
+									<td><%=memberDTO.getAddress() %></td>
+									<td><%=memberDTO.getAddress2() %></td>
+								    <td><%=memberDTO.getDate()%></td>
+								    <td><input value="회원삭제" type="submit"></td>
+								</tr>	
+									<%
+								}
+								%>
+								</table></form>
+                         </div>
+                     </section>
+                 </div>
+             </div>
+         </div>
+     </section>
+                 </div>
+             </div>
+         </div>
+     </section>
+ </main>
+ <!-- Footer-->
+  <jsp:include page="../inc/bottom.jsp"></jsp:include>
+ <!-- Bootstrap core JS-->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+ <!-- Core theme JS-->
+ <script type="text/javascript">
+</script>
 </body>
 </html>
