@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="member.MemberDTO"%>
 <%@page import="member.MemberDAO"%>
@@ -37,7 +38,6 @@
                  <div class="col-lg-12">
                      <!-- Post content-->
                      <h1 class="fw-bolder mb-1">관리자 페이지</h1>
-                     
    <jsp:include page="../inc/menuadmin.jsp"></jsp:include>
      <section class="py-2">
          <div class="container px-5 my-5">
@@ -47,7 +47,6 @@
                      <h4 class="fw-bolder mb-1">회원 목록</h4>
                      <section>
                          <div class="card bg-light">
-                         <form action="deleteAdminPro.jsp">
                           <table>
 								<tr>
 									<th>ID</th>
@@ -65,26 +64,26 @@
 								 MemberDTO memberDTO=new MemberDTO();
 								%>
 								<%
-								// SimpleDateFormat dateFormat=new SimpleDateFormat("YYYY.MM.dd.");
+								SimpleDateFormat dateFormat=new SimpleDateFormat("YYYY.MM.dd.");
 								
 								for(int i=0;i<boardList.size();i++){
 									memberDTO=(MemberDTO)boardList.get(i);
 								%>
 								<tr>
-									<td><%=memberDTO.getId() %></td>
-									<input type="text" name="dID" value="<%=memberDTO.getId() %>" hidden>
+									<td><%=memberDTO.getId() %>
+									<input type="text" name="dID" value="<%=memberDTO.getId()%>" hidden></td>
 									<td><%=memberDTO.getName() %></td>
 									<td><%=memberDTO.getMobile() %></td>
 									<td><%=memberDTO.getEmail() %></td>
 									<td><%=memberDTO.getAddress() %></td>
 									<td><%=memberDTO.getAddress2() %></td>
 								    <td><%=memberDTO.getDate()%></td>
-								    <td><input value="회원삭제" type="submit"></td>
+								    <td><input value="회원삭제" type="button" onclick="checkConfirm('<%=memberDTO.getId()%>')"></td>
 								</tr>	
 									<%
 								}
 								%>
-								</table></form>
+						</table>
                          </div>
                      </section>
                  </div>
@@ -100,8 +99,17 @@
   <jsp:include page="../inc/bottom.jsp"></jsp:include>
  <!-- Bootstrap core JS-->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
- <!-- Core theme JS-->
- <script type="text/javascript">
-</script>
 </body>
+<!-- 삭제 확인 -->
+<script type="text/javascript">
+	function checkConfirm(id){
+		var result = confirm("정말 삭제하시겠습니까??");
+		if(!result)	return false;
+		
+		location.href='deleteAdminPro.jsp?dID=' + id;
+		
+	}
+</script>
+
+
 </html>

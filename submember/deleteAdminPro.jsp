@@ -12,20 +12,41 @@
 <meta charset="UTF-8">
 <title>member/deleteAdminPro.jsp</title>
 </head>
-<body>
+<body onload="removeCheck()">
 <%
 //request id pass 파라미터 값 가져오기 => 변수 저장
 String id=request.getParameter("dID");
 //MemberDAO 객체생성
 MemberDAO memberDAO=new MemberDAO();
-//MemberDTO memberDTO = userCheck 메서드 호출
-
 memberDAO.deleteMember(id);
-	%>
-<script type="text/javascript">
-alert("회원을 삭제했습니다");
-location.href='memlist.jsp';
-</script>
 
+%>
+<script type="text/javascript">
+	alert("삭제되었습니다!");
+	location.href="memlist.jsp";
+</script>
 </body>
+<script type="text/javascript">
+
+// function removeCheck() {
+
+// 	var result = confirm("정말 삭제하시겠습니까??");
+// 	if(!result)	return false;
+	
+// 	location.href='memlist.jsp';
+	
+	
+	
+<%-- 	 <%-- if (confirm("정말 삭제하시겠습니까??") == true){    //확인 --%>
+
+<%-- 		 <%memberDAO.deleteMember(id);%> --%>
+<%-- 	     alert("삭제되었습니다!"); --%>
+<%-- 		 location.href='memlist.jsp'; --%>
+
+<%-- 	 }else {   										//취소 --%>
+<%-- 	 	 location.href='memlist.jsp'; --%>
+<%-- 	     return false; --%>
+<%-- 	 } --%> --%>
+// }
+</script>
 </html>
