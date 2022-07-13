@@ -1,0 +1,247 @@
+핀테크 기반 e-커머스 개발자 B
+2022-04-21 ~ 2022-09-30
+홍진숙
+hongcine@itwillbs.co.kr
+
+자바 => JSP => MVC => 스프링프레임워크
+    => 안드로이드앱
+데이터베이스
+웹표준(HTML,CSS,Javascript,jQuery)
++ 핀테크
+
+
+Javascript => JSP => 개인프로젝트
+ jQuery => MVC => 스프링프레임워크 => 팀프로젝트
++ 핀테크
+
+JSP (Java Server Page) 설치
+1. JDK 설치
+2. Web Server(Web Application Server) 설치
+정적웹프로그램,프론트엔드개발 
+    : 웹표준(HTML,CSS,Javascript,jQuery)
+동적웹프로그램, 백엔드개발 
+    : 자바 => JSP => MVC => 스프링프레임워크
+아파치톰캣 
+https://tomcat.apache.org/
+Download - Tomcat 8
+8.5.78
+32-bit/64-bit Windows Service Installer (pgp, sha512)
+apache-tomcat-8.5.78.exe
+C:\Program Files\Apache Software Foundation
+\Tomcat 8.5
+1) 웹서버에서 웹페이지를 보여주는 서비스 start 
+2) java,jsp코드 => html코드 변경해서 
+   웹페이지 보여주는 서비스
+
+웹서버에 보여줄 웹페이지가 있는 위치
+C:\Program Files\Apache Software Foundation
+\Tomcat 8.5\webapps\ROOT
+test1.html
+test2.jsp 
+파일 넣기
+
+웹브라우저(사용자,클라이언트)
+주소 http://localhost:8080
+주소 http://localhost:8080/index.jsp
+주소 http://localhost:8080/test1.html
+주소 http://localhost:8080/test2.jsp
+
+방화벽해제
+제어판\시스템 및 보안\Windows Defender 방화벽
+Windows Defender 방화벽 설정 또는 해제
+Windows Defender 방화벽 사용 안함 체크
+
+주소 http://192.168.1.200:8080
+주소 http://192.168.1.200:8080/index.jsp
+주소 http://192.168.1.200:8080/test1.html
+주소 http://192.168.1.200:8080/test2.jsp
+
+3. 데이터베이스 서버(DBMS) 설치
+
+4. 개발 툴 설치
+- 메모장, 에디터(notepad++), 통합개발툴(이클립스)
+eclipse.org
+
+c: eclipse_jsp1 폴더 이클립스 프로그램
+d: workspace_jsp1 폴더 작업공간
+
+1) 한글 환경설정
+Window - Preferences 
+General - Workspace 
+- Text file encoding 
+- Other - UTF-8 
+Web - CSS Files - Encoding - ISO 10646 /Unicode(UTF-8)
+    - HTML Files - Encoding - ISO 10646 /Unicode(UTF-8)
+    - JSP Files - Encoding - ISO 10646 /Unicode(UTF-8)
+
+2) 서버 가져오기
+File  - New - Other - 
+Server -Server -Next
+Apache - Tomcat v8.5 Server
+Next - 
+C:\Program Files\Apache Software Foundation
+\Tomcat 8.5
+Next - Finish
+
+서버 환경설정
+Servers
+서버 선택 더블클릭
+Tomcat admin port 8005
+x 저장
+
+3) 프로젝트 만들기
+File  - New - Other - 
+Web - Dynamic Web Project
+Next - JspProject
+Next - Next - web.xml 체크
+Finish
+
+프로젝트 자바 버전변경
+프로젝트 - 오른쪽버튼 -
+Properties 
+Java Compiler - 
+JDK Compliance - 체크 해제
+- 1.8선택
+Project Facets - 
+Java - 1.8
+Apply and Close
+
+
+4) 서버와 프로젝트 연결
+Servers 탭
+Tomcat 8.5 Server at localhost
+오른쪽 버튼 - Add and Remove
+Add - Finish
+
+웹브라우저 연결
+Window - Web Browser - 크롬선택
+
+---------------------------------------
+jsp
+
+1. 클라이언트, 서버 동작원리
+2. <%   %>  java,jsp 명령들
+   <%=  %>  하나의 값 출력
+   <%@  %>  페이지 설정
+   <%!  %>  전영역 사용 변수 선언, 메서드 선언
+3. jsp 내장객체 
+   request, response, session, application, pageContext, out,...
+4. 액션태그 
+   include, forward,...
+5. 쿠키 객체
+6. 데이터베이스 연결 객체 => 회원가입, 로그인, 게시판,...
+
+프로그램 방식 
+1) JSP     =>  개인프로젝트 진행
+2) 모델2(MVC)
+3) MVC 스프링 프레임워크   => 팀프로젝트 진행
+
+
+데이터베이스 : 데이터 저장 공간(물리적인 파일,논리적인 공간)
+데이터베이스관리시스템(DBMS,DB서버) : 데이터 접근을 효율적(조회,입력,수정,삭제)
+                              : 오라클, MS-SQL, Mysql, ...
+
+Mysql(DB서버)
+1. 데이터베이스 만들기(데이터 저장할 전체 공간 만들기)
+2. 주제별로 저장할 공간 만들기(학생,회원,게시판,상품,...)
+
+Mysql(DB서버) 접속
+cmd
+mysql -uroot -p
+1234
+
+// 데이터베이스 목록
+show databases;
+
+//데이터베이스 상태
+status
+
+// 데이터베이스 전체내용 저장할 공간: 데이터베이스 생성
+create database jspdb1;
+
+// 데이터베이스 선택
+use jspdb1;
+
+// 주제별로 저장할 공간 => 테이블 생성
+// 학생테이블 : 학생번호, 학생이름, 학생전화번호, 학생주소, 점수
+//          : 기준값 설정 - 중복되지 않고, 비어있지 않게 설정
+create table student(
+	num int primary key,
+ 	name varchar(10)
+);
+
+
+// 테이블 목록 확인
+show tables;
+
+// 테이블 구조
+desc student;
+
+// 자바,JSP 웹서버 => 디비서버 접속
+// 자바에서 데이터베이스 연결 프로그램 => JDBC(Java DataBase Connector) 설치
+// https://www.mysql.com/ 
+// https://dev.mysql.com/downloads/
+// Connector/J
+// mysql-installer-community-8.0.17.0.msi
+// C:\Program Files (x86)\MySQL\Connector J 8.0
+// mysql-connector-java-8.0.17.jar
+
+1단계 JDBC 프로그램 불러오기
+2단계 JDBC 프로그램 이용해서 디비서버에 접속 => 연결정보 저장
+3단계 연결정보를 이용해서 sql구문을 만들기
+4단계 sql구문을 실행 (insert, update, delete)
+     실행 결과 저장(select)
+5단계 결과를 가지고 출력하거나 배열변수 저장(select)
+
+
+Mysql(DB서버) 접속
+cmd
+mysql -uroot -p jspdb1
+1234
+
+mysql> select * from student;
+
+
+// 주제별로 저장할 공간 => 테이블 생성
+// 회원테이블 : 아이디, 비밀번호, 이름, 생년월일, 성별, 이메일 , 전화번호, 가입날짜....
+//          : 기준값 설정 - 중복되지 않고, 비어있지 않게 설정
+
+create table members(
+	id varchar(10) primary key,
+ 	pass varchar(10),
+	name varchar(10),
+	date datetime
+);
+
+// 게시판 테이블 : 글번호, 글쓴이, 비밀번호, 제목, 글내용, 조회수, 등록일
+cmd
+mysql -uroot -p jspdb1
+1234
+
+create table board(
+	num int primary key,
+        name varchar(10),
+ 	pass varchar(10),
+	subject varchar(50),
+        content varchar(100),
+        readcount int,
+	date datetime
+);
+
+게시판 글쓰기 => 글목록 => 글내용 => 글수정, 글삭제
+
+cmd
+mysql -uroot -p jspdb1
+1234
+
+alter table members
+add email varchar(30);
+
+alter table members
+add address varchar(50);
+
+alter table members
+add phone varchar(30);
+
+alter table members
+add mobile varchar(30);
