@@ -17,7 +17,7 @@ String downloadPath = "D:\\workspace_jsp1\\Project01\\src\\main\\webapp\\img";
 File file = new File(downloadPath);
 FileInputStream in = new FileInputStream(downloadPath);
 
-fileName = new String(fileName.getBytes("utf-8"), "8859_1");
+// fileName = new String(fileName.getBytes("utf-8"), "8859_1");
 %>
 </body>
 </html>
