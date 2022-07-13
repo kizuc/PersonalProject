@@ -1,5 +1,4 @@
-# project1
-개인 프로젝트
+# 개인 프로젝트 업데이트 내역
 
 #### 220625 
   - projectdb1 DB, member 테이블, 관리자DB 생성 
