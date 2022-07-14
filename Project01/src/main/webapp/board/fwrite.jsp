@@ -65,7 +65,7 @@ if(id==null){
 </tr>
 <tr>
 	<td>파일2</td>
-	<td><input type="file" name="file2name" value="첨부파일"></td>
+	<td><input type="file" name="filename2" value="첨부파일"></td>
 </tr>
 </table>
 <div id="table_search">

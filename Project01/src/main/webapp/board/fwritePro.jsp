@@ -20,7 +20,7 @@ request.setCharacterEncoding("utf-8");
 // 파일 사이즈 10M
 int size = 10*1024*1024;
 // 파일 저장 위치
-String uploadPath = "D:\\workspace_jsp1\\Project01\\src\\main\\webapp\\img";
+String uploadPath="D:\\project1\\Project01\\src\\main\\webapp\\temp";
 
 // MultiportRequest(request, 업로드파일, 파일사이즈, 인코딩, 동일 파일명일 경우)
 MultipartRequest mpr = new MultipartRequest(
