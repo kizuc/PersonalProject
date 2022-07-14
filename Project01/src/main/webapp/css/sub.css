@@ -17,7 +17,7 @@ td {
   padding: 6px 15px;
 }
 th {
-  background: #588beb;
+  background: #fd9642;
   color: #fff;
   text-align: left;
 }
@@ -47,7 +47,7 @@ tr:last-child td:last-child {
 
 th#ttitle{width: 600px !important; letter-spacing: 0.2em; text-align: center;}
 td#ttitle{width: 600px !important; padding-left: 10px; font-size: 15px; font-weight: 500; letter-spacing: 0.2em;}
-td#ttitle:hover{width: 600px !important; background-color: #D9E5FF; font-weight: 500; letter-spacing: 0.2em;}
+td#ttitle:hover{width: 600px !important; background-color: #ffe4cc; font-weight: 500; letter-spacing: 0.2em;}
 
 th#twriter{width: 100px !important; letter-spacing: 0.1em; text-align: center !important;}
 td#twriter{width: 100px !important; text-indent: 10px !important; letter-spacing: 0.1em; text-align: center !important;}

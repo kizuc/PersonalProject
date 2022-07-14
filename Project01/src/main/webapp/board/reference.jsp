@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Modern Business - Start Bootstrap Template</title>
+<title>한끼가치 - 자료실</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -27,13 +27,22 @@
 <main class="flex-shrink-0">
 <!-- Navigation-->
 <jsp:include page="../inc/top.jsp"></jsp:include>
-<!-- Page Content-->
-<section class="py-4">
-<div class="container px-5 my-5">
-<div class="row gx-5">
-<jsp:include page="../inc/contactMenu.jsp"></jsp:include>
-<div class="col-lg-9">
-<!-- Post content-->
+          <!-- 이미지 -->
+          <div class="py-4 bg-light bg-pic3">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-10 col-xl-7">
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<!-- Page Content-->
+            <section class="py-3">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5">
+                    <jsp:include page="../inc/contactMenu.jsp"></jsp:include>
+                        <div class="col-lg-9">
+				<!-- Post content-->
                 <%
 				// board2DAO 객체생성
 				Board2DAO board2DAO=new Board2DAO();
@@ -51,7 +60,7 @@
 				List board2List=board2DAO.getboard2List(startRow,pageSize);
 				%>
 				<article>
-				<h1 class="fw-bolder mb-1">자료실</h1>
+				<h1 class="fw-bolder mb-1">자료실</h1><br>
 				<div class="text-muted mb-2">자유롭게 적어주세요.</div><br>
 				<table>
 				<tr><th id="tnum">No.</th>
