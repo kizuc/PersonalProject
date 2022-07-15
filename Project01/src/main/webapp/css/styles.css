@@ -181,6 +181,13 @@ abbr[data-bs-original-title] {
           text-decoration-skip-ink: none;
 }
 
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+
 address {
   margin-bottom: 1rem;
   font-style: normal;
@@ -911,12 +918,12 @@ progress {
 
 .g-6,
 .gx-6 {
-  --bs-gutter-x: 6rem;
+  --bs-gutter-x: 9rem;
 }
 
 .g-6,
 .gy-6 {
-  --bs-gutter-y: 6rem;
+  --bs-gutter-y: 9rem;
 }
 
 @media (min-width: 576px) {
@@ -7804,22 +7811,22 @@ text-decoration: none;
   text-decoration: none !important;
 }
 
-.fw-bold3 {
-  font-size: 1.8em !important;
-  color: #413c34 !important;
-  font-weight: 800 !important;
-  text-decoration: none !important;
-}
-
 .fw-bold1 {
-  color: #343a40 !important;
+  color: #413c34 !important;
   font-weight: 700 !important;
   text-decoration: none !important;
 }
 
 .fw-bold2 {
-  color: #f8f9fa !important;
+  color: #413c34 !important;
   font-weight: bolder !important;
+  text-decoration: none !important;
+}
+
+.fw-bold3 {
+  font-size: 1.8em !important;
+  color: #413c34 !important;
+  font-weight: 800 !important;
   text-decoration: none !important;
 }
 
@@ -7829,16 +7836,27 @@ text-decoration: none;
   text-decoration: none !important;
 }
 
+.fw-bold5 {
+  font-size: 1.5em !important;
+  color: #ffe6a2 !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+}
+
 .fw-bold:hover {
   font-weight: bolder;
   color: #fd7e14 !important;
   text-decoration: underline !important;
 }
-.fw-bold3 {
-  color: #343a40 !important;
-  font-weight: 700 !important;
+
+.fw-bold5:hover {
+  font-size: 1.5em !important;
+  color: #800000 !important;
+  font-weight: 500 !important;
   text-decoration: none !important;
 }
+
+
 .fw-bolder {
   font-weight: bolder !important;
 }

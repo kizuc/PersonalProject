@@ -12,8 +12,8 @@ String id=(String)session.getAttribute("id");
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="../main/main.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="../orderboard/orderForm2.jsp">가치 더하기+</a></li>
-                <li class="nav-item"><a class="nav-link" href="../board/board.jsp">게시판</a></li>
+                <li class="nav-item"><a class="nav-link" href="../orderboard/orderForm.jsp">가치 더하기+</a></li>
+                <li class="nav-item"><a class="nav-link" href="../gallery/gboard.jsp">가치한 순간</a></li>
                 <li class="nav-item"><a class="nav-link" href="../board/board.jsp">Contact</a></li>
             </ul>
         </div>
