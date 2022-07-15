@@ -14,6 +14,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="../css/styles.css" rel="stylesheet">
+  <script type="text/javascript" src="../script/jquery-3.6.0.js"></script>
+  <script type="text/javascript">
+	
+  </script>
  </head>
   <body class="d-flex flex-column h-90">
       <main class="flex-shrink-0">

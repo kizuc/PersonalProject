@@ -69,10 +69,8 @@ String filename2 = request.getParameter("filename2");
 	<td colspan="3"><%=board2DTO.getContent() %></td>
 </tr>
 <tr>
-	<td>파일1</td>
-	<td><a href="fwritePro.jsp?filename1=<%=filename1%>"><%=board2DTO.getFilename1()%></a></td>
-	<td>파일2</td>
-	<td><a href="upload/<%=filename2%>"><%=board2DTO.getFilename2()%></a></td>
+	<td>파일</td>
+<%-- 	<td><a href="gwritePro.jsp?filename=<%=filename%>"><%=board2DTO.getFilename()%></a></td> --%>
 </tr>
 </table>
 <div id="table_search">
@@ -82,13 +80,13 @@ String id=(String)session.getAttribute("id");
 if(id!=null){
 	if(id.equals("admin")){
 		%>
-		<input type="button" value="글수정" class="btn btn-primary btn-sm" onclick="location.href='fupdate.jsp?num=<%=board2DTO.getNum()%>'">
-		<input type="button" value="글삭제" class="btn btn-outline-primary btn-sm" onclick="location.href='fdelete.jsp?num=<%=board2DTO.getNum()%>'">
+		<input type="button" value="글수정" class="btn btn-primary btn-sm" onclick="location.href='gupdate.jsp?num=<%=board2DTO.getNum()%>'">
+		<input type="button" value="글삭제" class="btn btn-outline-primary btn-sm" onclick="location.href='gdelete.jsp?num=<%=board2DTO.getNum()%>'">
 		<%
 	}
 }
 %>
-<input type="button" value="글목록" class="btn btn-outline-primary btn-sm" onclick="location.href='reference.jsp'">
+<input type="button" value="글목록" class="btn btn-outline-primary btn-sm" onclick="location.href='gboard.jsp'">
 </div>
 <div class="clear"></div>
 <div id="page_control"></div>
