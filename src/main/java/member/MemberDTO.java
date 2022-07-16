@@ -12,8 +12,14 @@ public class MemberDTO {
 	private String address2;
 	private String phone;
 	private String mobile;
+	private String nickname;
 	
-	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public String getId() {
 		return id;
 	}

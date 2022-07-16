@@ -118,6 +118,7 @@ public class MemberDAO {
 				memberDTO.setId(rs.getString("id"));
 		 		memberDTO.setPass(rs.getString("pass"));
 		 		memberDTO.setName(rs.getString("name"));
+		 		memberDTO.setNickname(rs.getString("nickname"));
 		 		memberDTO.setDate(rs.getTimestamp("date"));
 
 		 		memberDTO.setEmail(rs.getString("email"));
