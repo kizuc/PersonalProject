@@ -1,0 +1,21 @@
+create table board2(
+   num int primary key,
+   name varchar(10),
+   pass varchar(10),
+   subject varchar(50),
+   content varchar(300),
+   filename1 varchar(100),
+   filename2 varchar(100),
+   readcount int,
+   date datetime
+);
+
+<tr>
+	<td>파일1</td>
+	<td><input type="file" name="file1" value="첨부파일"></td>
+</tr>
+<tr>
+	<td>파일2</td>
+	<td><input type="file" name="file2" value="첨부파일"></td>
+</tr>
+</table>
