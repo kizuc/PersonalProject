@@ -11,6 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import board.BoardDTO;
 import member.MemberDTO;
 
 public class Board2DAO {
@@ -42,7 +43,7 @@ public class Board2DAO {
 		
 	}
 	
-	// 리턴할형 List   getboard2List() 메서드 정의
+	// getboard2List() 메서드 정의
 	public List getboard2List(int startRow, int pageSize) {
 		// 여러명을 저장할 변수 => 자바API 배열 변수
 		
@@ -65,11 +66,9 @@ public class Board2DAO {
 				board2DTO.setPass(rs.getString("pass"));
 				board2DTO.setSubject(rs.getString("subject"));
 				board2DTO.setContent(rs.getString("content"));
-				board2DTO.setFilename1(rs.getString("filename1"));
-				board2DTO.setFilename2(rs.getString("filename2"));
 				board2DTO.setReadcount(rs.getInt("readcount"));
 				board2DTO.setDate(rs.getTimestamp("date"));
-				//배열한칸에 글 정보 저장
+				// 배열 한칸에 글 정보 저장
 				board2List.add(board2DTO);
 			}
 		} catch (Exception e) {
@@ -80,7 +79,7 @@ public class Board2DAO {
 		return board2List;		
 	}
 	
-//	게시판 보이게
+	//	게시판 보이게
 	public Board2DTO getboard2(int num) {
 		
 		Board2DTO board2DTO=null;
@@ -101,8 +100,7 @@ public class Board2DAO {
 				board2DTO.setPass(rs.getString("pass"));
 				board2DTO.setSubject(rs.getString("subject"));
 				board2DTO.setContent(rs.getString("content"));
-				board2DTO.setFilename1(rs.getString("filename1"));
-				board2DTO.setFilename2(rs.getString("filename2"));
+				board2DTO.setFile(rs.getString("file"));
 				board2DTO.setReadcount(rs.getInt("readcount"));
 				board2DTO.setDate(rs.getTimestamp("date"));
 			}
@@ -114,7 +112,7 @@ public class Board2DAO {
 		return board2DTO;
 	}
 	
-// 게시판 생성
+	// 글 등록
 	public void insertboard2(Board2DTO board2DTO) {
 		
 		try {
@@ -129,17 +127,15 @@ public class Board2DAO {
 			if(rs.next()){
 				num=rs.getInt("max(num)")+1;
 			}
-			sql="insert into board2(num,name,pass,subject,content,filename1,filename2,readcount,date) values(?,?,?,?,?,?,?,?,now())";
-			
+			sql="insert into board2(num,name,pass,subject,content,readcount,file,date) values(?,?,?,?,?,?,?,now())";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, board2DTO.getName());
 			pstmt.setString(3, board2DTO.getPass());
 			pstmt.setString(4, board2DTO.getSubject());
 			pstmt.setString(5, board2DTO.getContent());
-			pstmt.setString(6, board2DTO.getFilename1());
-			pstmt.setString(7, board2DTO.getFilename2());
-			pstmt.setInt(8, board2DTO.getReadcount());
+			pstmt.setString(6, board2DTO.getFile());
+			pstmt.setInt(7, board2DTO.getReadcount());
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -149,27 +145,24 @@ public class Board2DAO {
 		}
 	}
 	
-	public void updateboard2(Board2DTO board2DTO) {
+	public void updateBoard2(Board2DTO board2DTO) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="update board2 set subject=?, content=?, filname1=?, filname2=?, where num=?";
+			String sql="update board2 set subject=?, content=?, file=? where num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, board2DTO.getSubject());
 			pstmt.setString(2, board2DTO.getContent());
-			pstmt.setString(3, board2DTO.getFilename1());
-			pstmt.setString(4, board2DTO.getFilename2());
-			pstmt.setInt(5, board2DTO.getNum());
+			pstmt.setString(3, board2DTO.getFile());
+			pstmt.setInt(4, board2DTO.getNum());
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(rs!=null)try { rs.close(); }catch(SQLException ex){}
-			if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
-			if(con!=null)try { con.close(); }catch(SQLException ex){}	
+			closeDB();
 		}
 	}
 	
@@ -187,9 +180,7 @@ public class Board2DAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(rs!=null)try { rs.close(); }catch(SQLException ex){}
-			if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
-			if(con!=null)try { con.close(); }catch(SQLException ex){}	
+			closeDB();
 		}
 	}
 	
@@ -199,27 +190,41 @@ public class Board2DAO {
 		ResultSet rs=null;
 		int count=0;
 		try {
-			//1,2 
 			con=getConnection();
-			//3sql
 			String sql="select count(*) from board2";
 			pstmt=con.prepareStatement(sql);
-			//4실행결과 저장
+			// 실행결과 저장
 			rs=pstmt.executeQuery();
-			//5 다음행으로 이동 데이터 있으면 열 접근
+			// 다음 행으로 이동해서 데이터 있으면 열 접근
 			if(rs.next()) {
 				count=rs.getInt("count(*)");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			if(rs!=null)try { rs.close(); }catch(SQLException ex){}
-			if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
-			if(con!=null)try { con.close(); }catch(SQLException ex){}
+			closeDB();
 		}
 		return count;
 	}
 	
-// 파일 업로드	
-
+	// 조회 수 증가
+	public void updateReadCount(int num) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql="update board2 set readcount=readcount+1 where num=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();	
+		}
+		
+	}
+	
 }//클래스

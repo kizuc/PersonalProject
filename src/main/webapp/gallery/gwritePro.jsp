@@ -34,8 +34,7 @@ String content = mpr.getParameter("content");
 int readcount=0;
 Enumeration files = mpr.getParameterNames();
 
-String filename1 = mpr.getFilesystemName("filename1");
-String filename2 = mpr.getFilesystemName("filename2");
+String file = mpr.getFilesystemName("file");
 
 // board2DTO 객체생성
 Board2DTO board2DTO=new Board2DTO();
@@ -45,8 +44,7 @@ board2DTO.setName(name);
 board2DTO.setPass(pass);
 board2DTO.setSubject(subject);
 board2DTO.setContent(content);
-board2DTO.setFilename1(filename1);
-board2DTO.setFilename2(filename2);
+board2DTO.setFile(file);
 board2DTO.setReadcount(readcount);
 
 // board2DAO 객체생성

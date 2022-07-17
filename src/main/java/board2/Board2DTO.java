@@ -9,12 +9,17 @@ public class Board2DTO {
 	private String pass;
 	private String subject;
 	private String content;
-	private String filename1;
-	private String filename2;
 	private int readcount;
 	private Timestamp date;
+	private String file;
 	
-
+	
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
 	public int getNum() {
 		return num;
 	}
@@ -45,18 +50,6 @@ public class Board2DTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getFilename1() {
-		return filename1;
-	}
-	public void setFilename1(String filename1) {
-		this.filename1 = filename1;
-	}
-	public String getFilename2() {
-		return filename2;
-	}
-	public void setFilename2(String filename2) {
-		this.filename2 = filename2;
-	}
 	public int getReadcount() {
 		return readcount;
 	}
@@ -69,6 +62,5 @@ public class Board2DTO {
 	public void setDate(Timestamp date) {
 		this.date = date;
 	}
-
-
+	
 }

@@ -1,3 +1,5 @@
+<%@page import="member.MemberDTO"%>
+<%@page import="member.MemberDAO"%>
 <%@page import="board.BoardDTO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
@@ -11,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content />
 <meta name="author" content />
-<title>Modern Business - Start Bootstrap Template</title>
+<title>한끼가치-자료실</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -22,7 +24,7 @@
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
- <!-- Navigation-->
+<!-- top-->
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <!-- Page content-->
 <section class="bg-light py-2">
@@ -30,42 +32,42 @@
 <!-- Contact form-->
 <div class="bg-light rounded-3 py-4 px-3 px-md-5 mb-5">
 <div class="text-center mb-5"><br>
-<h1 class="fw-bolder">문의 게시판</h1>
-<p class="lead fw-normal text-muted mb-0">자유롭게 적어주세요</p>
+<h1 class="fw-bolder">자료실</h1>
+<p class="lead fw-normal text-muted mb-0">
+한끼가치 이용에 도움되는 자료를 등록합니다.<br>
+관리자만 이용 가능합니다.</p>
 </div>
 <%
 String id=(String)session.getAttribute("id");
+MemberDAO memberDAO=new MemberDAO();
+MemberDTO memberDTO=memberDAO.getMember(id);
 // 세션값이 없으면(회원이 아니면) 로그인 페이지로 이동
 if(id==null){
 	response.sendRedirect("../member/login.jsp");
 }
 %>
 <article>
-	<h1>Write</h1>
+<h1>Write</h1>
 <form action="fwritePro.jsp" method="post" enctype="multipart/form-data">
 <!-- 로그인 하지 않은 사람은 비밀번호가 필요하니까 임의로 1234 -->
 <input type="hidden" name="pass" value="1234">
 <table>
 <tr>
-	<td>글쓴이</td>
-	<td><input type="text" name="name" value="<%=id %>" readonly></td>
+	<td id="t2">글쓴이</td>
+	<td><input type="hidden" name="name"><%=memberDTO.getName() %></td>
 </tr>
 <tr>
-	<td>제목</td>
+	<td id="t2">제목</td>
 	<td><input type="text" name="subject"></td>
 </tr>
 <tr>
 	<td>내용</td>
-	<td><textarea name="content" rows="8" cols="100"></textarea></td>
+	<td><textarea name="content" rows="3" cols="100"></textarea></td>
 
 </tr>
 <tr>
-	<td>파일1</td>
-	<td><input type="file" name="filename1" value="첨부파일"></td>
-</tr>
-<tr>
-	<td>파일2</td>
-	<td><input type="file" name="filename2" value="첨부파일"></td>
+	<td id="t2">파일</td>
+	<td><input type="file" name="file" value="첨부파일"></td>
 </tr>
 </table>
 <div id="table_search">

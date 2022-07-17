@@ -32,61 +32,53 @@
 <h1 class="fw-bolder">게시판</h1>
 </div>
 <%
-request.setCharacterEncoding("utf-8");
-
-// int num 파라미터 가져오기
+//int num 파라미터 가져오기
 int num=Integer.parseInt(request.getParameter("num"));
-// BoardDAO 객체생성
+//BoardDAO 객체생성
 Board2DAO board2DAO=new Board2DAO();
+//BoardDTO boardDTO = getBoard(num)메서드 호출
 Board2DTO board2DTO=board2DAO.getboard2(num);
-
-String name = request.getParameter("name");
-String subject = request.getParameter("subject");
-String filename1 = request.getParameter("filename1");
-String filename2 = request.getParameter("filename2");
 %>
-<article>
-<h1>Notice Content</h1>
-<table>
-<tr>
-	<td>글번호</td>
-	<td id="t2"><%=board2DTO.getNum() %></td>
-    <td>작성일</td>
-    <td><%=board2DTO.getDate() %></td>
-</tr>
-<tr>
-	<td>글쓴이</td>
-	<td id="t2">운영자</td>
-    <td>조회 수</td>
-    <td><%=board2DTO.getReadcount() %></td>
-</tr>
-<tr>
-	<td>제목</td>
-	<td colspan="3"><%=board2DTO.getSubject() %></td>
-</tr>
-<tr>
-	<td>내용</td>
-	<td colspan="3"><%=board2DTO.getContent() %></td>
-</tr>
-<tr>
-	<td>파일1</td>
-	<td><a href="fwritePro.jsp?filename1=<%=filename1%>"><%=board2DTO.getFilename1()%></a></td>
-	<td>파일2</td>
-	<td><a href="upload/<%=filename2%>"><%=board2DTO.getFilename2()%></a></td>
-</tr>
-</table>
-<div id="table_search">
-<%
-// 글수정 글삭제 => 로그인(세션값), 글쓴이 일치하면 글수정, 글삭제 버튼이 보이게
-String id=(String)session.getAttribute("id");
-if(id!=null){
-	if(id.equals("admin")){
-		%>
-		<input type="button" value="글수정" class="btn btn-primary btn-sm" onclick="location.href='fupdate.jsp?num=<%=board2DTO.getNum()%>'">
-		<input type="button" value="글삭제" class="btn btn-outline-primary btn-sm" onclick="location.href='fdelete.jsp?num=<%=board2DTO.getNum()%>'">
-		<%
+	<article>
+	<h1>Notice Content</h1>
+	<table>
+	<tr>
+		<td>글번호</td>
+		<td id="t2"><%=board2DTO.getNum() %></td>
+	    <td>작성일</td>
+	    <td><%=board2DTO.getDate() %></td>
+	</tr>
+	<tr>
+		<td>글쓴이</td>
+		<td id="t2">운영자</td>
+	    <td>조회 수</td>
+	    <td><%=board2DTO.getReadcount() %></td>
+	</tr>
+	<tr>
+		<td>제목</td>
+		<td colspan="3"><%=board2DTO.getSubject() %></td>
+	</tr>
+	<tr>
+		<td>내용</td>
+		<td colspan="3"><%=board2DTO.getContent() %></td>
+	</tr>
+	<tr>
+		<td>파일1</td>
+		<td><%=board2DTO.getFile()%></a></td>
+	</tr>
+	</table>
+	<div id="table_search">
+	<%
+	// 글수정 글삭제 => 로그인(세션값), 글쓴이 일치하면 글수정, 글삭제 버튼이 보이게
+	String id=(String)session.getAttribute("id");
+	if(id!=null){
+		if(id.equals("admin")){
+			%>
+			<input type="button" value="글수정" class="btn btn-primary btn-sm" onclick="location.href='fupdate.jsp?num=<%=board2DTO.getNum()%>'">
+			<input type="button" value="글삭제" class="btn btn-outline-primary btn-sm" onclick="location.href='fdelete.jsp?num=<%=board2DTO.getNum()%>'">
+			<%
+		}
 	}
-}
 %>
 <input type="button" value="글목록" class="btn btn-outline-primary btn-sm" onclick="location.href='reference.jsp'">
 </div>
