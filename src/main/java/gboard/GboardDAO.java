@@ -29,10 +29,10 @@ public class GboardDAO {
 	}
 	
 	// getgboardList() 메서드 정의
-	public List getgboardList(int startRow, int pageSize) {
+	public List getGboardList(int startRow, int pageSize) {
 		// 여러명을 저장할 변수 => 자바API 배열 변수
 		
-		List gboardList=new ArrayList();
+		List gBoardList=new ArrayList();
 		try {
 			//1, 2 디비연결 메서드 호출
 			con=getConnection();
@@ -54,7 +54,7 @@ public class GboardDAO {
 				gboardDTO.setDate(rs.getTimestamp("date"));
 				gboardDTO.setFile(rs.getString("file"));
 				// 배열 한칸에 글 정보 저장
-				gboardList.add(gboardDTO);
+				gBoardList.add(gboardDTO);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,7 +67,7 @@ public class GboardDAO {
 	}
 	
 	//	게시판 보이게
-	public GboardDTO getgboard(int num) {
+	public GboardDTO getGboard(int num) {
 		
 		GboardDTO gboardDTO=null;
 		try {
@@ -101,7 +101,7 @@ public class GboardDAO {
 	}
 	
 	// 글 등록
-	public void insertgboard(GboardDTO gboardDTO) {
+	public void insertGboard(GboardDTO gboardDTO) {
 		
 		try {
 			con=getConnection();
@@ -134,7 +134,7 @@ public class GboardDAO {
 		}
 	}
 	
-	public void updategboard(GboardDTO gboardDTO) {
+	public void updateGboard(GboardDTO gboardDTO) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -157,7 +157,7 @@ public class GboardDAO {
 		}
 	}
 	
-	public void deletegboard(int num) {
+	public void deleteGboard(int num) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -177,7 +177,7 @@ public class GboardDAO {
 		}
 	}
 	
-	public int getgboardCount() {
+	public int getGboardCount() {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;

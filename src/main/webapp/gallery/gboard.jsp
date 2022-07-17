@@ -1,5 +1,5 @@
-<%@page import="board2.Board2DTO"%>
-<%@page import="board2.Board2DAO"%>
+<%@page import="gboard.GboardDTO"%>
+<%@page import="gboard.GboardDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -47,8 +47,8 @@
 <div class="text-muted mb-2">한끼가치 이용에 도움되는 자료를 볼 수 있습니다</div><br>
 <!-- Post content-->
 <%
-	// board2DAO 객체생성
-	Board2DAO board2DAO=new Board2DAO();
+	// gboardDAO 객체생성
+	GboardDAO gboardDAO=new GboardDAO();
 	
 	// 한 페이지에 보여줄 글 개수
 	int pageSize=5;
@@ -60,8 +60,8 @@
 	int startRow=(currentPage-1)*pageSize+1;	// 시작 행
 	int endRow=startRow+pageSize-1;				// 끝나는 행
 	 
-	// List board2List = getboard2List()메서드 호출
-	List board2List=board2DAO.getboard2List(startRow,pageSize);
+	// List gboardList = getgboardList()메서드 호출
+	List gboardList=gboardDAO.getGboardList(startRow,pageSize);
 	%>
 	<article>
 	<table>
@@ -74,14 +74,14 @@
 	<%
 	//날짜 => 문자열 모양변경
 	SimpleDateFormat dateFormat=new SimpleDateFormat("M.d.YYYY");
-	for(int i=0;i<board2List.size();i++){
-		Board2DTO board2DTO=(Board2DTO)board2List.get(i);
+	for(int i=0;i<gboardList.size();i++){
+		GboardDTO gboardDTO=(GboardDTO)gboardList.get(i);
 		%>
-	<tr onclick="location.href='fcontent.jsp?num=<%=board2DTO.getNum()%>'" style='cursor:pointer'>
-		<td id="tnum"><%=board2DTO.getNum() %></td>
-	    <td id="ttitle"><%=board2DTO.getSubject() %> 📁</td>
-	    <td id="tdate"><%=dateFormat.format(board2DTO.getDate()) %></td>
-	    <td id="tnum"><%=board2DTO.getReadcount() %></td>
+	<tr onclick="location.href='gcontent.jsp?num=<%=gboardDTO.getNum()%>'" style='cursor:pointer'>
+		<td id="tnum"><%=gboardDTO.getNum() %></td>
+	    <td id="ttitle"><%=gboardDTO.getSubject() %> 📁</td>
+	    <td id="tdate"><%=dateFormat.format(gboardDTO.getDate()) %></td>
+	    <td id="tnum"><%=gboardDTO.getReadcount() %></td>
 	</tr>	   
 	<%
 	}
@@ -108,7 +108,7 @@
 	int startPage=(currentPage-1)/pageBlock*pageBlock+1;	// 시작 페이지
 	int endPage=startPage+pageBlock-1;						// 끝나는 페이지
 		
-	int count=board2DAO.getboard2Count();		// 전체 글 개수
+	int count=gboardDAO.getgboardCount();		// 전체 글 개수
 	int pageCount=count / pageSize+(count%pageSize==0?0:1);	// 전체 페이지 개수 구하기
 	if(endPage > pageCount)		endPage = pageCount;	
 	%>
