@@ -39,7 +39,7 @@
 <jsp:include page="../inc/contactMenu.jsp"></jsp:include>
 <div class="col-lg-9">
 <div class="text-start mb-5"><br>
-<h1 class="fw-bolder">자료실</h1><br>
+<h1 class="fw-bolder">자료실</h1>
 <div class="text-muted mb-2">한끼가치 이용에 도움되는 자료가 올라옵니다</div><br>
 <%
 //int num 파라미터 가져오기

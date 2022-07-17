@@ -38,10 +38,13 @@
 </div>
 <!-- 본문-->
 <section class="py-3">
-<div class="container px-5 my-5">
+<div class="container px-5 my-3">
 <div class="row gx-5">
 <jsp:include page="../inc/contactMenu.jsp"></jsp:include>
 <div class="col-lg-9">
+<div class="text-start mb-5"><br>
+<h1 class="fw-bolder">문의 게시판</h1>
+<div class="text-muted mb-2">보내주시는 문의 사항은 최대한 신속하게 답변해 드리겠습니다</div><br>
 <!-- Post content-->
 	<%
 	// BoardDAO 객체생성
@@ -60,8 +63,6 @@
 	List boardList=boardDAO.getBoardList(startRow,pageSize);
 	%>
 	<article>
-	<h1 class="fw-bolder mb-1">문의 게시판</h1><br>
-	<div class="text-muted mb-2">자유롭게 적어주세요.</div><br>
 	<table>
 	<tr>
 		<th id="tnum">No.</th>
@@ -124,7 +125,6 @@
 		<a href="board.jsp?pageNum=<%=i%>"><%=i %></a> 
 		<%
 	}
-	
 	if(endPage < pageCount) {
 		%>
 		<a href="board.jsp?pageNum=<%=startPage+pageBlock%>">Next</a>
@@ -134,6 +134,7 @@
 	%>
 </div>
 </article>
+</div>
 </div>
 </div>
 </div>

@@ -42,18 +42,18 @@
 <jsp:include page="../inc/contactMenu.jsp"></jsp:include>
 <div class="col-lg-9">
 <div class="text-start mb-5"><br>
-<h1 class="fw-bolder">자료실</h1><br>
-<div class="text-muted mb-2">한끼가치 이용에 도움되는 자료를 볼 수 있습니다<br>
+<h1 class="fw-bolder">자료실</h1>
+<div class="text-muted mb-2">자료를 등록할 수 있습니다<br>
 이 페이지는 관리자만 접근 가능합니다</div><br>
-<%
-String id=(String)session.getAttribute("id");
-MemberDAO memberDAO=new MemberDAO();
-MemberDTO memberDTO=memberDAO.getMember(id);
-// 세션값이 없으면(회원이 아니면) 로그인 페이지로 이동
-if(id==null){
-	response.sendRedirect("../member/login.jsp");
-}
-%>
+	<%
+	String id=(String)session.getAttribute("id");
+	MemberDAO memberDAO=new MemberDAO();
+	MemberDTO memberDTO=memberDAO.getMember(id);
+	// 세션값이 없으면(회원이 아니면) 로그인 페이지로 이동
+	if(id==null){
+		response.sendRedirect("../member/login.jsp");
+	}
+	%>
 <article>
 <form action="fwritePro.jsp" method="post" enctype="multipart/form-data">
 <!-- 로그인 하지 않은 사람은 비밀번호가 필요하니까 임의로 1234 -->
@@ -69,12 +69,11 @@ if(id==null){
 </tr>
 <tr>
 	<td id="t2">내용</td>
-	<td><textarea name="content" rows="3" cols="110"></textarea></td>
-
+	<td><textarea name="content" rows="2" cols="50"></textarea></td>
 </tr>
 <tr>
-	<td id="t2">파일</td>
-	<td><input type="file" name="file" value="첨부파일"></td>
+	<td id="t2">첨부파일</td>
+	<td><input type="file" class="btn btn-outline-primary btn-sm" name="file" value="첨부파일"></td>
 </tr>
 </table>
 <div class="text-end mb-3">

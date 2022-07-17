@@ -39,10 +39,9 @@
 <div class="row gx-5">
 <jsp:include page="../inc/contactMenu.jsp"></jsp:include>
 <div class="col-lg-9">
-<div class="text-start mb-3"><br>
-<h1 class="fw-bolder">문의 게시판</h1>
-<p class="lead fw-normal text-muted mb-0">자유롭게 적어주세요</p>
-</div>
+<div class="text-start mb-5"><br>
+<h1 class="fw-bolder">문의 게시판</h1><br>
+<div class="text-muted mb-2">보내주시는 문의 사항은 최대한 신속하게 답변해 드리겠습니다</div><br>
 <%
 String id=(String)session.getAttribute("id");
 // 세션값이 없으면(회원이 아니면) 로그인 페이지로 이동
@@ -65,11 +64,8 @@ if(id==null){
 </tr>
 <tr>
 	<td>내용</td>
-	<td><textarea name="content" rows="5" cols="110"></textarea></td>
+	<td><textarea name="content" rows="5" cols="50"></textarea></td>
 
-</tr>
-<tr>
-	<td colspan="2"><input type="file" value="첨부파일"></td>
 </tr>
 </table>
 <div id="table_search">
@@ -85,6 +81,7 @@ if(id==null){
 <!-- 게시판 -->
 <!-- 본문들어가는 곳 -->
 <div class="clear"></div>
+</div>
 </div>
 </div>
 </div>
