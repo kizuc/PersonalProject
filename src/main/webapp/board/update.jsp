@@ -76,16 +76,16 @@ BoardDTO boardDTO=boardDAO.getBoard(num);
 <!-- 게시판 -->
 <!-- 본문들어가는 곳 -->
 <div class="clear"></div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        <!-- Footer-->
-      <jsp:include page="../inc/bottom.jsp"></jsp:include>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer-->
+<jsp:include page="../inc/bottom.jsp"></jsp:include>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
 </html>

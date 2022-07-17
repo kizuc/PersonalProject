@@ -45,19 +45,20 @@ tr:last-child td:last-child {
   border-bottom-right-radius: 6px;
 }
 
-th#ttitle{width: 600px !important; letter-spacing: 0.2em; text-align: center;}
-td#ttitle{width: 600px !important; padding-left: 10px; font-size: 15px; font-weight: 500; letter-spacing: 0.2em;}
-td#ttitle:hover{width: 600px !important; background-color: #ffe4cc; font-weight: 500; letter-spacing: 0.2em;}
+th#ttitle{width: 60% !important; letter-spacing: 0.2em; text-align: center;}
+td#ttitle{width: 60% !important; padding-left: 10px; font-size: 15px; font-weight: 500; letter-spacing: 0.1em;}
+td#ttitle:hover{width: 600px !important; background-color: #ffe4cc; font-weight: 500; letter-spacing: 0.1em;}
 
-th#twriter{width: 100px !important; letter-spacing: 0.1em; text-align: center !important;}
-td#twriter{width: 100px !important; text-indent: 10px !important; letter-spacing: 0.1em; text-align: center !important;}
+th#twriter{width: 10% !important; letter-spacing: 0.1em; text-align: center !important;}
+td#twriter{width: 10% !important; text-indent: 10px !important; letter-spacing: 0.1em; text-align: center !important;}
 
-th#t2{width: 130px !important; letter-spacing: 0.1em;}
-th#tdate{width: 80px !important; text-align: center;}
-td#tdate{width: 80px !important;}
+th#t1{width: 5% !important; letter-spacing: 0.1em;}
+th#t2{width: 10% !important; letter-spacing: 0.1em;}
+th#tdate{width: 10% !important; text-align: center;}
+td#tdate{width: 10% !important;}
 
-th#tnum{width: 60px !important; text-align: center;}
-td#tnum{width: 60px !important; text-align: center;}
+th#tnum{width: 30px !important; text-align: center;}
+td#tnum{width: 30px !important; text-align: center;}
 
 
 #page_control{text-align: center; margin: 20px 0 0 0;

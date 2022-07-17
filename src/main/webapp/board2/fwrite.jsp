@@ -13,30 +13,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content />
 <meta name="author" content />
-<title>한끼가치-자료실</title>
+<title>한끼가치 - 자료실</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="../css/styles.css" rel="stylesheet">
+<link href="../css/styles.css" rel="stylesheet" />
 <link href="../css/sub.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
-<!-- top-->
+<!-- Navigation-->
 <jsp:include page="../inc/top.jsp"></jsp:include>
-<!-- Page content-->
-<section class="bg-light py-2">
-<div class="container px-5">
-<!-- Contact form-->
-<div class="bg-light rounded-3 py-4 px-3 px-md-5 mb-5">
-<div class="text-center mb-5"><br>
-<h1 class="fw-bolder">자료실</h1>
-<p class="lead fw-normal text-muted mb-0">
-한끼가치 이용에 도움되는 자료를 등록합니다.<br>
-관리자만 이용 가능합니다.</p>
+<!-- 이미지 -->
+<div class="py-4 bg-light bg-pic2">
+<div class="container px-5 my-5">
+<div class="row gx-5 justify-content-center">
+<div class="col-lg-10 col-xl-7">
 </div>
+</div>
+</div>
+</div>
+<!-- Page Content-->
+<section class="py-3">
+<div class="container px-5 my-3">
+<div class="row gx-5">
+<jsp:include page="../inc/contactMenu.jsp"></jsp:include>
+<div class="col-lg-9">
+<div class="text-start mb-5"><br>
+<h1 class="fw-bolder">자료실</h1><br>
+<div class="text-muted mb-2">한끼가치 이용에 도움되는 자료를 볼 수 있습니다<br>
+이 페이지는 관리자만 접근 가능합니다</div><br>
 <%
 String id=(String)session.getAttribute("id");
 MemberDAO memberDAO=new MemberDAO();
@@ -47,7 +55,6 @@ if(id==null){
 }
 %>
 <article>
-<h1>Write</h1>
 <form action="fwritePro.jsp" method="post" enctype="multipart/form-data">
 <!-- 로그인 하지 않은 사람은 비밀번호가 필요하니까 임의로 1234 -->
 <input type="hidden" name="pass" value="1234">
@@ -58,11 +65,11 @@ if(id==null){
 </tr>
 <tr>
 	<td id="t2">제목</td>
-	<td><input type="text" name="subject"></td>
+	<td><input type="text" name="subject" width=30%></td>
 </tr>
 <tr>
-	<td>내용</td>
-	<td><textarea name="content" rows="3" cols="100"></textarea></td>
+	<td id="t2">내용</td>
+	<td><textarea name="content" rows="3" cols="110"></textarea></td>
 
 </tr>
 <tr>
@@ -70,15 +77,14 @@ if(id==null){
 	<td><input type="file" name="file" value="첨부파일"></td>
 </tr>
 </table>
-<div id="table_search">
+<div class="text-end mb-3">
 <input type="submit" class="btn btn-primary btn-lg" value="등록">
 <input type="button" class="btn btn-outline-primary btn-lg" value="글목록" onclick="location.href='reference.jsp'">
 </div>
 </form>
-<div class="clear"></div>
-<div id="page_control"></div>
 </article>
-<div class="clear"></div>
+</div>
+</div>
 </div>
 </div>
 </section>

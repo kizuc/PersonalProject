@@ -25,10 +25,10 @@
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
-<!-- top-->
+<!-- Navigation-->
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <!-- 이미지 -->
-<div class="py-4 bg-light bg-pic3">
+<div class="py-4 bg-light bg-pic2">
 <div class="container px-5 my-5">
 <div class="row gx-5 justify-content-center">
 <div class="col-lg-10 col-xl-7">
@@ -36,12 +36,15 @@
 </div>
 </div>
 </div>
-<!-- 본문-->
+<!-- Page Content-->
 <section class="py-3">
-<div class="container px-5 my-5">
+<div class="container px-5 my-3">
 <div class="row gx-5">
 <jsp:include page="../inc/contactMenu.jsp"></jsp:include>
 <div class="col-lg-9">
+<div class="text-start mb-5"><br>
+<h1 class="fw-bolder">자료실</h1>
+<div class="text-muted mb-2">한끼가치 이용에 도움되는 자료를 볼 수 있습니다</div><br>
 <!-- Post content-->
 <%
 	// board2DAO 객체생성
@@ -61,8 +64,6 @@
 	List board2List=board2DAO.getboard2List(startRow,pageSize);
 	%>
 	<article>
-	<h1 class="fw-bolder mb-1">자료실</h1><br>
-	<div class="text-muted mb-2">한끼가치 이용에 도움되는 자료를 볼 수 있습니다</div><br>
 	<table>
 	<tr>
 		<th id="tnum">No.</th>
@@ -74,11 +75,11 @@
 	//날짜 => 문자열 모양변경
 	SimpleDateFormat dateFormat=new SimpleDateFormat("M.d.YYYY");
 	for(int i=0;i<board2List.size();i++){
-	Board2DTO board2DTO=(Board2DTO)board2List.get(i);
-	%>
+		Board2DTO board2DTO=(Board2DTO)board2List.get(i);
+		%>
 	<tr onclick="location.href='fcontent.jsp?num=<%=board2DTO.getNum()%>'" style='cursor:pointer'>
 		<td id="tnum"><%=board2DTO.getNum() %></td>
-	    <td id="ttitle"><%=board2DTO.getSubject() %></td>
+	    <td id="ttitle"><%=board2DTO.getSubject() %> 📁</td>
 	    <td id="tdate"><%=dateFormat.format(board2DTO.getDate()) %></td>
 	    <td id="tnum"><%=board2DTO.getReadcount() %></td>
 	</tr>	   
@@ -94,7 +95,9 @@
 	if(id!=null){
 		if(id.equals("admin")){
 			%>
-			<input type="button" value="글쓰기" onclick="location.href='fwrite.jsp'">
+			<div class="text-end mb-3">
+			<input type="button" class="btn btn-primary btn-lg" value="글쓰기" onclick="location.href='fwrite.jsp'">
+			</div>
 			<%
 		}
 	}
@@ -112,7 +115,6 @@
 	int pageCount=count / pageSize+(count%pageSize==0?0:1);	// 전체 페이지 개수 구하기
 	if(endPage > pageCount)		endPage = pageCount;	
 	%>
-	<div id="page_control">
 	<%
 	if(startPage > pageBlock) {
 		%>
@@ -130,8 +132,8 @@
 		<%
 	}
 %>
-</div>
 </article>
+</div>
 </div>
 </div>
 </div>

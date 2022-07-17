@@ -5,10 +5,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html>s
 <head>
 <meta charset="UTF-8">
-<title>board2/wirtePro.jsp</title>
+<title>board2/writePro.jsp</title>
 </head>
 <body>
 <%
@@ -27,6 +27,7 @@ new MultipartRequest(request,uploadPath,maxSize,"utf-8",new DefaultFileRenamePol
 
 // request를 multi 안에 담았기 때문에 멀티로 전달~
 // multi 파라미터 가져오기 pass name subject content
+String name=multi.getParameter("name");
 String pass=multi.getParameter("pass");
 String subject=multi.getParameter("subject");
 String content=multi.getParameter("content");

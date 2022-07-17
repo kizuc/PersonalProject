@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 public class Board2DTO {
 
 	private int num;
-	private String name;
 	private String pass;
 	private String subject;
 	private String content;
@@ -25,12 +24,6 @@ public class Board2DTO {
 	}
 	public void setNum(int num) {
 		this.num = num;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public String getPass() {
 		return pass;
