@@ -63,7 +63,7 @@ public class GboardDAO {
 			if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
 			if(con!=null)try { con.close(); }catch(SQLException ex){}
 		}
-		return gboardList;		
+		return gBoardList;		
 	}
 	
 	//	게시판 보이게
