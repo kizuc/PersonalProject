@@ -47,6 +47,8 @@ public class GboardDAO {
 			while(rs.next()) {
 				GboardDTO gboardDTO=new GboardDTO();
 				gboardDTO.setNum(rs.getInt("num"));
+				gboardDTO.setId(rs.getString("id"));
+				gboardDTO.setNickname(rs.getString("nickname"));
 				gboardDTO.setPass(rs.getString("pass"));
 				gboardDTO.setSubject(rs.getString("subject"));
 				gboardDTO.setContent(rs.getString("content"));
@@ -83,12 +85,14 @@ public class GboardDAO {
 			if(rs.next()) {
 				gboardDTO=new GboardDTO();
 				gboardDTO.setNum(rs.getInt("num"));
+				gboardDTO.setId(rs.getString("id"));
+				gboardDTO.setNickname(rs.getString("nickname"));
 				gboardDTO.setPass(rs.getString("pass"));
 				gboardDTO.setSubject(rs.getString("subject"));
 				gboardDTO.setContent(rs.getString("content"));
-				gboardDTO.setFile(rs.getString("file"));
 				gboardDTO.setReadcount(rs.getInt("readcount"));
 				gboardDTO.setDate(rs.getTimestamp("date"));
+				gboardDTO.setFile(rs.getString("file"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -115,14 +119,16 @@ public class GboardDAO {
 			if(rs.next()){
 				num=rs.getInt("max(num)")+1;
 			}
-			sql="insert into gboard(num,pass,subject,content,file,readcount,date) values(?,?,?,?,?,?,now())";
+			sql="insert into gboard(num,id,nickname,pass,subject,content,file,readcount,date) values(?,?,?,?,?,?,?,?,now())";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, num);
-			pstmt.setString(2, gboardDTO.getPass());
-			pstmt.setString(3, gboardDTO.getSubject());
-			pstmt.setString(4, gboardDTO.getContent());
-			pstmt.setString(5, gboardDTO.getFile());
-			pstmt.setInt(6, gboardDTO.getReadcount());
+			pstmt.setString(2, gboardDTO.getId());
+			pstmt.setString(3, gboardDTO.getNickname());
+			pstmt.setString(4, gboardDTO.getPass());
+			pstmt.setString(5, gboardDTO.getSubject());
+			pstmt.setString(6, gboardDTO.getContent());
+			pstmt.setString(7, gboardDTO.getFile());
+			pstmt.setInt(8, gboardDTO.getReadcount());
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -140,12 +146,13 @@ public class GboardDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="update gboard set subject=?, content=?, file=? where num=?";
+			String sql="update gboard set nickname=?, subject=?, content=?, file=? where num=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, gboardDTO.getSubject());
-			pstmt.setString(2, gboardDTO.getContent());
-			pstmt.setString(3, gboardDTO.getFile());
-			pstmt.setInt(4, gboardDTO.getNum());
+			pstmt.setString(1, gboardDTO.getNickname());
+			pstmt.setString(2, gboardDTO.getSubject());
+			pstmt.setString(3, gboardDTO.getContent());
+			pstmt.setString(4, gboardDTO.getFile());
+			pstmt.setInt(5, gboardDTO.getNum());
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {

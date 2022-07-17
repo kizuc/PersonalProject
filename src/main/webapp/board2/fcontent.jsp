@@ -52,28 +52,23 @@ Board2DTO board2DTO=board2DAO.getboard2(num);
 	<article>
 	<table>
 	<tr>
-		<td>글번호</td>
-		<td id="t2"><%=board2DTO.getNum() %></td>
-	    <td>작성일</td>
-	    <td><%=board2DTO.getDate() %></td>
+		<th colspan="4"><h5 class="pt-2 fw-bolder"><%=board2DTO.getSubject() %></h5></th>
+	</tr>
+	<tr>
+		<td>파일</td>
+	    <td><a href="../upload/<%=board2DTO.getFile() %>" download><%=board2DTO.getFile() %> 📁 </a></td>
+		<td>작성일</td>
+		<td id="t2"><%=board2DTO.getDate() %></td>
 	</tr>
 	<tr>
 		<td>글쓴이</td>
 		<td id="t2">운영자</td>
-	    <td>조회 수</td>
+		<td>조회 수</td>
 	    <td><%=board2DTO.getReadcount() %></td>
-	</tr>
-	<tr>
-		<td>제목</td>
-		<td colspan="3"><%=board2DTO.getSubject() %></td>
 	</tr>
 	<tr>
 		<td>내용</td>
 		<td colspan="3"><%=board2DTO.getContent() %></td>
-	</tr>
-	<tr>
-		<td>파일</td>
-		<td colspan="3"><a href="../upload/<%=board2DTO.getFile() %>" download><%=board2DTO.getFile() %></a></td>
 	</tr>
 	</table>
 	<%
@@ -82,13 +77,14 @@ Board2DTO board2DTO=board2DAO.getboard2(num);
 	if(id!=null){
 		if(id.equals("admin")){
 			%>
+			<div class="text-end mb-3">
 			<input type="button" value="글수정" class="btn btn-primary btn-sm" onclick="location.href='fupdate.jsp?num=<%=board2DTO.getNum()%>'">
 			<input type="button" value="글삭제" class="btn btn-outline-primary btn-sm" onclick="location.href='fdelete.jsp?num=<%=board2DTO.getNum()%>'">
+			</div>
 			<%
 		}
 	}
 %>
-<input type="button" value="글목록" class="btn btn-outline-primary btn-sm" onclick="location.href='reference.jsp'">
 </article>
 </div>
 </div>

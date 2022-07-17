@@ -2510,7 +2510,7 @@ progress {
 }
 
 textarea.form-control {
-  min-height: calc(1.5em + 0.75rem + 2px);
+  min-height: calc(9em + 0.75rem + 2px);
 }
 textarea.form-control-sm {
   min-height: calc(1.5em + 0.5rem + 2px);
@@ -7814,6 +7814,13 @@ text-decoration: none;
 .fw-bold1 {
   color: #413c34 !important;
   font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+.fw-bold6 {
+  font-size: 1.1em !important;
+  color: #495057 !important;
+  font-weight: 600 !important;
   text-decoration: none !important;
 }
 

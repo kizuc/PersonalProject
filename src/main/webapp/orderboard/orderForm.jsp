@@ -45,24 +45,34 @@ MemberDTO memberDTO=memberDAO.getMember(id);
 		// 아이디가 있으면 닉네임이 보이게(닉네임이 없으면 기본값으로 익명이 뜬다)
 		if(id!=null){
 			%>
-        	<input class="form-control3" name="nickname" id="nickname" type="text" value="<%=memberDTO.getNickname() %>" data-sb-validations="required" />
+        	<input class="form-control4" name="nickname" id="nickname" type="text" value="<%=memberDTO.getNickname() %>" data-sb-validations="required" />
 			<%
 		// 아이디가 없으면 닉네임이 적히지 않게
 		}else if(id==null){
 			%>
-        	<input class="form-control3" name="nickname1" id="nickname1" type="text" placeholder="닉네임" data-sb-validations="required" />
+        	<input class="form-control4" name="nickname1" id="nickname1" type="text" placeholder="닉네임" data-sb-validations="required" />
 			<%
 		}
 		%>
-        <span class="lead fw-bold3 text-black-40 mb-3 pe-3">(이)랑 같이</span>
-        <input class="form-control3" name="fdate" id="fdate" type="datetime-local" placeholder="언제" data-sb-validations="required,date" />
-        <span class="lead fw-bold3 text-black-40 mb-3">에</span>
+        <span class="lead fw-bold3 text-black-40 mb-3 pe-3">&nbsp;(이)랑 같이</span>
      </div>
-     <div class="form-floating mb-4">
+     <div class="form-floating mb-3">
+        <input class="form-control3" name="fdate" id="fdate" type="datetime-local" placeholder="언제" data-sb-validations="required,date" />
+        <span class="lead fw-bold3 text-black-40 mb-3">&nbsp;</span>
          <input class="form-control4" name="faddrees" id="faddrees" type="text" placeholder="어디 음식점" data-sb-validations="required,date" />
-         <span class="lead fw-bold3 text-black-40 mb-3 pe-3">에서 </span>
+         <span class="lead fw-bold3 text-black-40 mb-3 pe-3">&nbsp;에서</span>
+     </div>
+     <div class="form-floating mb-3">
          <input class="form-control3" name="wfood" id="wfood" type="text" placeholder="어떤 음식을" data-sb-validations="required,date" />
-         <span class="lead fw-bold3 text-dark-40 mb-3">먹어요!</span>
+         <span class="lead fw-bold3 text-dark-40 mb-3">&nbsp;먹을 &nbsp;</span>
+       	<select class="form-control5" name="people">
+		<option value="1명" selected>1명</option>
+		<option value="2명">2명</option>
+		<option value="3명">3명</option>
+		<option value="인원은 조율">인원은 조율</option>
+		<option value="몇 명이라도 OK!">몇 명이라도 OK!</option>
+		</select> 
+		<span class="lead fw-bold3 text-dark-40 mb-3">&nbsp; 구해요!</span>
      </div>
 		<%
 		// 아이디가 있으면 글 쓸 수 있게
@@ -82,16 +92,7 @@ MemberDTO memberDTO=memberDAO.getMember(id);
 	     <span class="lead fw-bold2 text-dark-40 mb-3"> 은 힘들고</span>
 	     </div>
 	     <div class="form-floating mb-0">
-	        <select class="form-control5" name="people">
-				<option value="1명" selected>1명</option>
-				<option value="2명">2명</option>
-				<option value="3명">3명</option>
-				<option value="인원은 조율">인원은 조율</option>
-				<option value="몇 명이라도 OK!">몇 명이라도 OK!</option>
-				</select> 
-				<span class="lead fw-bold2 text-dark-40 mb-3"> 에 </span>
-	     
-	        <select class="form-control5" name="option">
+	        <select class="form-control4" name="option">
 				<option value="맛있게 먹으실 분" selected>맛있게 먹으실 분</option>
 				<option value="조용히 밥만 먹으실 분">조용히 밥만 먹으실 분</option>
 				<option value="이야기도 나누실 분">이야기도 나누실 분</option>
@@ -122,7 +123,7 @@ MemberDTO memberDTO=memberDAO.getMember(id);
 </div>
 <!-- Blog preview section-->
 <section class="py-2">
-    <div class="row gx-6 justify-content-center">
+    <div class="row gx-3 justify-content-center">
         <div class="row gx-5 justify-content-center">
             <div class="col-lg-8 col-xl-6">
                 <div class="text-center">

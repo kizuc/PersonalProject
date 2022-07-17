@@ -28,9 +28,9 @@ String ftime=request.getParameter("ftime");
 // DateFormat df = new SimpleDateFormat("M월 dd일");
 String faddress=request.getParameter("faddress");
 String wfood=request.getParameter("wfood");
+String people=request.getParameter("people");
 // checkbox의 여러 항목을 저장학 위해
 String nof[]=request.getParameterValues("nof");
-String people=request.getParameter("people");
 String option=request.getParameter("option");
 String etc=request.getParameter("etc");
 
@@ -67,8 +67,8 @@ oboardDTO.setFdate(fdate);
 oboardDTO.setFtime(ftime);
 oboardDTO.setFaddress(faddress);
 oboardDTO.setWfood(wfood);
-oboardDTO.setNof(txtnof);
 oboardDTO.setPeople(people);
+oboardDTO.setNof(txtnof);
 oboardDTO.setOptions(options);
 oboardDTO.setEtc(etc);
 //자바파일메서드정의(디비) 메서드호출

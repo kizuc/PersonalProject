@@ -1,5 +1,6 @@
-<%@page import="board2.Board2DTO"%>
-<%@page import="board2.Board2DAO"%>
+<%@page import="member.MemberDTO"%>
+<%@page import="gboard.GboardDTO"%>
+<%@page import="gboard.GboardDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -10,14 +11,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content />
 <meta name="author" content />
-<title>한끼가치 - 자료실</title>
+<title>한끼가치 - 갤러리</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="../css/styles.css" rel="stylesheet" />
-<link href="../css/sub.css" rel="stylesheet">
+<link href="../css/sub2.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
@@ -25,7 +26,7 @@
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <!-- 이미지 -->
 <div class="py-4 bg-light bg-pic2">
-<div class="container px-5 my-5">
+<div class="container px-6 my-5">
 <div class="row gx-5 justify-content-center">
 <div class="col-lg-10 col-xl-7">
 </div>
@@ -34,64 +35,67 @@
 </div>
 <!-- Page Content-->
 <section class="py-3">
-<div class="container px-5 my-3">
-<div class="row gx-5">
-<jsp:include page="../inc/contactMenu.jsp"></jsp:include>
-<div class="col-lg-9">
+<div class="container px-6 my-3">
 <div class="text-start mb-5"><br>
-<h1 class="fw-bolder">자료실</h1>
-<div class="text-muted mb-2">한끼가치 이용에 도움되는 자료가 올라옵니다</div><br>
+<h1 class="fw-bolder">갤러리</h1>
+<div class="text-muted mb-2">후기와 함께 같이 한 순간을 나눠보세요</div><br>
 <%
 //int num 파라미터 가져오기
 int num=Integer.parseInt(request.getParameter("num"));
 //BoardDAO 객체생성 
-Board2DAO board2DAO=new Board2DAO();
+GboardDAO gboardDAO=new GboardDAO();
 //BoardDTO boardDTO = getBoard(num)메서드 호출
-Board2DTO board2DTO=board2DAO.getboard2(num);
+GboardDTO gboardDTO=gboardDAO.getGboard(num);
 %>
 	<article>
 	<table>
-	<tr>
-		<td>글번호</td>
-		<td id="t2"><%=board2DTO.getNum() %></td>
-	    <td>작성일</td>
-	    <td><%=board2DTO.getDate() %></td>
-	</tr>
-	<tr>
-		<td>글쓴이</td>
-		<td id="t2">운영자</td>
-	    <td>조회 수</td>
-	    <td><%=board2DTO.getReadcount() %></td>
-	</tr>
-	<tr>
-		<td>제목</td>
-		<td colspan="3"><%=board2DTO.getSubject() %></td>
-	</tr>
-	<tr>
-		<td>내용</td>
-		<td colspan="3"><%=board2DTO.getContent() %></td>
-	</tr>
-	<tr>
-		<td>파일</td>
-		<td colspan="3"><a href="../upload/<%=board2DTO.getFile() %>" download><%=board2DTO.getFile() %></a></td>
-	</tr>
+	 <tr>
+		<th colspan="4"><h5 class="pt-2 fw-bolder"><%=gboardDTO.getSubject() %></h5></th>
+	 </tr>
+	 <tr>
+		<td id="gtitle"><%=gboardDTO.getNickname() %></td>
+		<td><%=gboardDTO.getDate() %></td>
+		<td><%=gboardDTO.getReadcount() %></td>
+	 </tr>
+	 <tr>
+		<td colspan="3"><img src="../upload2/<%=gboardDTO.getFile() %>"></td>
+	 </tr>
+	 <tr>
+		<td colspan="3"><%=gboardDTO.getContent() %></td>
+	 </tr>
 	</table>
 	<%
 	// 글수정 글삭제 => 로그인(세션값), 글쓴이 일치하면 글수정, 글삭제 버튼이 보이게
 	String id=(String)session.getAttribute("id");
 	if(id!=null){
-		if(id.equals("admin")){
+		// 글쓴이 일치하면 글 수정, 삭제 버튼 보임
+		if(id.equals(gboardDTO.getId())){
 			%>
-			<input type="button" value="글수정" class="btn btn-primary btn-sm" onclick="location.href='fupdate.jsp?num=<%=board2DTO.getNum()%>'">
-			<input type="button" value="글삭제" class="btn btn-outline-primary btn-sm" onclick="location.href='fdelete.jsp?num=<%=board2DTO.getNum()%>'">
+			<div class="text-end mb-3">
+			<input type="button" value="글수정" class="btn btn-primary btn-lg" onclick="location.href='gupdate.jsp?num=<%=gboardDTO.getNum()%>'">
+			<input type="button" value="글삭제" class="btn btn-outline-primary btn-lg" onclick="location.href='gdelete.jsp?num=<%=gboardDTO.getNum()%>'">
+			<input type="button" value="글목록" class="btn btn-outline-primary btn-lg" onclick="location.href='gboard.jsp'">
+			</div>
+			<%
+		// 관리자면 글 삭제 버튼 보임
+		}else if(id.equals("admin")){
+			%>
+			<div class="text-end mb-3">			
+			<input type="button" value="글삭제" class="btn btn-outline-primary btn-lg" onclick="location.href='gdelete.jsp?num=<%=gboardDTO.getNum()%>'">
+			<input type="button" value="글목록" class="btn btn-outline-primary btn-lg" onclick="location.href='gboard.jsp'">
+			</div>
+			<%
+		// 나머진 글 목록만 보이게
+		}else{
+			%>
+			<div class="text-end mb-3">			
+			<input type="button" value="글목록" class="btn btn-outline-primary btn-lg" onclick="location.href='gboard.jsp'">
+			</div>			
 			<%
 		}
 	}
-%>
-<input type="button" value="글목록" class="btn btn-outline-primary btn-sm" onclick="location.href='reference.jsp'">
+	%>
 </article>
-</div>
-</div>
 </div>
 </div>
 </section>

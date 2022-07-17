@@ -53,20 +53,17 @@
 	<article>
 	<table>
 	<tr>
-		<td>글번호</td>
-		<td id="t2"><%=boardDTO.getNum() %></td>
-	    <td>작성일</td>
-	    <td><%=boardDTO.getDate() %></td>
+		<th colspan="4"><h5 class="pt-2 fw-bolder"><%=boardDTO.getSubject() %></h5></th>
 	</tr>
 	<tr>
-		<td>글쓴이</td>
-		<td id="t2"><%=boardDTO.getName() %></td>
-	    <td>조회 수</td>
+		<td>조회 수</td>
 	    <td><%=boardDTO.getReadcount() %></td>
+		<td>작성일</td>
+		<td><%=boardDTO.getDate() %></td>
 	</tr>
 	<tr>
-		<td>제목</td>
-		<td colspan="3"><%=boardDTO.getSubject() %></td>
+		<td >글쓴이</td>
+		<td id="t2" colspan="4"><%=boardDTO.getName() %></td>
 	</tr>
 	<tr>
 		<td>내용</td>
@@ -91,7 +88,6 @@
 		}
 	}
 	%>
-<input type="button" value="글목록" class="btn btn-outline-primary btn-sm" onclick="location.href='board.jsp'">
 </div>
 <div class="clear"></div>
 <div id="page_control"></div>

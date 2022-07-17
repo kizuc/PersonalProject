@@ -1,21 +1,21 @@
-<%@page import="board2.Board2DAO"%>
+<%@page import="gboard.GboardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>board2/fdelete.jsp</title>
+<title>gallery/gdelete.jsp</title>
 </head>
 <body>
 <%
 // num 파라미터 가져오기
 int num=Integer.parseInt(request.getParameter("num"));
-// board2DAO 객체생성
-Board2DAO board2DAO = new Board2DAO();
-// deleteboard2(num) 메서드 호출
-board2DAO.deleteboard2(num);
-response.sendRedirect("reference.jsp");
+// gboardDAO 객체생성
+GboardDAO gboardDAO = new GboardDAO();
+// 삭제 메서드 호출
+gboardDAO.deleteGboard(num);
+response.sendRedirect("gboard.jsp");
 %>
 </body>
 </html>
