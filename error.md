@@ -24,12 +24,15 @@ WAS에서 웹 애플리케이션을 구분하기 위한 경로로, 프로젝트�
 서버 `werver.xml` 파일의 Context태그의 path 값을 변경하면 된다.   
 
 <br>
+
 ## java.io.IOException: Posted content type isn't multipart/form-data
 ```
 enctype="multipart/form-data" 가 없으면 발생한다.
 ```
 해당 폴더에 같은 이름의 파일이 있어서 생기는 문제인 줄 알았다. `"multipart/form-data"`를 추가하면 된다.
+
 <br>
+
 ## Publising to Tomcat v8.5 Server at localhost...' has encountered a problem. Could not publish server configuratiln for Tomcat v8.5 Server at localhost
 ```
 다른 서버에 톰캣이 돌아가고 있어서 포트 충돌이 생길 때 발생한다.
