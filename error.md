@@ -28,7 +28,8 @@ enctype="multipart/form-data" 가 없으면 발생한다.
 ```
 해당 폴더에 같은 이름의 파일이 있어서 생기는 문제인 줄 알았다. `"multipart/form-data"`를 추가하면 된다.
 
-### Publising to Tomcat v8.5 Server at localhost...' has encountered a problem.   Could not publish server configuratiln for Tomcat v8.5 Server at localhost
+## Publising to Tomcat v8.5 Server at localhost...' has encountered a problem.   
+Could not publish server configuratiln for Tomcat v8.5 Server at localhost
 ```
 다른 서버에 톰캣이 돌아가고 있어서 포트 충돌이 생길 때 발생한다.
 ```
