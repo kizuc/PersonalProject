@@ -1,5 +1,5 @@
-<%@page import="board2.Board2DTO"%>
-<%@page import="board2.Board2DAO"%>
+<%@page import="gboard.GboardDAO"%>
+<%@page import="gboard.GboardDTO"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,11 +8,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>board2/fupdatePro.jsp</title>
+<title>한끼가치 - 갤러리</title>
 </head>
 <body>
 <%
-//한글처리
+// 한글처리
 int maxSize=10*1024*1024;
 // 실제경로 담기
 String uploadPath=request.getRealPath("/upload");
@@ -27,25 +27,25 @@ String content=multi.getParameter("content");
 //file 파라미터 가져오기
 String file=multi.getFilesystemName("file");
 
-// file 없을 때
+// file 없을 때 이전 파일로 대체되게
 if(file==null) {
 	file=multi.getParameter("oldfile");
 }
 // 파일 저장
-//board2DTO 객체생성
-Board2DTO board2DTO=new Board2DTO();
-//set메서드 호출 파라미터값 저장s
-board2DTO.setNum(num);
-board2DTO.setSubject(subject);
-board2DTO.setContent(content);
-board2DTO.setFile(file);
+//gboardDTO 객체생성
+GboardDTO gboardDTO=new GboardDTO();
+//set메서드 호출 파라미터값 저장
+gboardDTO.setNum(num);
+gboardDTO.setSubject(subject);
+gboardDTO.setContent(content);
+gboardDTO.setFile(file);
 
-//board2DAO 객체생성
-Board2DAO board2DAO=new Board2DAO();
-//updateboard2(board2DTO) 호출
-board2DAO.updateBoard2(board2DTO);
+// gboardDAO 객체생성
+GboardDAO gboardDAO=new GboardDAO();
+// 글 수정 호출
+gboardDAO.updateGboard(gboardDTO);
 // 자료실로 이동
-response.sendRedirect("reference.jsp");
+response.sendRedirect("gboard.jsp");
 %>
 </body>
 </html>

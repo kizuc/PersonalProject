@@ -9,12 +9,11 @@ public class OboardDTO {
 	private String id;
 	private String nickname;
 	private String fdate;
-	private String ftime;
 	private String faddress;
 	private String wfood;
 	private String nof;
 	private String people;
-	private String options;
+	private String ooption;
 	private String etc;
 	private Timestamp date;
 	
@@ -43,12 +42,6 @@ public class OboardDTO {
 	public void setFdate(String fdate) {
 		this.fdate = fdate;
 	}
-	public String getFtime() {
-		return ftime;
-	}
-	public void setFtime(String ftime) {
-		this.ftime = ftime;
-	}
 	public String getFaddress() {
 		return faddress;
 	}
@@ -73,11 +66,12 @@ public class OboardDTO {
 	public void setPeople(String people) {
 		this.people = people;
 	}
-	public String getOptions() {
-		return options;
+
+	public String getOoption() {
+		return ooption;
 	}
-	public void setOptions(String options) {
-		this.options = options;
+	public void setOoption(String ooption) {
+		this.ooption = ooption;
 	}
 	public String getEtc() {
 		return etc;

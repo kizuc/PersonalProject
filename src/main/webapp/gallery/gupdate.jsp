@@ -59,44 +59,44 @@
 	// getboard2()
 	Board2DTO board2DTO=board2DAO.getboard2(num);
 	%>
-<article>
-<form action="fupdatePro.jsp" method="post" enctype="multipart/form-data">
-
-<input type="hidden" name="num" value="<%=board2DTO.getNum()%>">
-<table>
-<tr>
-	<td>글쓴이</td>
-	<td><input type="hidden" name="name"><%=memberDTO.getName() %></td>
-</tr>
-<tr>
-	<td>제목</td>
-	<td><input type="text" name="subject" value="<%=board2DTO.getSubject()%>"></td>
-</tr>
-<tr>
-	<td>내용</td>
-	<td><textarea name="content" rows="2" cols="50"><%=board2DTO.getContent()%></textarea></td>
-</tr>	
-<tr>
-	<td id="t2">첨부파일</td>
-	<td><input type="file" class="btn btn-outline-primary btn-sm" name="file" value="첨부파일">
-	    <input type="hidden" name="oldfile" value="<%=board2DTO.getFile()%>"> &ensp; <%=board2DTO.getFile()%>
-	</td>
-</tr>
-</table>
-<div class="text-end mb-3">
-<input type="submit" value="글수정" class="btn btn-primary btn-lg" id="submit">
-<input type="button" value="글목록" class="btn btn-outline-primary btn-lg" onclick="location.href='reference.jsp'">
-</div>
-</form>
+	<article>
+	<form action="fupdatePro.jsp" method="post" enctype="multipart/form-data">
+	
+	<input type="hidden" name="num" value="<%=board2DTO.getNum()%>">
+	<table>
+	<tr>
+		<td>글쓴이</td>
+		<td><input type="hidden" name="name"><%=memberDTO.getName() %></td>
+	</tr>
+	<tr>
+		<td>제목</td>
+		<td><input type="text" name="subject" value="<%=board2DTO.getSubject()%>"></td>
+	</tr>
+	<tr>
+		<td>내용</td>
+		<td><textarea name="content" rows="2" cols="50"><%=board2DTO.getContent()%></textarea></td>
+	</tr>	
+	<tr>
+		<td id="t2">첨부파일</td>
+		<td><input type="file" class="btn btn-outline-primary btn-sm" name="file" value="첨부파일">
+		    <input type="hidden" name="oldfile" value="<%=board2DTO.getFile()%>"> &ensp; <%=board2DTO.getFile()%>
+		</td>
+	</tr>
+	</table>
+	<div class="text-end mb-3">
+	<input type="submit" value="글수정" class="btn btn-primary btn-lg" id="submit">
+	<input type="button" value="글목록" class="btn btn-outline-primary btn-lg" onclick="location.href='reference.jsp'">
+	</div>
+	</form>
+	<div class="clear"></div>
+	<div id="page_control"></div>
+	</article>
 <div class="clear"></div>
-<div id="page_control"></div>
-</article>
-<div class="clear"></div>
 </div>
 </div>
 </div>
 </div>
-  </section>
+</section>
 </main>
 <!-- Footer-->
 <jsp:include page="../inc/bottom.jsp"></jsp:include>

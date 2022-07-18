@@ -37,7 +37,7 @@ String id=(String)session.getAttribute("id");
 MemberDAO memberDAO=new MemberDAO();
 MemberDTO memberDTO=memberDAO.getMember(id);
 %>
-	<form action="joinPro.jsp" id="contactForm" name="fr" data-sb-form-api-token="API_TOKEN" method="post" onsubmit="return checkSubmit()">
+	<form action="orderPro.jsp" id="contactForm" name="fr" data-sb-form-api-token="API_TOKEN" method="post">
      <!-- id input-->
      <div class="form-floating mb-3">
          <input type="hidden" name="id" id="id" value="<%=id %>">
@@ -59,18 +59,18 @@ MemberDTO memberDTO=memberDAO.getMember(id);
      <div class="form-floating mb-3">
         <input class="form-control3" name="fdate" id="fdate" type="datetime-local" placeholder="언제" data-sb-validations="required,date" />
         <span class="lead fw-bold3 text-black-40 mb-3">&nbsp;</span>
-         <input class="form-control4" name="faddrees" id="faddrees" type="text" placeholder="어디 음식점" data-sb-validations="required,date" />
+         <input class="form-control4" name="faddress" id="faddress" type="text" placeholder="어디 음식점" data-sb-validations="required,date" />
          <span class="lead fw-bold3 text-black-40 mb-3 pe-3">&nbsp;에서</span>
      </div>
      <div class="form-floating mb-3">
-         <input class="form-control3" name="wfood" id="wfood" type="text" placeholder="어떤 음식을" data-sb-validations="required,date" />
-         <span class="lead fw-bold3 text-dark-40 mb-3">&nbsp;먹을 &nbsp;</span>
+        <input class="form-control3" name="wfood" id="wfood" type="text" placeholder="어떤 음식을" data-sb-validations="required,date" />
+        <span class="lead fw-bold3 text-dark-40 mb-3">&nbsp;먹을 &nbsp;</span>
        	<select class="form-control5" name="people">
-		<option value="1명" selected>1명</option>
-		<option value="2명">2명</option>
-		<option value="3명">3명</option>
-		<option value="인원은 조율">인원은 조율</option>
-		<option value="몇 명이라도 OK!">몇 명이라도 OK!</option>
+			<option value="1명" selected>1명</option>
+			<option value="2명">2명</option>
+			<option value="3명">3명</option>
+			<option value="인원은 조율">인원은 조율</option>
+			<option value="몇 명이라도 OK!">몇 명이라도 OK!</option>
 		</select> 
 		<span class="lead fw-bold3 text-dark-40 mb-3">&nbsp; 구해요!</span>
      </div>
@@ -92,13 +92,13 @@ MemberDTO memberDTO=memberDAO.getMember(id);
 	     <span class="lead fw-bold2 text-dark-40 mb-3"> 은 힘들고</span>
 	     </div>
 	     <div class="form-floating mb-0">
-	        <select class="form-control4" name="option">
-				<option value="맛있게 먹으실 분" selected>맛있게 먹으실 분</option>
-				<option value="조용히 밥만 먹으실 분">조용히 밥만 먹으실 분</option>
-				<option value="이야기도 나누실 분">이야기도 나누실 분</option>
-				<option value="2차도 가실 분">2차도 가실 분</option>
-				</select> 
-				<span class="lead fw-bold2 text-dark-40 mb-2">이면 좋겠어요!</span><br><br>
+	        <select class="form-control4" name="opt">
+				<option value="1" selected>맛있게 먹으실 분</option>
+				<option value="2">조용히 밥만 먹으실 분</option>
+				<option value="3">이야기도 나누실 분</option>
+				<option value="4">2차도 가실 분</option>
+			</select> 
+			<span class="lead fw-bold2 text-dark-40 mb-2">이면 좋겠어요!</span><br><br>
 	     </div>
 	     <div class="form-floating">
 	         <input class="form-control" name="etc" id="etc" type="text" placeholder="기타사항" data-sb-validations="required" />
@@ -160,19 +160,23 @@ MemberDTO memberDTO=memberDAO.getMember(id);
             </div>
             <div class="col-lg-4 mb-5">
                 <div class="card h-90 shadow border-0">
-                    <img class="card-img-top" src="https://dummyimage.com/600x350/adb5bd/495057" alt="..." />
                     <div class="card-body p-4">
-                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">Media</div>
-                        <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Another blog post title</h5></a>
-                        <p class="card-text mb-0">This text is a bit longer to illustrate the adaptive height of each card. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
+                        <a class="text-decoration-none link-dark stretched-link" href="#!">
+                        <h1 class="fw-bolder mb-3">
+                        몇월며칠 몇 시<br>
+                        어디에서 <br>
+                        뭐뭐 먹을<br>
+                        2명 구합니다!</h1></a>
+                        <p class="lead fw-normal text-muted mb-5">맛있게 드실 분 </p>
                     </div>
                     <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                         <div class="d-flex align-items-end justify-content-between">
                             <div class="d-flex align-items-center">
                                 <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
                                 <div class="small">
-                                    <div class="fw-bold">Josiah Barclay</div>
-                                    <div class="text-muted">March 23, 2022 &middot; 4 min read</div>
+                                    <div class="fw-bold">Kelly Rowan</div>
+                                    <div class="text-muted">March 12, 2022 &middot; 6 min read</div>
                                 </div>
                             </div>
                         </div>
@@ -181,19 +185,23 @@ MemberDTO memberDTO=memberDAO.getMember(id);
             </div>
             <div class="col-lg-4 mb-5">
                 <div class="card h-90 shadow border-0">
-                    <img class="card-img-top" src="https://dummyimage.com/600x350/6c757d/343a40" alt="..." />
                     <div class="card-body p-4">
                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-                        <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">The last blog post title is a little bit longer than the others</h5></a>
-                        <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a class="text-decoration-none link-dark stretched-link" href="#!">
+                        <h1 class="fw-bolder mb-3">
+                        몇월며칠 몇 시<br>
+                        어디에서 <br>
+                        뭐뭐 먹을<br>
+                        2명 구합니다!</h1></a>
+                        <p class="lead fw-normal text-muted mb-5">맛있게 드실 분 </p>
                     </div>
                     <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                         <div class="d-flex align-items-end justify-content-between">
                             <div class="d-flex align-items-center">
                                 <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
                                 <div class="small">
-                                    <div class="fw-bold">Evelyn Martinez</div>
-                                    <div class="text-muted">April 2, 2022 &middot; 10 min read</div>
+                                    <div class="fw-bold">Kelly Rowan</div>
+                                    <div class="text-muted">March 12, 2022 &middot; 6 min read</div>
                                 </div>
                             </div>
                         </div>

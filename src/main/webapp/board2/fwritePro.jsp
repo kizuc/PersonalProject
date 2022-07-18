@@ -5,14 +5,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>s
+<html>
 <head>
 <meta charset="UTF-8">
-<title>board2/writePro.jsp</title>
+<title>한끼가치 - 자료실</title>
 </head>
 <body>
 <%
-
 // 업로드 위치 지정(이 폴더의 물리적 경로, upload 폴더 생성)
 String uploadPath=request.getRealPath("/upload");
 out.println(uploadPath);
@@ -26,7 +25,7 @@ MultipartRequest multi=
 new MultipartRequest(request,uploadPath,maxSize,"utf-8",new DefaultFileRenamePolicy());
 
 // request를 multi 안에 담았기 때문에 멀티로 전달~
-// multi 파라미터 가져오기 pass name subject content
+// multi 파라미터 가져오기
 String name=multi.getParameter("name");
 String pass=multi.getParameter("pass");
 String subject=multi.getParameter("subject");
@@ -36,18 +35,17 @@ int readcount=0;
 //업로드된 파일 이름 가져오기 getParameter가 아니라~
 String file=multi.getFilesystemName("file");
 
-//board2DTO 객체생성
+// board2DTO 객체생성
 Board2DTO board2DTO=new Board2DTO();
-//set메서드 파라미터값 저장
-//readcount 0 저장
+// set메서드 파라미터값 저장
 board2DTO.setPass(pass);
 board2DTO.setSubject(subject);
 board2DTO.setContent(content);
 board2DTO.setReadcount(readcount);
-//board2DTO file 멤버변수 만들고 set메서드 호출(저장되어지게)
+// board2DTO file 멤버변수 만들고 set메서드 호출(저장되어지게)
 board2DTO.setFile(file);
 Board2DAO board2DAO=new Board2DAO();
-//insertboard2(board2DTO) 메서드호출
+// 글 등록 메서드 호출
 board2DAO.insertboard2(board2DTO);
 // 자료실로 이동
 response.sendRedirect("reference.jsp");

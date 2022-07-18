@@ -25,7 +25,7 @@
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
-<!-- Navigation-->
+<!-- top-->
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <!-- 이미지 -->
 <div class="py-4 bg-light bg-pic2">
@@ -69,7 +69,8 @@
 		   GboardDTO gBoardDTO=(GboardDTO)gBoardList.get(i);
 		   %>
 		<td>
-<%-- 		<%=i+1 %> --%>
+		<!-- 글 번호 출력 -->
+		<%-- <%=i+1 %> --%>
 		<a href="gcontent.jsp?num=<%=gBoardDTO.getNum()%>" class="img1">
 		<img src="../upload2/<%=gBoardDTO.getFile() %>" width="405px" height="280px"></a><br>
 		<span class="fw-bold6 pt-6"><%=gBoardDTO.getSubject() %></span>
@@ -82,7 +83,7 @@
 	   }
 	   %> 
 	</tr>	 
-	<!-- for문 안에 있던 tr을 for문 밖으로 뺌(수평으로 td를 여러개 만들기 위함) -->
+	<!-- for문 안에 있던 tr을 for문 밖으로 뺌(수평으로 td를 여러 개 만들기 위함) -->
 	</table>
 	<div id="table_search">
 	<%
@@ -125,7 +126,6 @@
 		%>
 		<a href="gboard.jsp?pageNum=<%=startPage+pageBlock%>">Next</a>
 		<%
-	
 	}
 	%>
 </div>

@@ -18,13 +18,16 @@ String id=(String)session.getAttribute("id");
             </ul>
         </div>
          <div class="col-auto">
-	         <%if(id==null){
+	         <%
+	         // 아이디가 없을 경우
+	         if(id==null){
 				%>
 				<a class="link-light small" href="../member/login.jsp">로그인</a>
 				 <span class="text-white mx-1">&middot;</span>
 				 <a class="link-light small" href="../member/join.jsp">회원가입</a>
 				<%
 			}else if(id!=null){
+				// 아이디가 관리자일 경우
 				if(id.equals("admin")){
 					%>
 					<span class="text-whites samll mx-2"><%=id %> </span>
@@ -32,6 +35,7 @@ String id=(String)session.getAttribute("id");
 					<span class="text-white mx-1">&middot;</span>
 					<a class="link-light small" href="../member/logout.jsp">로그아웃</a>
 					<%
+				// 아이디가 관리자가 아닌 나머지일 경우
 				}else{
 				%>
 				<span class="text-whites samll mx-2"><%=id %>님 환영합니다! </span>

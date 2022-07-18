@@ -25,7 +25,7 @@
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
-<!-- Navigation-->
+<!-- top-->
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <!-- 이미지 -->
 <div class="py-4 bg-light bg-pic2">
@@ -112,7 +112,7 @@
 	int pageCount=count / pageSize+(count%pageSize==0?0:1);	// 전체 페이지 개수 구하기
 	if(endPage > pageCount)		endPage = pageCount;	
 	%>
-<div id="page_control">
+	<div id="page_control">
 	<%
 	if(startPage > pageBlock) {
 		%>
@@ -131,8 +131,8 @@
 	
 	}
 	%>
-</div>
-</article>
+	</div>
+	</article>
 </div>
 </div>
 </div>

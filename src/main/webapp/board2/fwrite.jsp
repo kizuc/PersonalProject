@@ -24,7 +24,7 @@
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
-<!-- Navigation-->
+<!-- top-->
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <!-- 이미지 -->
 <div class="py-4 bg-light bg-pic2">
@@ -54,34 +54,34 @@
 		response.sendRedirect("../member/login.jsp");
 	}
 	%>
-<article>
-<form action="fwritePro.jsp" method="post" enctype="multipart/form-data">
-<!-- 로그인 하지 않은 사람은 비밀번호가 필요하니까 임의로 1234 -->
-<input type="hidden" name="pass" value="1234">
-<table>
-<tr>
-	<td id="t2">글쓴이</td>
-	<td><input type="hidden" name="name"><%=memberDTO.getName() %></td>
-</tr>
-<tr>
-	<td id="t2">제목</td>
-	<td><input type="text" name="subject" width=30%></td>
-</tr>
-<tr>
-	<td id="t2">내용</td>
-	<td><textarea name="content" rows="2" cols="50"></textarea></td>
-</tr>
-<tr>
-	<td id="t2">첨부파일</td>
-	<td><input type="file" class="btn btn-outline-primary btn-sm" name="file" value="첨부파일"></td>
-</tr>
-</table>
-<div class="text-end mb-3">
-<input type="submit" class="btn btn-primary btn-lg" value="등록">
-<input type="button" class="btn btn-outline-primary btn-lg" value="글목록" onclick="location.href='reference.jsp'">
-</div>
-</form>
-</article>
+	<article>
+	<form action="fwritePro.jsp" method="post" enctype="multipart/form-data">
+	<!-- 로그인 하지 않은 사람은 비밀번호가 필요하니까 임의로 1234 -->
+	<input type="hidden" name="pass" value="1234">
+	<table>
+	<tr>
+		<td id="t2">글쓴이</td>
+		<td><input type="hidden" name="name"><%=memberDTO.getName() %></td>
+	</tr>
+	<tr>
+		<td id="t2">제목</td>
+		<td><input type="text" name="subject" width=30%></td>
+	</tr>
+	<tr>
+		<td id="t2">내용</td>
+		<td><textarea name="content" rows="2" cols="50"></textarea></td>
+	</tr>
+	<tr>
+		<td id="t2">첨부파일</td>
+		<td><input type="file" class="btn btn-outline-primary btn-sm" name="file" value="첨부파일"></td>
+	</tr>
+	</table>
+	<div class="text-end mb-3">
+	<input type="submit" class="btn btn-primary btn-lg" value="등록">
+	<input type="button" class="btn btn-outline-primary btn-lg" value="글목록" onclick="location.href='reference.jsp'">
+	</div>
+	</form>
+	</article>
 </div>
 </div>
 </div>

@@ -42,45 +42,42 @@
 <div class="text-start mb-5"><br>
 <h1 class="fw-bolder">문의 게시판</h1><br>
 <div class="text-muted mb-2">보내주시는 문의 사항은 최대한 신속하게 답변해 드리겠습니다</div><br>
-<%
-String id=(String)session.getAttribute("id");
-// 세션값이 없으면(회원이 아니면) 로그인 페이지로 이동
-if(id==null){
-	response.sendRedirect("../member/login.jsp");
-}
-%>
-<article>
-<form action="writePro.jsp" method="post">
-<!-- 로그인 하지 않은 사람은 비밀번호가 필요하니까 임의로 1234 -->
-<input type="hidden" name="pass" value="1234">
-<table>
-<tr>
-	<td>글쓴이</td>
-	<td><input type="text" name="name" value="<%=id %>" readonly></td>
-</tr>
-<tr>
-	<td>제목</td>
-	<td><input type="text" name="subject"></td>
-</tr>
-<tr>
-	<td>내용</td>
-	<td><textarea name="content" rows="5" cols="50"></textarea></td>
-
-</tr>
-</table>
-<div id="table_search">
-<div class="text-end mb-3">
-<input type="submit" class="btn btn-primary btn-lg" value="등록">
-<input type="button" class="btn btn-outline-primary btn-lg" value="글목록" onclick="location.href='board.jsp'">
-</div>
-</div>
-</form>
+	<%
+	String id=(String)session.getAttribute("id");
+	// 세션값이 없으면(회원이 아니면) 로그인 페이지로 이동
+	if(id==null){
+		response.sendRedirect("../member/login.jsp");
+	}
+	%>
+	<article>
+	<form action="writePro.jsp" method="post">
+	<!-- 로그인 하지 않은 사람은 비밀번호가 필요하니까 임의로 1234 -->
+	<input type="hidden" name="pass" value="1234">
+	<table>
+	<tr>
+		<td>글쓴이</td>
+		<td><input type="text" name="name" value="<%=id %>" readonly></td>
+	</tr>
+	<tr>
+		<td>제목</td>
+		<td><input type="text" name="subject"></td>
+	</tr>
+	<tr>
+		<td>내용</td>
+		<td><textarea name="content" rows="5" cols="50"></textarea></td>
+	
+	</tr>
+	</table>
+	<div id="table_search">
+	<div class="text-end mb-3">
+	<input type="submit" class="btn btn-primary btn-lg" value="등록">
+	<input type="button" class="btn btn-outline-primary btn-lg" value="글목록" onclick="location.href='board.jsp'">
+	</div>
+	</div>
+	</form>
 <div class="clear"></div>
 <div id="page_control"></div>
 </article>
-<!-- 게시판 -->
-<!-- 본문들어가는 곳 -->
-<div class="clear"></div>
 </div>
 </div>
 </div>

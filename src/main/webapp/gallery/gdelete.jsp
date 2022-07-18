@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>gallery/gdelete.jsp</title>
+<title>한끼가치 - 갤러리</title>
 </head>
 <body>
 <%
@@ -15,6 +15,7 @@ int num=Integer.parseInt(request.getParameter("num"));
 GboardDAO gboardDAO = new GboardDAO();
 // 삭제 메서드 호출
 gboardDAO.deleteGboard(num);
+// 갤러리로 이동
 response.sendRedirect("gboard.jsp");
 %>
 </body>

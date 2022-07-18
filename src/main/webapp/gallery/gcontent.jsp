@@ -22,7 +22,7 @@
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
-<!-- Navigation-->
+<!-- top -->
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <!-- 이미지 -->
 <div class="py-4 bg-light bg-pic2">
@@ -39,14 +39,14 @@
 <div class="text-start mb-5"><br>
 <h1 class="fw-bolder">갤러리</h1>
 <div class="text-muted mb-2">후기와 함께 같이 한 순간을 나눠보세요</div><br>
-<%
-//int num 파라미터 가져오기
-int num=Integer.parseInt(request.getParameter("num"));
-//BoardDAO 객체생성 
-GboardDAO gboardDAO=new GboardDAO();
-//BoardDTO boardDTO = getBoard(num)메서드 호출
-GboardDTO gboardDTO=gboardDAO.getGboard(num);
-%>
+	<%
+	//int num 파라미터 가져오기
+	int num=Integer.parseInt(request.getParameter("num"));
+	//BoardDAO 객체생성 
+	GboardDAO gboardDAO=new GboardDAO();
+	//BoardDTO boardDTO = getBoard(num)메서드 호출
+	GboardDTO gboardDTO=gboardDAO.getGboard(num);
+	%>
 	<article>
 	<table>
 	 <tr>
@@ -95,7 +95,7 @@ GboardDTO gboardDTO=gboardDAO.getGboard(num);
 		}
 	}
 	%>
-</article>
+	</article>
 </div>
 </div>
 </section>

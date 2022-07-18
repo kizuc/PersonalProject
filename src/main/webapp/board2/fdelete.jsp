@@ -13,8 +13,9 @@
 int num=Integer.parseInt(request.getParameter("num"));
 // board2DAO 객체생성
 Board2DAO board2DAO = new Board2DAO();
-// deleteboard2(num) 메서드 호출
+// 글 삭제 메서드 호출
 board2DAO.deleteboard2(num);
+// 자료실로 이동
 response.sendRedirect("reference.jsp");
 %>
 </body>

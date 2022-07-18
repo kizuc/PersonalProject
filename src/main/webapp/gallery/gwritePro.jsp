@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>s
+<html>
 <head>
 <meta charset="UTF-8">
 <title>한끼가치 - 갤러리</title>
@@ -40,19 +40,18 @@ String file=multi.getFilesystemName("file");
 //GboardDTO 객체생성
 GboardDTO gBoardDTO=new GboardDTO();
 //set메서드 파라미터값 저장
-//readcount 0 저장
 gBoardDTO.setId(id);
 gBoardDTO.setNickname(nickname);
 gBoardDTO.setPass(pass);
 gBoardDTO.setSubject(subject);
 gBoardDTO.setContent(content);
 gBoardDTO.setReadcount(readcount);
-//GboardDTO file 멤버변수 만들고 set메서드 호출(저장되어지게)
+// GboardDTO file 멤버변수 만들고 set메서드 호출(저장되어지게)
 gBoardDTO.setFile(file);
 GboardDAO gBoardDAO=new GboardDAO();
-//insertGboard(GboardDTO) 메서드호출
+// 글 등록 메서드호출
 gBoardDAO.insertGboard(gBoardDTO);
-// 자료실로 이동
+// 갤러리로 이동
 response.sendRedirect("gboard.jsp");
 %>
 </body>

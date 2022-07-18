@@ -41,14 +41,14 @@
 <div class="text-start mb-5"><br>
 <h1 class="fw-bolder">자료실</h1>
 <div class="text-muted mb-2">한끼가치 이용에 도움되는 자료가 올라옵니다</div><br>
-<%
-//int num 파라미터 가져오기
-int num=Integer.parseInt(request.getParameter("num"));
-//BoardDAO 객체생성 
-Board2DAO board2DAO=new Board2DAO();
-//BoardDTO boardDTO = getBoard(num)메서드 호출
-Board2DTO board2DTO=board2DAO.getboard2(num);
-%>
+	<%
+	//int num 파라미터 가져오기
+	int num=Integer.parseInt(request.getParameter("num"));
+	//BoardDAO 객체생성 
+	Board2DAO board2DAO=new Board2DAO();
+	//BoardDTO boardDTO = getBoard(num)메서드 호출
+	Board2DTO board2DTO=board2DAO.getboard2(num);
+	%>
 	<article>
 	<table>
 	<tr>
