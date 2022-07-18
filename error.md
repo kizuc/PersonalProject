@@ -1,4 +1,4 @@
-# ‼오류로그 정리
+# ‼ 오류로그 정리 ‼
 
 ## java.lang.IllegalArgumentException: Not a directory
 ```
