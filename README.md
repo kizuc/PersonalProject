@@ -1,6 +1,7 @@
 # 개인 프로젝트
 
-💡[업데이트 내역](https://github.com/kizuc/project1/blob/main/update.md)
+💡 [업데이트 내역](https://github.com/kizuc/project1/blob/main/update.md)
+‼ [에러 로그](https://github.com/kizuc/project1/blob/main/error.md)
 <br>
 ## 관리자 페이지
   - 회원 목록
