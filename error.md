@@ -1,7 +1,7 @@
 # 오류로그 정리
 
 ## java.lang.IllegalArgumentException: Not a directory
-> MultipartRequest를 이용한 파일 경로 문제이다.
+> MultipartRequest를 이용한 파일 경로 문제이다.<br>
 장소별로 프로젝트 옮기고 붙이며 경로가 잘못 지정되었는데 **해당 경로에 필요한 폴더를 만들거나 작업 경로를 맞춰주면 된다.**
 
 
