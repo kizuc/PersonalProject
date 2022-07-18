@@ -25,22 +25,23 @@ String fdate=request.getParameter("fdate");
 // DateFormat df = new SimpleDateFormat("M월 dd일");
 String faddress=request.getParameter("faddress");
 String wfood=request.getParameter("wfood");
-String people=request.getParameter("people");
+String pp=request.getParameter("pp");
 // checkbox의 여러 항목을 저장학 위해
 String nofood[]=request.getParameterValues("nof");
 String opt=request.getParameter("opt");
 String etc=request.getParameter("etc");
 
-people = "1명"; // 인원 수 담을 String 변수
 
-if (people.equals("2명")){
-	people="2명";
-} else if (people.equals("3명")){
-	people="3명";
-} else if (people.equals("몇 명이라도 OK!")){
-	people="몇 명이라도 OK!";
+if (pp.equals("2")){
+	pp="2명";
+} else if (pp.equals("3")){
+	pp="3명";
+} else if (pp.equals("4")){
+	pp="인원은 조율";
+} else if (pp.equals("5")){
+	pp="몇 명이라도 OK!";
 } else{ 
-	people="인원은 조율";
+	pp="1명";
 }
 
 
@@ -60,7 +61,7 @@ if(nofood==null || nofood.length<=0){
 	txtnof=Arrays.toString(nofood);
 }else{
 	for(int i=0; i<nofood.length; i++){
-		txtnof += nofood[i] + ", ";
+		txtnof += nofood[i] + ",";
 	}
 }
 
@@ -72,7 +73,7 @@ oboardDTO.setNickname(nickname);
 oboardDTO.setFdate(fdate);
 oboardDTO.setFaddress(faddress);
 oboardDTO.setWfood(wfood);
-oboardDTO.setPeople(people);
+oboardDTO.setPeople(pp);
 oboardDTO.setNof(txtnof);
 oboardDTO.setOoption(opt);
 oboardDTO.setEtc(etc);
@@ -84,7 +85,7 @@ oboardDAO.insertOboard(oboardDTO);
 %>
 <script type="text/javascript">
 	alert("성공적으로 등록됐어요!");
-	location.href="orderForm.jsp";
+	location.href="oboard.jsp";
 </script>
 </body>
 </html>

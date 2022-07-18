@@ -55,7 +55,7 @@
 	 <tr>
 		<td id="gtitle"><%=gboardDTO.getNickname() %></td>
 		<td><%=gboardDTO.getDate() %></td>
-		<td><%=gboardDTO.getReadcount() %></td>
+		<td>조회수 : <%=gboardDTO.getReadcount() %></td>
 	 </tr>
 	 <tr>
 		<td colspan="3"><img src="../upload2/<%=gboardDTO.getFile() %>"></td>

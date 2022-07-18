@@ -71,10 +71,10 @@ public class OboardDAO {
 		}
 		
 		// getorderboardList() 메서드 정의
-		public List getorderboardList(int startRow, int pageSize) {
+		public List getOboardList(int startRow, int pageSize) {
 			// 여러명을 저장할 변수 => 자바API 배열 변수
 			
-			List orderboardList=new ArrayList();
+			List oboardList=new ArrayList();
 			try {
 				//1, 2 디비연결 메서드 호출
 				con=getConnection();
@@ -100,7 +100,7 @@ public class OboardDAO {
 					oboardDTO.setEtc(rs.getString("etc"));
 					oboardDTO.setDate(rs.getTimestamp("date"));
 					// 배열 한칸에 글 정보 저장
-					orderboardList.add(oboardDTO);
+					oboardList.add(oboardDTO);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -109,11 +109,11 @@ public class OboardDAO {
 				if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
 				if(con!=null)try { con.close(); }catch(SQLException ex){}
 			}
-			return orderboardList;		
+			return oboardList;		
 		}
 		
 		//	게시판 보이게
-		public OboardDTO getorderboard(int num) {
+		public OboardDTO getOboard(int num) {
 			
 			OboardDTO oboardDTO=null;
 			try {
@@ -150,7 +150,7 @@ public class OboardDAO {
 			return oboardDTO;
 		}
 		
-		public void updateorderboard(OboardDTO oboardDTO) {
+		public void updateOboard(OboardDTO oboardDTO) {
 			Connection con=null;
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
@@ -178,7 +178,7 @@ public class OboardDAO {
 			}
 		}
 		
-		public void deleteorderboard(int num) {
+		public void deleteOboard(int num) {
 			Connection con=null;
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
@@ -198,7 +198,7 @@ public class OboardDAO {
 			}
 		}
 		
-		public int getorderboardCount() {
+		public int getOboardCount() {
 			Connection con=null;
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
