@@ -1,13 +1,13 @@
 # 오류로그 정리
-<hr>
+
 ## java.lang.IllegalArgumentException: Not a directory
-#### MultipartRequest를 이용한 파일 경로 문제이다.
+> MultipartRequest를 이용한 파일 경로 문제이다.
 장소별로 프로젝트 옮기고 붙이며 경로가 잘못 지정되었는데 **해당 경로에 필요한 폴더를 만들거나 작업 경로를 맞춰주면 된다.**
 
 
 
 ## java.lang.NoClassDefFoundError
-#### 클래스를 찾지 못할 때 발생한다.
+> 클래스를 찾지 못할 때 발생한다.
 작업물을 옮기려다가 삭제해서 다른 곳으로 옮기고 복구시키는 작업 중에 발생했기 때문에 처음엔 경로가 맞지 않는 줄 알았다.
 클래스를 찾아봐도 되지 않았는데 라이브러리의 호환성이 맞지 않아도 발생한다. **Build path로 버전을 맞춰주면 된다**
 
@@ -23,14 +23,13 @@ Context Path는 WAS에서 웹 애플리케이션을 구분하기 위한 경로�
 
 
 ## java.io.IOException: Posted content type isn't multipart/form-data
-#### enctype="multipart/form-data" 가 없으면 발생한다.
+> enctype="multipart/form-data" 가 없으면 발생한다.
 해당 폴더에 같은 이름의 파일이 있어서 생기는 문제인 줄 알았다. **"multipart/form-data"를 추가하면 된다**
 
 
 
-> Publising to Tomcat v8.5 Server at localhost...' has encountered a problem. 
-> Could not publish server configuratiln for Tomcat v8.5 Server at localhost
-#### 다른 서버에 톰캣이 돌아가고 있어서 포트 충돌이 생길 때 발생한다.
+### Publising to Tomcat v8.5 Server at localhost...' has encountered a problem. Could not publish server configuratiln for Tomcat v8.5 Server at localhost
+> 다른 서버에 톰캣이 돌아가고 있어서 포트 충돌이 생길 때 발생한다.
 server - server.xml에서 Context 태그에서 **중복된 프로젝트 중 하나를 지워주면 된다.**
 
 
