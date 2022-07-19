@@ -95,14 +95,22 @@
   		if(hh.substring(0,1).equals(zero)){
   			hh=hh.substring(1);
 		 }
-         
+        String nofData=oBoardDTO.getNof(); 
+  		String nof=nofData.replace(",", ", ");
+      	
          %>
          <%=mm%>월 <%=dd%>일 <%=hh%> <br>
          <%=oBoardDTO.getFaddress()%>에서 <br>
          <%=oBoardDTO.getWfood()%> 먹을<br>
          <%=oBoardDTO.getPeople()%> 구합니다!</h1></a>
          <p class="lead fw-normal text-muted mb-5">
-         <%=oBoardDTO.getNof()%><br>
+         <%if(nof==null){
+         	nof="";
+         }else{
+         %><%=nof%><br>
+         <%
+         }
+         %>
 		 <%=oBoardDTO.getEtc()%>
          </p>
          </div>

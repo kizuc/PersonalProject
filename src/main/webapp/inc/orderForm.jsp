@@ -2,6 +2,7 @@
 <%@page import="member.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <div class="bg-primary py-4 px-4 px-md-5 mb-5">
 <div class="text-center mb-5">
 <!-- <h1 class="fw-bold2 py-3" >같이 드실 분!</h1> -->
