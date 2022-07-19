@@ -4648,10 +4648,10 @@ textarea.form-control-lg {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #adb5bd !important;
+  background-color: #f9f9f9 !important;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 0.4rem;
 }
 .card > hr {
   margin-right: 0;

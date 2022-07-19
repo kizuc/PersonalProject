@@ -11,8 +11,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import board.BoardDTO;
-
 public class OboardDAO {
 	
 	//디비 연결에 필요한 변수 선언
@@ -91,9 +89,9 @@ public class OboardDAO {
 					oboardDTO.setNum(rs.getInt("num"));
 					oboardDTO.setId(rs.getString("id"));
 					oboardDTO.setNickname(rs.getString("nickname"));
-					oboardDTO.setFdate(rs.getString("fdate"));
-					oboardDTO.setFaddress(rs.getString("faddress"));
-					oboardDTO.setWfood(rs.getString("wfood"));
+					oboardDTO.setFdate(rs.getString("odate"));
+					oboardDTO.setFaddress(rs.getString("oaddress"));
+					oboardDTO.setWfood(rs.getString("food"));
 					oboardDTO.setPeople(rs.getString("people"));
 					oboardDTO.setNof(rs.getString("nof"));
 					oboardDTO.setOoption(rs.getString("ooption"));
@@ -166,6 +164,7 @@ public class OboardDAO {
 				pstmt.setString(6, oboardDTO.getNof());
 				pstmt.setString(7, oboardDTO.getOoption());
 				pstmt.setString(8, oboardDTO.getEtc());
+				
 				pstmt.setInt(9, oboardDTO.getNum());
 				
 				pstmt.executeUpdate();
@@ -223,25 +222,4 @@ public class OboardDAO {
 			return count;
 		}
 		
-	// 조회 수 증가
-		public void updateReadCount(int num) {
-			Connection con=null;
-			PreparedStatement pstmt=null;
-			ResultSet rs=null;
-			try {
-				con=getConnection();
-				String sql="update orderboard set readcount=readcount+1 where num=?";
-				pstmt=con.prepareStatement(sql);
-				pstmt.setInt(1, num);
-				
-				pstmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				if(rs!=null)try { rs.close(); }catch(SQLException ex){}
-				if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
-				if(con!=null)try { con.close(); }catch(SQLException ex){}
-			}
-			
-		}
 }
