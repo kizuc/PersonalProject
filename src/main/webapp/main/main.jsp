@@ -29,7 +29,7 @@
        <div class="row gx-5 align-items-center justify-content-center">
         <div class="col-lg-8 col-xl-7 col-xxl-6">
          <div class="my-5 text-center text-xl-start">
-           <h1 class="display-2 fw-bolder text-white mb-2">즐거움을 나누면 <br>배가 됩니다</h1><br>
+           <h1 class="display-2 fw-bold2 text-white mb-2">즐거움을 나누면 <br>배가 됩니다</h1><br>
            <p class="lead fw-bold1 text-white-50 mb-4">가끔은 혼밥도 심심할 때! <br>다양하게 즐기고 싶을 때!<br>한 끼의 즐거움을 나눠보세요!</p>
            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
               <a class="btn btn-primary btn-lg px-4 me-sm-3" href="../orderboard/oboard.jsp">식사메이트 찾아볼까?</a>
@@ -38,7 +38,8 @@
          </div>
         </div>
         <div class="col-xl-2 col-xxl-6 d-none d-xl-block">
-    <%
+	<!-- 게시판 -->
+	<%
 	// oboardDAO 객체생성
 	OboardDAO oboardDAO=new OboardDAO();
 	
@@ -63,12 +64,12 @@
 		   OboardDTO oBoardDTO=(OboardDTO)oBoardList.get(i);
 		   %>
 		<td>
-        <div class="card h-75 shadow border-0">
-        <div class="card-body p-4">
-        <div class="badge bg-primary bg-gradient rounded-pill mt-2 mb-2">
+        <div class="card2 img2 h-100 shadow border-0">
+        <div class="card2-body p-4">
+        <div class="badge bg-primary bg-gradient rounded-pill fs-6 mt-2 mb-2">
         <%=oBoardDTO.getOoption()%>
         </div>
-        <a class="text-decoration-none link-dark stretched-link" href="#!">
+        <h1 class="fw-bolder bs-dark mb-3 " id="h01">
          <%
 		// 날짜시간 분해하기(mm월 dd일 hh)
          String dateData=oBoardDTO.getFdate();
@@ -87,16 +88,29 @@
   		if(hh.substring(0,1).equals(zero)){
   			hh=hh.substring(1);
 		 }
-         
+  		
+      	// 못먹는 음식 값 없으면 출력하지 않기
+  		String nofData=oBoardDTO.getNof();
+		String n="null";
+		String lastStr=nofData.substring(nofData.length()-1);
+		String l=",";
+      	if(nofData.equals(n)){
+      		nofData="";
+      	// 못먹는 음식이 있을 경우 마지막 쉼표 없애기
+      	} else if(lastStr.equals(l)){
+      		nofData=nofData.substring(0, nofData.length()-1);
+      		nofData=nofData.replace(",", ", ");
+      		nofData="❌ "+nofData;
+      	}
+  		
          %>
-         <h1 class="fw-bolder mb-3">
          <%=mm%>월 <%=dd%>일 <%=hh%> <br>
-         <%=oBoardDTO.getFaddress()%>에서 <br>
-         <%=oBoardDTO.getWfood()%> 먹을<br>
-         <%=oBoardDTO.getPeople()%> 구합니다!</h1></a>
-         <p class="lead fw-normal text-muted mb-5">
-         <%=oBoardDTO.getNof()%><br>
-		 <%=oBoardDTO.getEtc()%>
+         <%=oBoardDTO.getFaddress()%><span>에서</span><br>
+         <%=oBoardDTO.getWfood()%> <span>먹을</span><br>
+         <%=oBoardDTO.getPeople()%> <span>구해요!</span></h1>
+         <p class="lead fw-normal text-muted mb-3">
+		 <%=oBoardDTO.getEtc()%><br>
+         <%=nofData%>
          </p>
          </div>
 		</div>
@@ -105,7 +119,6 @@
 		  if((i+1)%1==0) {
 			  	%></tr><tr><%
 		  }
-
 	   }
 	   %> 
 	</tr>	 
@@ -138,10 +151,10 @@
 	}
 	%>
 	</div>
-        </div>
-       </div>
-      </div>
-     </header>
+	</div>
+</div>
+</div>
+</header>
 </main>
 <!-- Footer-->
 <jsp:include page="../inc/bottom.jsp"></jsp:include>
