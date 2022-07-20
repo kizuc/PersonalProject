@@ -9,8 +9,7 @@
 - OS : Windows
 - DB : MySQL
 - Language : Java, JSP, Javascript, HTML, CSS5
-- Tools : Eclipse
-- Server : Tomcat
+- Tools/Server : Eclipse, Tomcat
 - Version Control : Git, Github
 - API : 다음 우편번호 서비스
 
