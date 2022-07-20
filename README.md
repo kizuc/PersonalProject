@@ -5,12 +5,14 @@
 💡 [업데이트 내역](https://github.com/kizuc/project1/blob/main/update.md)<br>
 ‼ [에러 로그](https://github.com/kizuc/project1/blob/main/error.md)
 
-# 개발 환경
-## - OS/DB/Tools/ETC
-
-Windows, MySQL, Eclipse
-## - Language
-Java, JSP, Javascript, HTML, CSS5
+## 개발 환경
+- OS : Windows
+- DB : MySQL
+- Language : Java, JSP, Javascript, HTML, CSS5
+- Tools : Eclipse
+- Server : Tomcat
+- Version Control : Git, Github
+- API : 다음 우편번호 서비스
 
 ## 관리자 페이지
   - 회원 목록
