@@ -44,22 +44,13 @@
 <div class="col-lg-9">
 <div class="text-start mb-5"><br>
 <h1 class="fw-bolder">자료실</h1>
-<div class="text-muted">한끼가치 이용에 도움되는 자료를 볼 수 있습니다</div>
-<!-- 검색 -->
-<div class="text-end mb-2">
-  <div id="table_search">
-   <form method="post" name="search" action="searchFboard.jsp">
-	 <select name="keyWord">
-	 	<option value="Title">제목</option>
-	  	<option value="Content">내용</option>
-	 </select>
-		<input type="text" name="searchText" class="form-control6">
-		<input type="submit" value="search" class="btn btn-outline-primary btn-sm" >
-   </form>
-  </div>
-  </div>
+<div class="text-muted mb-2">한끼가치 이용에 도움되는 자료를 볼 수 있습니다</div><br>
 <!-- Post content-->
 <%
+	request.setCharacterEncoding("utf-8");
+	String search = request.getParameter("searchText");
+	String keyWord = request.getParameter("keyWord");
+
 	// board2DAO 객체생성
 	Board2DAO board2DAO=new Board2DAO();
 	
@@ -74,7 +65,7 @@
 	int endRow=startRow+pageSize-1;				// 끝나는 행
 	 
 	// List board2List = getboard2List()메서드 호출
-	List board2List=board2DAO.getboard2List(startRow,pageSize);
+	List board2List=board2DAO.getboard2List1(keyWord, search, startRow, pageSize);
 	%>
 	<article>
 	<table>
@@ -112,6 +103,16 @@
 		<%
 	}
 	%>
+  <div id="table_search">
+   <form method="post" name="search" action="searchFboard.jsp">
+	 <select name="keyWord">
+	 	<option value="Title">제목</option>
+	  	<option value="Content">내용</option>
+	 </select>
+		<input type="text" name="searchText" class="input_box">
+		<input type="submit" value="검색" class="btn" >
+   </form>
+  </div>
 	<%
 	int pageBlock=5;	// 한 페이지에 보여줄 페이지 개수 설정
 	int startPage=(currentPage-1)/pageBlock*pageBlock+1;	// 시작 페이지

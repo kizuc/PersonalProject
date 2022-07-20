@@ -33,16 +33,15 @@
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <jsp:include page="../inc/orderForm.jsp"></jsp:include>
 <!-- Blog preview section-->
-<section class="py-2">
+<section class="pt-6 py-2 bg-pic">
 <div class="row gx-3 justify-content-center">
 <div class="row gx-5 justify-content-center">
 <div class="col-lg-8 col-xl-6">
-<div class="text-center">
-<h2 class="fw-bolder">당신의 식사 메이트를 찾아보세요!</h2>
-<p class="lead fw-normal text-muted mb-5">같이 가치있는 시간을 보내세요</p>
+<div class="text-center pb-6">
+<h1 class="fw-bolder1">당신의 식사 메이트를 찾아보세요!</h1>
+<p class="lead fw-bold5 text-dark-40 mb-5">같이 가치있는 시간을 보내세요</p>
 <input class="form-control4" name="search" id="search" type="text" placeholder="키워드를 적어주세요" data-sb-validations="required" />
-<input type="submit" class="btn btn-primary btn-lg px-3 mb-sm-1" value="찾아보자!"><br><br><br>
-</div>
+<input type="submit" class="btn btn-primary btn-lg px-3 mb-sm-1" value="찾아보자!">
 </div>
 </div>
 	<%
@@ -50,7 +49,7 @@
 	OboardDAO oboardDAO=new OboardDAO();
 	
 	// 한 페이지에 보여줄 글 개수
-	int pageSize=3;
+	int pageSize=6;
 	String pageNum=request.getParameter("pageNum");
 	
 	if(pageNum==null)	pageNum= "1";	// 페이지 번호 가져오기
@@ -70,13 +69,13 @@
 		   OboardDTO oBoardDTO=(OboardDTO)oBoardList.get(i);
 		   %>
 		<td>
-        <div class="card h-75 shadow border-0">
+		<div class="col-lg-11 mb-5">
+        <div class="card shadow border-0">
         <div class="card-body p-4">
-        <div class="badge bg-primary bg-gradient rounded-pill mt-2 mb-2">
+        <div class="badge bg-primary bg-gradient rounded-pill fs-6 mt-2 mb-2">
         <%=oBoardDTO.getOoption()%>
         </div>
-        <a class="text-decoration-none link-dark stretched-link" href="#!">
-        <h1 class="fw-bolder mb-3">
+        <h1 class="fw-bolder bs-dark mb-3 " id="h1">
          <%
 		// 날짜시간 분해하기(mm월 dd일 hh)
          String dateData=oBoardDTO.getFdate();
@@ -95,25 +94,32 @@
   		if(hh.substring(0,1).equals(zero)){
   			hh=hh.substring(1);
 		 }
-        String nofData=oBoardDTO.getNof(); 
-  		String nof=nofData.replace(",", ", ");
-      	
+  		
+      	// 못먹는 음식 값 없으면 출력하지 않기
+  		String nofData=oBoardDTO.getNof();
+		String n="null";
+		String lastStr=nofData.substring(nofData.length()-1);
+		String l=",";
+      	if(nofData.equals(n)){
+      		nofData="";
+      	// 못먹는 음식이 있을 경우 마지막 쉼표 없애기
+      	} else if(lastStr.equals(l)){
+      		nofData=nofData.substring(0, nofData.length()-1);
+      		nofData=nofData.replace(",", ", ");
+      		nofData="❌ "+nofData;
+      	}
+  		
          %>
          <%=mm%>월 <%=dd%>일 <%=hh%> <br>
-         <%=oBoardDTO.getFaddress()%>에서 <br>
-         <%=oBoardDTO.getWfood()%> 먹을<br>
-         <%=oBoardDTO.getPeople()%> 구합니다!</h1></a>
-         <p class="lead fw-normal text-muted mb-5">
-         <%if(nof==null){
-         	nof="";
-         }else{
-         %><%=nof%><br>
-         <%
-         }
-         %>
-		 <%=oBoardDTO.getEtc()%>
+         <%=oBoardDTO.getFaddress()%><span>에서</span><br>
+         <%=oBoardDTO.getWfood()%> <span>먹을</span><br>
+         <%=oBoardDTO.getPeople()%> <span>구해요!</span></h1>
+         <p class="lead fw-normal text-muted mb-3">
+		 <%=oBoardDTO.getEtc()%><br>
+         <%=nofData%>
          </p>
          </div>
+		</div>
 		</div>
 		</td>   
 		<%
@@ -125,6 +131,7 @@
 	   %> 
 	</tr>	 
 	</table>
+	</div>
     <%
 	int pageBlock=5;	// 한 페이지에 보여줄 페이지 개수 설정
 	int startPage=(currentPage-1)/pageBlock*pageBlock+1;	// 시작 페이지

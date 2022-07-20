@@ -41,7 +41,20 @@
 <div class="container px-8 my-3">
 <div class="text-start mb-5"><br>
 <h1 class="fw-bolder">갤러리</h1>
-<div class="text-muted mb-2">후기와 함께 같이 한 순간을 나눠보세요</div><br>
+<div class="text-muted">후기와 함께 같이 한 순간을 나눠보세요</div><br>
+<!-- 검색 -->
+<div class="text-end mb-2">
+  <div id="table_search">
+   <form method="post" name="search" action="searchGboard.jsp">
+	 <select name="keyWord">
+	 	<option value="Title">제목</option>
+	  	<option value="Content">내용</option>
+	 </select>
+		<input type="text" name="searchText" class="form-control6">
+		<input type="submit" value="search" class="btn btn-outline-primary btn-sm" >
+   </form>
+  </div>
+  </div>
 <!-- Post content-->
 	<%
 	// gboardDAO 객체생성

@@ -101,8 +101,6 @@
 		<%
 	}
 	%>
-	<input type="text" name="search" class="input_box">
-	<input type="button" value="search">
 	</div>
 	<%
 	int pageBlock=5;	// 한 페이지에 보여줄 페이지 개수 설정

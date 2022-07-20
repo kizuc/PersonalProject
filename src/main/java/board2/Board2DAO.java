@@ -238,4 +238,62 @@ public class Board2DAO {
 		
 	}
 	
+	public List getboard2List1(String keyWord, String search, int startRow,int pageSize) {
+		// 여러명을 저장할 변수 => 자바API 배열 변수
+		List board2List=new ArrayList();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		System.out.println(keyWord+"/"+search); // 값 제대로 넘어오는지 확인용
+		
+		try {
+			//1, 2 디비연결 메서드 호출
+			con=getConnection();
+			String sql="select * from board2 ";
+			if(keyWord.equals("Title")) {
+				sql += "where subject like ? order by num desc limit ?,?";
+			}else if(keyWord.equals("Content")) {
+				sql += "where content like ? order by num desc limit ?,?";
+			}
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
+			// 4단계 sql구문을 실행=> 실행 결과 저장(select) 
+			//=> sql구문을 실행한 결과 저장하는 내장객체 ResultSet
+			rs=pstmt.executeQuery();
+			// 5단계 결과를 가지고 출력하거나 배열변수 저장(select)
+			// rs.next() 결과에서 다음행 이동하고 데이터 있으면 true/없으면 false 
+			// while(rs.next()){
+				// 데이터 있으면 true => 열접근
+			while(rs.next()) {
+				Board2DTO board2DTO=new Board2DTO();
+				
+				board2DTO.setNum(rs.getInt("num"));
+				board2DTO.setPass(rs.getString("pass"));
+				board2DTO.setSubject(rs.getString("subject"));
+				board2DTO.setContent(rs.getString("content"));
+				board2DTO.setFile(rs.getString("file"));
+				board2DTO.setReadcount(rs.getInt("readcount"));
+				board2DTO.setDate(rs.getTimestamp("date"));
+				
+				
+				// 파일 넣는거 없앴음 필요하면 추가
+			
+				//배열한칸에 글 정보 저장
+				board2List.add(board2DTO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null)try { rs.close(); }catch(SQLException ex){}
+			if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
+			if(con!=null)try { con.close(); }catch(SQLException ex){}
+		}
+		System.out.println(board2List.size());// 검색해온 글전체 갯수 찍어봄
+		return board2List;
+		
+	}
+	
 }//클래스
