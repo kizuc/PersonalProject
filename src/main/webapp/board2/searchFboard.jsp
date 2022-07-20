@@ -45,6 +45,19 @@
 <div class="text-start mb-5"><br>
 <h1 class="fw-bolder">자료실</h1>
 <div class="text-muted mb-2">한끼가치 이용에 도움되는 자료를 볼 수 있습니다</div><br>
+<!-- 검색 -->
+<div class="text-end mb-2">
+  <div id="table_search">
+   <form method="post" name="search" action="searchFboard.jsp">
+	 <select name="keyWord">
+	 	<option value="Title">제목</option>
+	  	<option value="Content">내용</option>
+	 </select>
+		<input type="text" name="searchText" class="form-control6">
+		<input type="submit" value="search" class="btn btn-outline-primary btn-sm" >
+   </form>
+  </div>
+  </div>
 <!-- Post content-->
 <%
 	request.setCharacterEncoding("utf-8");
@@ -103,16 +116,6 @@
 		<%
 	}
 	%>
-  <div id="table_search">
-   <form method="post" name="search" action="searchFboard.jsp">
-	 <select name="keyWord">
-	 	<option value="Title">제목</option>
-	  	<option value="Content">내용</option>
-	 </select>
-		<input type="text" name="searchText" class="input_box">
-		<input type="submit" value="검색" class="btn" >
-   </form>
-  </div>
 	<%
 	int pageBlock=5;	// 한 페이지에 보여줄 페이지 개수 설정
 	int startPage=(currentPage-1)/pageBlock*pageBlock+1;	// 시작 페이지
@@ -126,17 +129,17 @@
 	<%
 	if(startPage > pageBlock) {
 		%>
-		<a href="reference.jsp?pageNum=<%=startPage-pageBlock%>">Prev</a>
+		<a href="searchFboard.jsp?pageNum=<%=startPage-pageBlock%>&searchText=<%=search%>&keyWord=<%=keyWord%>">Prev</a>
 		<%
 	}
 	for(int i=startPage;i<=endPage;i++){
 		%>
-		<a href="reference.jsp?pageNum=<%=i%>"><%=i %></a> 
+		<a href="searchFboard.jsp?pageNum=<%=i%>&searchText=<%=search%>&keyWord=<%=keyWord%>"><%=i %></a> 
 		<%
 	}
 	if(endPage < pageCount) {
 		%>
-		<a href="reference.jsp?pageNum=<%=startPage+pageBlock%>">Next</a>
+		<a href="searchFboard.jsp?pageNum=<%=startPage+pageBlock%>&searchText=<%=search%>&keyWord=<%=keyWord%>">Next</a>
 		<%
 	
 	}

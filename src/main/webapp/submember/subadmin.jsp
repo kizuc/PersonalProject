@@ -32,21 +32,15 @@
      <!-- Navigation-->
    <jsp:include page="../inc/top.jsp"></jsp:include>
      <!-- Page Content-->
-     <section class="py-21">
-         <div class="container px-5 my-5">
-             <div class="row gx-5">
-                 <div class="col-lg-12">
                      <!-- Post content-->
-                     <h1 class="fw-bolder mb-1">관리자 페이지</h1>
-   <jsp:include page="../inc/menuadmin.jsp"></jsp:include>
      <section class="py-2">
-         <div class="container px-5 my-5">
+         <div class="container px-7 my-5">
              <div class="row gx-5">
+               <h1 class="fw-bolder mb-1 pb-5">관리자 페이지</h1>
                  <div class="col-lg-12">
                      <!-- Post content-->
                      <h4 class="fw-bolder mb-1">회원 목록</h4>
                      <section>
-                         <div class="card bg-light">
                           <table>
 								<tr>
 									<th>ID</th>
@@ -84,12 +78,7 @@
 								}
 								%>
 						</table>
-                         </div>
                      </section>
-                 </div>
-             </div>
-         </div>
-     </section>
                  </div>
              </div>
          </div>

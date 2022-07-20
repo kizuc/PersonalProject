@@ -52,10 +52,31 @@
 	int currentPage=Integer.parseInt(pageNum);	// 페이지 번호를 정수형으로 변경
 	int startRow=(currentPage-1)*pageSize+1;	// 시작 행
 	int endRow=startRow+pageSize-1;				// 끝나는 행
-	 
+	%>
+	<div class="text-center pt-1">
+    <%
+	int pageBlock=1;	// 한 페이지에 보여줄 페이지 개수 설정
+	int startPage=(currentPage-1)/pageBlock*pageBlock+1;	// 시작 페이지
+	int endPage=startPage+pageBlock-1;						// 끝나는 페이지
+		
+	int count=oboardDAO.getOboardCount();		// 전체 글 개수
+	int pageCount=count / pageSize+(count%pageSize==0?0:1);	// 전체 페이지 개수 구하기
+	if(endPage > pageCount)		endPage = pageCount;	
+	%>
+	<div id="page_control">
+	<%
+	if(startPage > pageBlock) {
+		%>
+		<a href="main.jsp?pageNum=<%=startPage-pageBlock%>">위로</a>
+		<%
+	}
+	%>
+	</div>
+	<%
 	// List gboardList = getgboardList()메서드 호출
 	List oBoardList=oboardDAO.getOboardList(startRow,pageSize);
 	%>
+	<div class="text-start">
 	<table>
 	<tr>
 	   <%
@@ -123,22 +144,9 @@
 	   %> 
 	</tr>	 
 	</table>
-    <%
-	int pageBlock=1;	// 한 페이지에 보여줄 페이지 개수 설정
-	int startPage=(currentPage-1)/pageBlock*pageBlock+1;	// 시작 페이지
-	int endPage=startPage+pageBlock-1;						// 끝나는 페이지
-		
-	int count=oboardDAO.getOboardCount();		// 전체 글 개수
-	int pageCount=count / pageSize+(count%pageSize==0?0:1);	// 전체 페이지 개수 구하기
-	if(endPage > pageCount)		endPage = pageCount;	
-	%>
-	<div id="page_control">
+	</div>
+	<div class="text-center pt-1">
 	<%
-	if(startPage > pageBlock) {
-		%>
-		<a href="main.jsp?pageNum=<%=startPage-pageBlock%>"><</a>
-		<%
-	}
 	for(int i=startPage;i<=endPage;i++){
 		%>
 		<a href="main.jsp?pageNum=<%=i%>"></a> 
@@ -146,10 +154,11 @@
 	}
 	if(endPage < pageCount) {
 		%>
-		<a href="main.jsp?pageNum=<%=startPage+pageBlock%>">></a>
+		<a href="main.jsp?pageNum=<%=startPage+pageBlock%>">아래</a>
 		<%
 	}
 	%>
+	</div>
 	</div>
 	</div>
 </div>

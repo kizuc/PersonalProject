@@ -46,6 +46,7 @@
                                     <!-- Submit Button-->
                                     <div class="d-grid"><button type="submit" class="btn btn-primary btn-lg" id="submit">Submit</button></div><br>
                                     <div class="d-grid"><button type="reset" class="btn btn-outline-primary btn-lg" id="cancel" type="reset">cancel</button></div>
+                               		
                                		<span class="text-center samll py-2"> 회원이 아니신가요? <a class="link-dark small" href="../member/join.jsp">가입하기!</a></span>
                                 </form>
                             </div>

@@ -23,7 +23,7 @@ memberDAO.deleteMember(id);
 %>
 <script type="text/javascript">
 	alert("삭제되었습니다!");
-	location.href="memlist.jsp";
+	location.href="subadmin.jsp";
 </script>
 </body>
 <script type="text/javascript">

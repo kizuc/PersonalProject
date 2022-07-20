@@ -45,14 +45,6 @@
 <!-- 검색 -->
 <div class="text-end mb-2">
   <div id="table_search">
-   <form method="post" name="search" action="searchGboard.jsp">
-	 <select name="keyWord">
-	 	<option value="Title">제목</option>
-	  	<option value="Content">내용</option>
-	 </select>
-		<input type="text" name="searchText" class="form-control6">
-		<input type="submit" value="search" class="btn btn-outline-primary btn-sm" >
-   </form>
   </div>
   </div>
 <!-- Post content-->
@@ -86,8 +78,8 @@
 		<%-- <%=i+1 %> --%>
 		<a href="gcontent.jsp?num=<%=gBoardDTO.getNum()%>" class="img1">
 		<img src="../upload2/<%=gBoardDTO.getFile() %>" width="405px" height="280px"></a><br>
-		<span class="fw-bold6 pt-6"><%=gBoardDTO.getSubject() %></span>
-		<span class="text-end ps-1"><%=dateFormat.format(gBoardDTO.getDate()) %></span>
+		<span class="pt-3"><%=gBoardDTO.getSubject() %></span>
+		<span class="ps-1"><%=dateFormat.format(gBoardDTO.getDate()) %></span>
 		</td>   
 		<%
 		  if((i+1)%3==0) {
@@ -111,8 +103,6 @@
 		<%
 	}
 	%>
-	<input type="text" name="search" class="input_box">
-	<input type="button" value="search">
 	</div>
 	<%
 	int pageBlock=8;	// 한 페이지에 보여줄 페이지 개수 설정

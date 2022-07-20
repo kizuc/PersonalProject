@@ -32,7 +32,7 @@
 <!-- Navigation-->
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <jsp:include page="../inc/orderForm.jsp"></jsp:include>
-<!-- Blog preview section-->
+<!-- post section-->
 <section class="pt-6 py-2 bg-pic">
 <div class="row gx-3 justify-content-center">
 <div class="row gx-5 justify-content-center">
@@ -40,8 +40,12 @@
 <div class="text-center pb-6">
 <h1 class="fw-bolder1">당신의 식사 메이트를 찾아보세요!</h1>
 <p class="lead fw-bold5 text-dark-40 mb-5">같이 가치있는 시간을 보내세요</p>
-<input class="form-control4" name="search" id="search" type="text" placeholder="키워드를 적어주세요" data-sb-validations="required" />
+
+<!-- 검색 -->
+<form method="post" name="search" action="searchOboard.jsp">
+<input class="form-control4" name="searchText" id="search" type="text" placeholder="지역이나 음식, 상호명을 적어주세요" data-sb-validations="required" />
 <input type="submit" class="btn btn-primary btn-lg px-3 mb-sm-1" value="찾아보자!">
+</form>
 </div>
 </div>
 	<%
@@ -70,7 +74,7 @@
 		   %>
 		<td>
 		<div class="col-lg-11 mb-5">
-        <div class="card shadow border-0">
+        <div class="card img1 shadow border-0">
         <div class="card-body p-4">
         <div class="badge bg-primary bg-gradient rounded-pill fs-6 mt-2 mb-2">
         <%=oBoardDTO.getOoption()%>
@@ -115,8 +119,8 @@
          <%=oBoardDTO.getWfood()%> <span>먹을</span><br>
          <%=oBoardDTO.getPeople()%> <span>구해요!</span></h1>
          <p class="lead fw-normal text-muted mb-3">
-		 <%=oBoardDTO.getEtc()%><br>
-         <%=nofData%>
+         <%=nofData%><br>
+		 <%=oBoardDTO.getEtc()%>
          </p>
          </div>
 		</div>
@@ -141,7 +145,7 @@
 	int pageCount=count / pageSize+(count%pageSize==0?0:1);	// 전체 페이지 개수 구하기
 	if(endPage > pageCount)		endPage = pageCount;	
 	%>
-	<div id="page_control">
+	<div class="text-center pt-1 pb-4">
 	<%
 	if(startPage > pageBlock) {
 		%>
@@ -159,6 +163,8 @@
 		<%
 	}
 	%>
+	<br>
+	<br>
 	</div>
 	</div>
 </section>
