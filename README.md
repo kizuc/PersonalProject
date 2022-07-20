@@ -1,4 +1,4 @@
-# 개인 프로젝트
+# 한끼가치
 
 💡 [업데이트 내역](https://github.com/kizuc/project1/blob/main/update.md)<br>
 ‼ [에러 로그](https://github.com/kizuc/project1/blob/main/error.md)
@@ -19,9 +19,11 @@
   - 비밀번호 보안 단계 설정
   
 ## 게시판
-  - 일반 게시판
+  - 문의 게시판
   - 자료실
-  -- 검색 기능
+  + 검색 기능
+  + 관리자만 작성 가능
   - 갤러리 게시판
   - 주문 게시판
- 
+  + 검색 기능
+  
