@@ -5,11 +5,11 @@
 💡 [업데이트 내역](https://github.com/kizuc/project1/blob/main/update.md)<br>
 ‼ [에러 로그](https://github.com/kizuc/project1/blob/main/error.md)
 
-## 개발 환경
-### - OS/DB/Tools/ETC
+# 개발 환경
+## - OS/DB/Tools/ETC
 
 Windows, MySQL, Eclipse
-### - Language
+## - Language
 Java, JSP, Javascript, HTML, CSS5
 
 ## 관리자 페이지
