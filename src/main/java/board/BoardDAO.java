@@ -204,4 +204,26 @@ public class BoardDAO {
 		return count;
 	}
 	
+	// boardDAO.updateReadcount(num);
+		public void updateReadCount(int num) {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			try {
+				con=getConnection();
+				String sql="update board set readcount=readcount+1 where num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if(rs!=null)try { rs.close(); }catch(SQLException ex){}
+				if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
+				if(con!=null)try { con.close(); }catch(SQLException ex){}	
+			}
+			
+		}
+	
 }//클래스

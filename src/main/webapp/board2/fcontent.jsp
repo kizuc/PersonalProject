@@ -46,8 +46,11 @@
 	int num=Integer.parseInt(request.getParameter("num"));
 	//BoardDAO 객체생성 
 	Board2DAO board2DAO=new Board2DAO();
+	// 조회수 1증가
+	board2DAO.updateReadCount(num);
 	//BoardDTO boardDTO = getBoard(num)메서드 호출
 	Board2DTO board2DTO=board2DAO.getboard2(num);
+	SimpleDateFormat dateFormat=new SimpleDateFormat("MM.dd");
 	%>
 	<article>
 	<table>
@@ -58,7 +61,7 @@
 		<td>파일</td>
 	    <td><a href="../upload/<%=board2DTO.getFile() %>" download><%=board2DTO.getFile() %> 📁 </a></td>
 		<td>작성일</td>
-		<td id="t2"><%=board2DTO.getDate() %></td>
+		<td id="t2"><%=dateFormat.format(board2DTO.getDate()) %></td>
 	</tr>
 	<tr>
 		<td>글쓴이</td>

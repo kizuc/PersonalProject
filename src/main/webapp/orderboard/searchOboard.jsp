@@ -32,15 +32,15 @@
 <!-- Navigation-->
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <jsp:include page="../inc/orderForm.jsp"></jsp:include>
-<!-- post section-->
+<!-- Blog preview section-->
 <section class="pt-6 py-2 bg-pic">
 <div class="row gx-3 justify-content-center">
 <div class="row gx-5 justify-content-center">
 <div class="col-lg-8 col-xl-6">
 <div class="text-center pb-6">
+
 <h1 class="fw-bolder1">당신의 식사 메이트를 찾아보세요!</h1>
 <p class="lead fw-bold5 text-dark-40 mb-5">같이 가치있는 시간을 보내세요</p>
-
 <!-- 검색 -->
 <form method="post" name="search" action="searchOboard.jsp">
 <input class="form-control4" name="searchText" id="search" type="text" placeholder="지역이나 음식, 상호명을 적어주세요" data-sb-validations="required" />
@@ -49,6 +49,9 @@
 </div>
 </div>
 	<%
+    request.setCharacterEncoding("utf-8");
+    String search = request.getParameter("searchText");
+    
 	// oboardDAO 객체생성
 	OboardDAO oboardDAO=new OboardDAO();
 	
@@ -63,7 +66,7 @@
 	int endRow=startRow+pageSize-1;				// 끝나는 행
 	 
 	// List gboardList = getgboardList()메서드 호출
-	List oBoardList=oboardDAO.getOboardList(startRow,pageSize);
+	List oBoardList=oboardDAO.getOboardList1(search,startRow,pageSize);
 	%>
 	<table>
 	<tr>
@@ -145,26 +148,24 @@
 	int pageCount=count / pageSize+(count%pageSize==0?0:1);	// 전체 페이지 개수 구하기
 	if(endPage > pageCount)		endPage = pageCount;	
 	%>
-	<div class="text-center pt-1 pb-4">
+	<div id="page_control">
 	<%
 	if(startPage > pageBlock) {
 		%>
-		<a href="oboard.jsp?pageNum=<%=startPage-pageBlock%>">Prev</a>
+		<a href="searchFboard.jsp?pageNum=<%=startPage-pageBlock%>&searchText=<%=search%>">Prev</a>
 		<%
 	}
 	for(int i=startPage;i<=endPage;i++){
 		%>
-		<a href="oboard.jsp?pageNum=<%=i%>"><%=i %></a> 
+		<a href="searchFboard.jsp?pageNum=<%=i%>&searchText=<%=search%>"><%=i %></a> 
 		<%
 	}
 	if(endPage < pageCount) {
 		%>
-		<a href="oboard.jsp?pageNum=<%=startPage+pageBlock%>">Next</a>
+		<a href="searchFboard.jsp?pageNum=<%=startPage+pageBlock%>&searchText=<%=search%>">Next</a>
 		<%
 	}
 	%>
-	<br>
-	<br>
 	</div>
 	</div>
 </section>

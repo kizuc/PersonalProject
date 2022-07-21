@@ -216,28 +216,6 @@ public class Board2DAO {
 		return count;
 	}
 	
-	// 조회 수 증가
-	public void updateReadCount(int num) {
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-			con=getConnection();
-			String sql="update board2 set readcount=readcount+1 where num=?";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if(rs!=null)try { rs.close(); }catch(SQLException ex){}
-			if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
-			if(con!=null)try { con.close(); }catch(SQLException ex){}
-		}
-		
-	}
-	
 	public List getboard2List1(String keyWord, String search, int startRow,int pageSize) {
 		// 여러명을 저장할 변수 => 자바API 배열 변수
 		List board2List=new ArrayList();
@@ -273,7 +251,7 @@ public class Board2DAO {
 				board2DTO.setNum(rs.getInt("num"));
 				board2DTO.setPass(rs.getString("pass"));
 				board2DTO.setSubject(rs.getString("subject"));
-				board2DTO.setContent(rs.getString("content"));
+				board2DTO.setContent(rs.getString("content")); 
 				board2DTO.setFile(rs.getString("file"));
 				board2DTO.setReadcount(rs.getInt("readcount"));
 				board2DTO.setDate(rs.getTimestamp("date"));
@@ -293,6 +271,28 @@ public class Board2DAO {
 		}
 		System.out.println(board2List.size());// 검색해온 글전체 갯수 찍어봄
 		return board2List;
+		
+	}
+	
+	// 조회 수 증가
+	public void updateReadCount(int num) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql="update board2 set readcount=readcount+1 where num=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs!=null)try { rs.close(); }catch(SQLException ex){}
+			if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
+			if(con!=null)try { con.close(); }catch(SQLException ex){}	
+		}
 		
 	}
 	

@@ -49,8 +49,11 @@
 	int num=Integer.parseInt(request.getParameter("num"));
 	// BoardDAO 객체생성
 	BoardDAO boardDAO=new BoardDAO();
+	// 조회수 1증가
+	boardDAO.updateReadCount(num);
 	// BoardDTO boardDTO = getBoard(num)메서드 호출
 	BoardDTO boardDTO=boardDAO.getBoard(num);
+	SimpleDateFormat dateFormat=new SimpleDateFormat("MM.dd");
 	%>
 	<article>
 	<table>
@@ -61,7 +64,7 @@
 		<td>조회 수</td>
 	    <td><%=boardDTO.getReadcount() %></td>
 		<td>작성일</td>
-		<td><%=boardDTO.getDate() %></td>
+		<td><%=dateFormat.format(boardDTO.getDate()) %></td>
 	</tr>
 	<tr>
 		<td >글쓴이</td>

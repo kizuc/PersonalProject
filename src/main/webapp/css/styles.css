@@ -100,7 +100,7 @@ body {
 }
 
 .img2 {
-    opacity: 0.7;
+    opacity: 0.8;
     filter: alpha(opacity=40); /* For IE8 and earlier */
 }
 
@@ -137,11 +137,14 @@ h1, .h1 {
   }
 }
 
+#h1{
+	color: #2e3338;
+}
 
 #h1 > span {
 	font-weight: 400;
 	font-size: calc(1rem + 1vw);
-	color: #9ea8b1;
+	color: rgb(124, 138, 150);
 	
 }
 
@@ -4686,7 +4689,7 @@ textarea.form-control-lg {
 	width: 600px !important;
 	height: 500px !important;
 	padding: 10px;
-	background: linear-gradient(to top, #fceabb, #f8b500);
+	background: linear-gradient(to top,  rgb(255, 249, 232), #fceabb);
 	background-clip: border-box;
 	border: 1px solid rgba(0, 0, 0, 0.125);
 	word-wrap: break-word;
@@ -7975,6 +7978,7 @@ text-decoration: none;
 
 .text-center {
   text-align: center !important;
+  text-decoration: none;
 }
 
 .text-decoration-none {

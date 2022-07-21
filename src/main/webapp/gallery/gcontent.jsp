@@ -44,8 +44,11 @@
 	int num=Integer.parseInt(request.getParameter("num"));
 	//BoardDAO 객체생성 
 	GboardDAO gboardDAO=new GboardDAO();
+	// 조회수 1증가
+	gboardDAO.updateReadCount(num);
 	//BoardDTO boardDTO = getBoard(num)메서드 호출
 	GboardDTO gboardDTO=gboardDAO.getGboard(num);
+	SimpleDateFormat dateFormat=new SimpleDateFormat("MM.dd");
 	%>
 	<article>
 	<table>
@@ -54,7 +57,7 @@
 	 </tr>
 	 <tr>
 		<td id="gtitle"><%=gboardDTO.getNickname() %></td>
-		<td><%=gboardDTO.getDate() %></td>
+		<td><%=dateFormat.format(gboardDTO.getDate()) %></td>
 		<td>조회수 : <%=gboardDTO.getReadcount() %></td>
 	 </tr>
 	 <tr>
@@ -85,14 +88,14 @@
 			<input type="button" value="글목록" class="btn btn-outline-primary btn-lg" onclick="location.href='gboard.jsp'">
 			</div>
 			<%
-		// 나머진 글 목록만 보이게
-		}else{
-			%>
-			<div class="text-end mb-3">			
-			<input type="button" value="글목록" class="btn btn-outline-primary btn-lg" onclick="location.href='gboard.jsp'">
-			</div>			
-			<%
 		}
+	}else{
+		// 나머진 글 목록만 보이게
+		%>
+		<div class="text-end mb-3">			
+		<input type="button" value="글목록" class="btn btn-outline-primary btn-lg" onclick="location.href='gboard.jsp'">
+		</div>			
+		<%
 	}
 	%>
 	</article>
