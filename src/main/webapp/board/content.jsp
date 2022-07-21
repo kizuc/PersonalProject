@@ -1,3 +1,5 @@
+<%@page import="comment.CommentDTO"%>
+<%@page import="comment.CommentDAO"%>
 <%@page import="board.BoardDTO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
@@ -70,6 +72,52 @@
 		<td colspan="3"><%=boardDTO.getContent() %></td>
 	</tr>
 	</table>
+	
+	<%
+	CommentDAO commentDAO = new CommentDAO();
+	
+	int pageSize=10;
+	
+	String pageNum=request.getParameter("pageNum");
+	if(pageNum==null){
+		pageNum="1";	
+	}
+	
+	int currentPage=Integer.parseInt(pageNum);
+	int startRow = (currentPage-1)*pageSize+1;
+	int endRow=startRow+pageSize-1;
+	
+	List commentList = commentDAO.getCommentList(startRow, pageSize, boardDTO.getNum());
+	%>
+	
+	<hr>
+	<table id="notice">
+	<tr><th colspan="2" align="center">댓글</th></tr>
+	<%
+	   //날짜 => 문자열 모양변경
+	   SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
+	   for(int i=0;i<commentList.size();i++){
+		   CommentDTO commentDTO=(CommentDTO)commentList.get(i);
+		   %>
+		<tr>
+			<td class="left">
+			<%=commentDTO.getUserID()%>
+			<%=dateFormat.format(commentDTO.getCommetDate())%><br>
+			<%=commentDTO.getContent() %><br>
+			</td>
+		</tr>
+		   <%
+	   }
+	   %> 
+	</table>
+	<form action="commentPro.jsp?num=<%=boardDTO.getNum() %>" id="comment_fr" name="fr" method="post" >
+	<table>
+	<tr><td align="left"><input type="text" value="댓글 작성자 : " name="id" readonly style="border:0"></td><td></td></tr>
+	<tr><td><textarea rows="5" cols="80" name="comment" id="comment" ></textarea></td>
+		<td><input type="submit" value="등록" id="comment_click"></td></tr>
+	</table>
+	</form>
+	
 	<div id="table_search">
 	<%
 	String id=(String)session.getAttribute("id");

@@ -3,26 +3,31 @@ package comment;
 import java.sql.Timestamp;
 
 public class CommentDTO {
-	private int board_id;
-	private int comment_id;
+	private String userID;
+	private int commentID;
+	private String content;
 	private int num;
-	private String user_id;
-	private Timestamp comment_date;
-	private String comment_text;
-	private int comment_available;
+	private int commentAvailable;
+	private Timestamp commetDate;
 	
 	
-	public int getBoard_id() {
-		return board_id;
+	public String getUserID() {
+		return userID;
 	}
-	public void setBoard_id(int board_id) {
-		this.board_id = board_id;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
-	public int getComment_id() {
-		return comment_id;
+	public int getCommentID() {
+		return commentID;
 	}
-	public void setComment_id(int comment_id) {
-		this.comment_id = comment_id;
+	public void setCommentID(int commentID) {
+		this.commentID = commentID;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public int getNum() {
 		return num;
@@ -30,31 +35,19 @@ public class CommentDTO {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public String getUser_id() {
-		return user_id;
+	public int getCommentAvailable() {
+		return commentAvailable;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setCommentAvailable(int commentAvailable) {
+		this.commentAvailable = commentAvailable;
 	}
-	public Timestamp getComment_date() {
-		return comment_date;
+	public Timestamp getCommetDate() {
+		return commetDate;
 	}
-	public void setComment_date(Timestamp comment_date) {
-		this.comment_date = comment_date;
+	public void setCommetDate(Timestamp commetDate) {
+		this.commetDate = commetDate;
 	}
-	public String getComment_text() {
-		return comment_text;
-	}
-	public void setComment_text(String comment_text) {
-		this.comment_text = comment_text;
-	}
-	public int getComment_available() {
-		return comment_available;
-	}
-	public void setComment_available(int comment_available) {
-		this.comment_available = comment_available;
-	}
-	
 
+	
 	
 }
