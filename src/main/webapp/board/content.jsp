@@ -98,7 +98,7 @@
 	<tr><th colspan="2" align="center">댓글</th></tr>
 	<%
 	   //날짜 => 문자열 모양변경
-	   SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
+// 	   SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
 	   for(int i=0;i<commentList.size();i++){
 		   CommentDTO commentDTO=(CommentDTO)commentList.get(i);
 		   %>
