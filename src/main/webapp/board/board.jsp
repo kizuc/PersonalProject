@@ -107,11 +107,29 @@
 	int startPage=(currentPage-1)/pageBlock*pageBlock+1;	// 시작 페이지
 	int endPage=startPage+pageBlock-1;						// 끝나는 페이지
 		
-	int count=boardDAO.getBoardCount();		// 전체 글 개수
+	int count=boardDAO.getBoardCount();						// 전체 글 개수
 	int pageCount=count / pageSize+(count%pageSize==0?0:1);	// 전체 페이지 개수 구하기
 	if(endPage > pageCount)		endPage = pageCount;	
 	%>
-<div id="page_control">
+	
+	<hr>
+	<table id="notice">
+	<tr><th colspan="2" align="center">댓글</th></tr>
+	<%
+	   for(int i=0;i<commentList.size();i++){
+		   CommentDTO commentDTO=(CommentDTO)commentList.get(i);
+		   %>
+		<tr><td class="left">
+		<%=commentDTO.getWriter() %>
+		<%=dateFormat.format(commentDTO.getUpdate_date()) %><br>
+		<%=commentDTO.getContent() %><br>
+		</td></tr>
+		   <%
+	   }
+	   %> 
+	</table>
+	<hr>
+	<div id="page_control">
 	<%
 	if(startPage > pageBlock) {
 		%>
