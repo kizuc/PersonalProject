@@ -14,11 +14,11 @@ request.setCharacterEncoding("utf-8");
 
 String userID=(String)session.getAttribute("id");
 String content = request.getParameter("comment");
-int num1 = Integer.parseInt(request.getParameter("num"));
+int boardID = Integer.parseInt(request.getParameter("num"));
 
 CommentDTO commentDTO = new CommentDTO();
 
-commentDTO.setNum(num1);
+commentDTO.setBoardID(boardID);
 commentDTO.setUserID(userID);
 commentDTO.setContent(content);
 
@@ -26,10 +26,10 @@ CommentDAO commentDAO = new CommentDAO();
 commentDAO.insertComment(commentDTO);
 
 out.println(commentDTO.getCommentID());
-out.println(commentDTO.getNum());
+out.println(commentDTO.getBoardID());
 out.println(commentDTO.getContent());
 
-response.sendRedirect("content.jsp?num=" + num1);
+response.sendRedirect("content.jsp?num=" + boardID);
 %>
 </body>
 </html>

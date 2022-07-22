@@ -10,11 +10,8 @@ import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import javax.xml.stream.events.Comment;
 
 public class CommentDAO {
-
-	// 디비연결 메서드
 	public Connection getConnection() throws Exception{
 		Context init=new InitialContext();
 		DataSource ds=(DataSource)init.lookup("java:comp/env/jdbc/MysqlDB");
@@ -22,76 +19,117 @@ public class CommentDAO {
 		return con;
 	}
 	
-	public List getCommentList(int startRow,int pageSize, int num){
+//	public CommentDTO getComment(int boardID) {
+//		CommentDTO commentDTO=null;
+//		Connection con=null;
+//		PreparedStatement pstmt=null;
+//		ResultSet rs=null;
+//		try {
+//			con=getConnection();
+//			
+//			String sql="select max(commentID) from comment	 where boardID=?";
+//			pstmt=con.prepareStatement(sql);
+//			pstmt.setInt(1, boardID);
+//			rs=pstmt.executeQuery();
+//			
+//			int num=0;
+//			if(rs.next()) {
+//				num=rs.getInt("max(num)")+1;
+//			}
+//			
+//			if(rs.next()) {
+//				commentDTO=new CommentDTO();
+//				commentDTO.setboardID(rs.getInt("boardID"));
+//				commentDTO.setcommentID(rs.getInt("commentID"));
+//				commentDTO.setContent(rs.getString("content"));
+//				commentDTO.setuserID(rs.getString("userID"));
+//				commentDTO.setDelete_YN(rs.getString("delete_YN"));
+//				commentDTO.setcommentDate(rs.getTimestamp("commentDate"));
+//				commentDTO.setDelete_date(rs.getTimestamp("delete_date"));
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			if(rs!=null)try { rs.close(); }catch(SQLException ex){}
+//			if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
+//			if(con!=null)try { con.close(); }catch(SQLException ex){}
+//		}
+//		return commentDTO;
+//	}
+	
+	public List getCommentList(int startRow,int pageSize, int boardID) {
 		List commentList=new ArrayList();
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		
-		String sql="select * from comment where board_id=? order by comment_id limit ?,?";
 		try {
+			con=getConnection();
+			
+		    String sql="select * from comment where boardID=? order by commentID limit ?,?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, boardID);
 			pstmt.setInt(2, startRow-1);
 			pstmt.setInt(3, pageSize);
 			rs=pstmt.executeQuery();
-			
+
 			while(rs.next()) {
 				CommentDTO commentDTO=new CommentDTO();
+				commentDTO.setBoardID(rs.getInt("boardID"));
 				commentDTO.setUserID(rs.getString("userID"));
 				commentDTO.setCommentID(rs.getInt("commentID"));
 				commentDTO.setContent(rs.getString("content"));
-				commentDTO.setNum(rs.getInt("num"));
 				commentDTO.setCommetDate(rs.getTimestamp("commentDate"));
 				
 				commentList.add(commentDTO);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		}finally {
 			if(rs!=null)try { rs.close(); }catch(SQLException ex){}
 			if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
 			if(con!=null)try { con.close(); }catch(SQLException ex){}
 		}
-		return commentList;
+		return commentList;		
 	}
 	
-	public int getNext() {
+	public int getCommentCount(int boardID) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		
-		String sql="select commentID FROM comment ORDER BY commentID DESC";
+		int count=0;
 		try {
-		
+			//1,2 
+			con=getConnection();
+			//3sql
+			String sql="select count(*) from comment where boardID=?";
 			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, boardID);
+			
 			rs=pstmt.executeQuery();
+			
 			if(rs.next()) {
-				System.out.println(rs.getInt(1)); // select문에서 첫번째 값
-				return rs.getInt(1)+1;  // 현재 인덱스(현재 게시글 개수) +1 반환
+				count=rs.getInt("count(*)");
 			}
-			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		}finally {
 			if(rs!=null)try { rs.close(); }catch(SQLException ex){}
 			if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
 			if(con!=null)try { con.close(); }catch(SQLException ex){}
 		}
-		return -1;
-		
+		return count;
 	}
-	public int insertComment(CommentDTO commentDTO) {
+	
+	public void insertComment(CommentDTO commentDTO) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		
 		try {
 			con=getConnection();
 			
-			String sql="select max(commentID) from comment where num=?";
+			String sql="select max(commentID) from comment where boardID=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, commentDTO.getCommentID());
+			pstmt.setInt(1, commentDTO.getBoardID());
 			rs=pstmt.executeQuery();
 			
 			int num=0;
@@ -99,22 +137,21 @@ public class CommentDAO {
 				num=rs.getInt("max(commentID)")+1;
 			}
 			
-			sql="insert into comment values(?,?,?,?,now())";
+			//3sql
+			sql="insert into comment(boardID,userID,commentID,content,commentDate) values(?,?,?,?,now())";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, commentDTO.getUserID());
-			pstmt.setInt(2, commentDTO.getCommentID());
-			pstmt.setString(3, commentDTO.getContent());
-			pstmt.setInt(4, num);
+			pstmt.setInt(1, commentDTO.getBoardID());
+			pstmt.setString(2, commentDTO.getUserID());
+			pstmt.setInt(3, num);
+			pstmt.setString(4, commentDTO.getContent());
 			
-			return pstmt.executeUpdate();
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		}finally {
 			if(rs!=null)try { rs.close(); }catch(SQLException ex){}
 			if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
 			if(con!=null)try { con.close(); }catch(SQLException ex){}
 		}
-		return -1;
 	}
-	
 }

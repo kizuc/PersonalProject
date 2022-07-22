@@ -3,14 +3,19 @@ package comment;
 import java.sql.Timestamp;
 
 public class CommentDTO {
+	private int boardID;
 	private String userID;
 	private int commentID;
 	private String content;
-	private int num;
-	private int commentAvailable;
 	private Timestamp commetDate;
 	
 	
+	public int getBoardID() {
+		return boardID;
+	}
+	public void setBoardID(int boardID) {
+		this.boardID = boardID;
+	}
 	public String getUserID() {
 		return userID;
 	}
@@ -29,25 +34,13 @@ public class CommentDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getNum() {
-		return num;
-	}
-	public void setNum(int num) {
-		this.num = num;
-	}
-	public int getCommentAvailable() {
-		return commentAvailable;
-	}
-	public void setCommentAvailable(int commentAvailable) {
-		this.commentAvailable = commentAvailable;
-	}
 	public Timestamp getCommetDate() {
 		return commetDate;
 	}
 	public void setCommetDate(Timestamp commetDate) {
 		this.commetDate = commetDate;
 	}
-
+	
 	
 	
 }

@@ -45,6 +45,7 @@
 <h1 class="fw-bolder">문의 게시판</h1>
 <div class="text-muted mb-2">보내주시는 문의 사항은 최대한 신속하게 답변해 드리겠습니다</div><br>
 	<%
+	String id=(String)session.getAttribute("id");
 	// int num 파라미터 가져오기
 	int num=Integer.parseInt(request.getParameter("num"));
 	// BoardDAO 객체생성
@@ -98,7 +99,7 @@
 	<tr><th colspan="2" align="center">댓글</th></tr>
 	<%
 	   //날짜 => 문자열 모양변경
-// 	   SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
+	   dateFormat=new SimpleDateFormat("yyyy.MM.dd");
 	   for(int i=0;i<commentList.size();i++){
 		   CommentDTO commentDTO=(CommentDTO)commentList.get(i);
 		   %>
@@ -115,15 +116,15 @@
 	</table>
 	<form action="commentPro.jsp?num=<%=boardDTO.getNum() %>" id="comment_fr" name="fr" method="post" >
 	<table>
-	<tr><td align="left"><input type="text" value="댓글 작성자 : " name="id" readonly style="border:0"></td><td></td></tr>
-	<tr><td><textarea rows="5" cols="80" name="comment" id="comment" ></textarea></td>
+	<tr><td align="left"><input type="text" value="댓글 작성자 : <%=id %>" name="id" readonly style="border:0"></td><td></td></tr>
+	<tr><td><textarea rows="2" cols="80" name="comment" id="comment" ></textarea></td>
 		<td><input type="submit" value="등록" id="comment_click"></td></tr>
 	</table>
 	</form>
 	
 	<div id="table_search">
 	<%
-	String id=(String)session.getAttribute("id");
+	id=(String)session.getAttribute("id");
 	if(id!=null){
 		// 글쓴이 일치하면 글 수정, 삭제 버튼 보임
 		if(id.equals(boardDTO.getName())){
