@@ -22,6 +22,12 @@ th {
   text-align: left;
 }
 
+#th2{
+  background: #fde3c4 !important;
+  color: #fff;
+  text-align: left;
+}
+
 th#2{
   background: #fde3c4;
   color: #fff;

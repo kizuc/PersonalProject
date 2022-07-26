@@ -45,6 +45,7 @@
 <h1 class="fw-bolder">문의 게시판</h1>
 <div class="text-muted mb-2">보내주시는 문의 사항은 최대한 신속하게 답변해 드리겠습니다</div><br>
 	<%
+	
 	String id=(String)session.getAttribute("id");
 	// int num 파라미터 가져오기
 	int num=Integer.parseInt(request.getParameter("num"));
@@ -54,7 +55,27 @@
 	boardDAO.updateReadCount(num);
 	// BoardDTO boardDTO = getBoard(num)메서드 호출
 	BoardDTO boardDTO=boardDAO.getBoard(num);
-	SimpleDateFormat dateFormat=new SimpleDateFormat("MM.dd");
+	SimpleDateFormat dateFormat=new SimpleDateFormat("YYYY.MM.dd");
+	id=(String)session.getAttribute("id");
+	if(id!=null){
+		// 글쓴이 일치하면 글 수정, 삭제 버튼 보임
+		if(id.equals(boardDTO.getName())){
+			%>
+			<div class="text-end mb-3">
+			<input type="button" value="글수정" class="btn btn-primary btn-sm" onclick="location.href='update.jsp?num=<%=boardDTO.getNum()%>'">
+			<input type="button" value="글삭제" class="btn btn-outline-primary btn-sm" onclick="location.href='delete.jsp?num=<%=boardDTO.getNum()%>'">
+			</div>
+			<%
+		// 관리자면 글 삭제 버튼 보임
+		
+		}else if(id.equals("admin")){
+			%>
+			<div class="text-end mb-3">
+			<input type="button" value="글삭제" class="btn btn-outline-primary btn-sm" onclick="location.href='delete.jsp?num=<%=boardDTO.getNum()%>'">
+			</div>
+			<%
+		}
+	}
 	%>
 	<article>
 	<table>
@@ -116,31 +137,17 @@
 	</table>
 	<form action="commentPro.jsp?num=<%=boardDTO.getNum() %>" id="comment_fr" name="fr" method="post" >
 	<table>
-	<tr><td align="left"><input type="text" value="댓글 작성자 : <%=id %>" name="id" readonly style="border:0"></td><td></td></tr>
-	<tr><td><textarea rows="2" cols="80" name="comment" id="comment" ></textarea></td>
-		<td><input type="submit" value="등록" id="comment_click"></td></tr>
+	<tr>
+		<th class="th2" align="left"><input type="text" value="댓글 작성자 : <%=id %>" name="id" readonly style="border:0"/>
+	</tr>
+	<tr>
+		<td><textarea rows="2" cols="80" name="comment" id="comment" ></textarea>
+		<input type="submit" value="등록" id="comment_click">
+		</td>
+	</tr>
 	</table>
 	</form>
 	
-	<div id="table_search">
-	<%
-	id=(String)session.getAttribute("id");
-	if(id!=null){
-		// 글쓴이 일치하면 글 수정, 삭제 버튼 보임
-		if(id.equals(boardDTO.getName())){
-			%>
-			<input type="button" value="글수정" class="btn btn-primary btn-sm" onclick="location.href='update.jsp?num=<%=boardDTO.getNum()%>'">
-			<input type="button" value="글삭제" class="btn btn-outline-primary btn-sm" onclick="location.href='delete.jsp?num=<%=boardDTO.getNum()%>'">
-			<%
-		// 관리자면 글 삭제 버튼 보임
-		}else if(id.equals("admin")){
-			%>
-			<input type="button" value="글삭제" class="btn btn-primary btn-sm" onclick="location.href='delete.jsp?num=<%=boardDTO.getNum()%>'">
-			<%
-		}
-	}
-	%>
-</div>
 <div class="clear"></div>
 <div id="page_control"></div>
 </article>
