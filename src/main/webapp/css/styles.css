@@ -279,6 +279,11 @@ sup {
   top: -0.5em;
 }
 
+.span1 {
+	float:right; width:35%;
+}
+
+
 a {
   color: #fd7e14;
   text-decoration: underline;

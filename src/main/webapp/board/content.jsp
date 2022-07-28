@@ -21,7 +21,6 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="../css/styles.css" rel="stylesheet" />
 <link href="../css/sub.css" rel="stylesheet">
-</head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
 <!-- Navigation-->
@@ -80,23 +79,14 @@
 	<article>
 	<table>
 	<tr>
-		<th colspan="4"><h5 class="pt-2 fw-bolder"><%=boardDTO.getSubject() %></h5></th>
+		<th><h5 class="pt-2 fw-bolder"><%=boardDTO.getSubject() %></h5></th>
 	</tr>
 	<tr>
-		<td>조회 수</td>
-	    <td><%=boardDTO.getReadcount() %></td>
-		<td>작성일</td>
-		<td><%=dateFormat.format(boardDTO.getDate()) %></td>
-	</tr>
-	<tr>
-		<td >글쓴이</td>
-		<td id="t2" colspan="4"><%=boardDTO.getName() %></td>
-	</tr>
-	<tr>
-		<td>내용</td>
-		<td colspan="3"><%=boardDTO.getContent() %></td>
+		<td id="t2"><%=boardDTO.getName() %> 
+		<span class="span1"> <%=dateFormat.format(boardDTO.getDate()) %> | 조회 수 : <%=boardDTO.getReadcount() %></span></td>
 	</tr>
 	</table>
+	<%=boardDTO.getContent() %>
 	
 	<%
 	CommentDAO commentDAO = new CommentDAO();
@@ -117,17 +107,21 @@
 	
 	<hr>
 	<table id="notice">
-	<tr><th colspan="2" align="center">댓글</th></tr>
+	<tr><th class="thcomment" colspan="2" align="center">댓글</th></tr>
 	<%
 	   //날짜 => 문자열 모양변경
-	   dateFormat=new SimpleDateFormat("yyyy.MM.dd");
+	   dateFormat=new SimpleDateFormat("yyyy.M.dd");
 	   for(int i=0;i<commentList.size();i++){
 		   CommentDTO commentDTO=(CommentDTO)commentList.get(i);
 		   %>
-		<tr>
-			<td class="left">
-			<%=commentDTO.getUserID()%>
-			<%=dateFormat.format(commentDTO.getCommetDate())%><br>
+		<tr class="tcomment">
+			<td class="tcomment">
+			<input type="text" name="commentID" value="<%=commentDTO.getCommentID()%>" hidden>
+			<input type="text" name="boardID" value="<%=boardDTO.getNum()%>" hidden>
+			<%=commentDTO.getUserID()%> | <%=dateFormat.format(commentDTO.getCommetDate())%>
+			<a href="deleteComment.jsp" onclick="window.open(this.href, '_blank', 'width=300, height=200'); return false;">M</a>
+			<input value="삭제" type="button" onclick="checkConfirm('<%=commentDTO.getCommentID()%>')">
+			<br>
 			<%=commentDTO.getContent() %><br>
 			</td>
 		</tr>
@@ -165,4 +159,13 @@
 <script src="js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
+<script type="text/javascript">
+function checkConfirm(commentID){
+	var result = confirm("댓글을 삭제하시겠습니까?");
+	if(!result) return false;
+
+	location.href='deleteComment.jsp?commentID=' + commentID;
+}
+	
+</script>
 </html>

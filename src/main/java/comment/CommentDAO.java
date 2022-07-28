@@ -154,4 +154,24 @@ public class CommentDAO {
 			if(con!=null)try { con.close(); }catch(SQLException ex){}
 		}
 	}
+	
+	public void deleteComment(int num) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql="delete from comment where commentID=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs!=null)try { rs.close(); }catch(SQLException ex){}
+			if(pstmt!=null)try { pstmt.close(); }catch(SQLException ex){}
+			if(con!=null)try { con.close(); }catch(SQLException ex){}	
+		}
+	}
 }
