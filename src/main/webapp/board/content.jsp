@@ -159,6 +159,7 @@
 <script src="js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
+<<<<<<< HEAD
 <script type="text/javascript">
 function checkConfirm(commentID){
 	var result = confirm("댓글을 삭제하시겠습니까?");
@@ -169,3 +170,6 @@ function checkConfirm(commentID){
 	
 </script>
 </html>
+=======
+</html>
+>>>>>>> refs/remotes/origin/main
