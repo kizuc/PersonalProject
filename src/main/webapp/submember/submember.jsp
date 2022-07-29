@@ -67,7 +67,7 @@ if(id==null)	response.sendRedirect("../member/login.jsp");
 			<td><%=memberDTO.getName()%></td>
 			<td>닉네임</td>
 			<td><%=memberDTO.getNickname()%> &nbsp;
-			<input type="button" class="btn btn-outline-primary btn-sm" value="닉네임 바꾸기">
+			<input type="button" onclick="modNick('<%=memberDTO.getNickname()%>')" class="btn btn-outline-primary btn-sm" value="닉네임 바꾸기">
 			</td>
 		</tr>
 		<tr>
@@ -96,5 +96,16 @@ if(id==null)	response.sendRedirect("../member/login.jsp");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
+<script type="text/javascript">
+
+function modNick(nickname){
+	alert("hi");
+// 	var result = confirm("댓글을 삭제하시겠습니까?");
+// 	if(!result) return false;
+
+// 	location.href='deleteComment.jsp?commentID=' + commentID;
+}
+	
+</script>
 </body>
 </html>

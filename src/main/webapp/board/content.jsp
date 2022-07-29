@@ -86,7 +86,7 @@
 		<span class="span1"> <%=dateFormat.format(boardDTO.getDate()) %> | 조회 수 : <%=boardDTO.getReadcount() %></span></td>
 	</tr>
 	</table>
-	<%=boardDTO.getContent() %>
+	<div class="p-4 py-71"><%=boardDTO.getContent() %></div>
 	
 	<%
 	CommentDAO commentDAO = new CommentDAO();
@@ -117,10 +117,10 @@
 		<tr class="tcomment">
 			<td class="tcomment">
 			<input type="text" name="commentID" value="<%=commentDTO.getCommentID()%>" hidden>
-			<input type="text" name="boardID" value="<%=boardDTO.getNum()%>" hidden>
+			<input type="text" name="boardID" value="<%=commentDTO.getBoardID()%>" hidden>
 			<%=commentDTO.getUserID()%> | <%=dateFormat.format(commentDTO.getCommetDate())%>
-			<a href="deleteComment.jsp" onclick="window.open(this.href, '_blank', 'width=300, height=200'); return false;">M</a>
-			<input value="삭제" type="button" onclick="checkConfirm('<%=commentDTO.getCommentID()%>')">
+			<input class="btn-none" value="M" type="button" onclick="checkConfirm('<%=commentDTO.getBoardID()%>')">
+			<input class="btn-none" value="D" type="button" onclick="checkConfirm('<%=commentDTO.getCommentID()%>','<%=commentDTO.getBoardID()%>')">
 			<br>
 			<%=commentDTO.getContent() %><br>
 			</td>
@@ -132,10 +132,10 @@
 	<form action="commentPro.jsp?num=<%=boardDTO.getNum() %>" id="comment_fr" name="fr" method="post" >
 	<table>
 	<tr>
-		<th class="th2" align="left"><input type="text" value="댓글 작성자 : <%=id %>" name="id" readonly style="border:0"/>
+		<th class="th2 thcomment" align="left"><input type="text" value="댓글 작성자 : <%=id %>" name="id" readonly style="border:0"/>
 	</tr>
 	<tr>
-		<td><textarea rows="2" cols="80" name="comment" id="comment" ></textarea>
+		<td class="tcomment"><textarea rows="2" cols="80" name="comment" id="comment" ></textarea>
 		<input type="submit" value="등록" id="comment_click">
 		</td>
 	</tr>
@@ -159,9 +159,8 @@
 <script src="js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
-<<<<<<< HEAD
 <script type="text/javascript">
-function checkConfirm(commentID){
+function checkConfirm(commentID,boardID){
 	var result = confirm("댓글을 삭제하시겠습니까?");
 	if(!result) return false;
 
@@ -170,6 +169,4 @@ function checkConfirm(commentID){
 	
 </script>
 </html>
-=======
 </html>
->>>>>>> refs/remotes/origin/main
