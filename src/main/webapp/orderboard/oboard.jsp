@@ -1,3 +1,4 @@
+<%@page import="oboard.JjimDAO"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
@@ -78,6 +79,41 @@
         <div class="card-body p-4">
         <div class="badge bg-primary bg-gradient rounded-pill fs-6 mt-2 mb-2">
         <%=oBoardDTO.getOoption()%>
+        
+        <%
+        // 찜하기
+        String userID = null;
+	 	if(session.getAttribute("userID") != null){
+	 		userID = (String) session.getAttribute("userID");
+	 	}
+	 	if(userID == null){
+	 		PrintWriter script = response.getWriter();
+	 		script.println("<script>");
+			script.println("alert('로그인을 해주세요.')");
+	 		script.println("location.href = 'login.jsp'");
+	 		script.println("</script>");
+	 	} 
+	 	else{
+		 	int bbsID = 0; 
+		 	if (request.getParameter("bbsID") != null){
+		 		bbsID = Integer.parseInt(request.getParameter("bbsID"));
+		 	}
+		 	if (bbsID == 0){
+		 		PrintWriter script = response.getWriter();
+		 		script.println("<script>");
+		 		script.println("alert('유효하지 않은 글입니다.')");
+		 		script.println("location.href = 'login.jsp'");
+		 		script.println("</script>");
+		 	}
+		 	
+        JjimDAO jjimDAO = new JjimDAO();
+		List list = jjimDAO.getJjim(userID, bbsID);
+		if (list.isEmpty()){%>
+		<td align="right" bgcolor="beige"><button onclick = "location.href='jjimPro.jsp?bbsID=<%=bbsID%>'">찜하기</button></td>
+		<%	}
+		else{ %>
+		<%	} %>	
+        
         </div>
         <h1 class="fw-bolder bs-dark mb-3 " id="h1">
          <%
