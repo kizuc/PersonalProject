@@ -15,6 +15,28 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="../css/styles.css" rel="stylesheet">
+
+<script type="text/javascript" src="../script/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		// class="dup" 클릭했을 때
+		$('#dup').click(function(){
+			alert("클릭");
+//			dupCheck.jsp 갈 때, class="id"의 val() 값을 들고 가서 아이디 중복체크하고
+// 			그 결과를 가져오기(페이지를 이동하는 게 아니라 결과를 가져오는...)
+			$.ajax({
+				url:'dupCheck2.jsp',
+				data:{'id':$('#id').val()},
+				success:function(rdata){
+					$('#dupdiv').html(rdata).css('color','blue');
+				}
+			});
+
+		});
+	});
+</script> 
+
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
@@ -39,7 +61,8 @@
                         <div class="form-floating mb-3">
                             <input class="form-control" name="id" id="id" type="text" placeholder="Enter your ID..." data-sb-validations="required" />
                             <label for="id">ID</label>
-							<div class="d-grid"><button class="btn btn-primary btn-lg" type="button" id="duplecheck" onclick="winopen()">ID 중복 확인</button></div><br>
+							<div class="d-grid"><button class="btn btn-primary btn-lg" type="button" id="dup">ID 중복 확인</button></div>
+							<div id="dupdiv"></div><br><br>
                         </div>
                          <!-- pass input-->
                         <div class="form-floating mb-3">
@@ -215,22 +238,22 @@ function fun1() {
 		
 	}
 	
-// 우편번호
-function winopen() {
-	//새창을 열어서 페이지를 오픈 후 -> 회원아이디정보를 가지고 중복체크
-	//1. 아이디가 없으면 알림창과 진행x
-	if(document.fr.id.value =="" || document.fr.id.value.length < 0){
-		alert("아이디를 먼저 입력해주세요")
-		document.fr.id.value="";
-		document.fr.id.focus();
-	}else{
-		//2. 회원정보아이디를 가지고 있는 지 체크하려면 DB에 접근해야한다.
-		window.open("idCheck.jsp?userid="+document.fr.id.value,"","width=450, height=300, left=100, top=100");
-		document.fr.id.value="";
-	}
-}
+// function winopen() {
+// 	//새창을 열어서 페이지를 오픈 후 -> 회원아이디정보를 가지고 중복체크
+// 	//1. 아이디가 없으면 알림창과 진행x
+// 	if(document.fr.id.value =="" || document.fr.id.value.length < 0){
+// 		alert("아이디를 먼저 입력해주세요")
+// 		document.fr.id.value="";
+// 		document.fr.id.focus();
+// 	}else{
+// 		//2. 회원정보아이디를 가지고 있는 지 체크하려면 DB에 접근해야한다.
+// 		window.open("idCheck.jsp?userid="+document.fr.id.value,"","width=450, height=300, left=100, top=100");
+// 		document.fr.id.value="";
+// 	}
+// }
 </script>
 <script type="text/javascript">
+//우편번호
 window.onload = function(){
     document.getElementById("addresskakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
     	 //카카오 지도 발생

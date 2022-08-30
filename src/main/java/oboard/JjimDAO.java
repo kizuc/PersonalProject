@@ -27,7 +27,8 @@ public class JjimDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql = "SELECT * FROM orderboard WHERE bbsID = (select bbsID from jjim where userID = ?) ORDER BY bbsID DESC LIMIT 10"; 
+			String sql = "SELECT * FROM orderboard WHERE num = (select num"
+					+ " from jjim where userID = ?) ORDER BY bbsID DESC LIMIT 10"; 
 			
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, userID);
