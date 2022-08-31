@@ -1,4 +1,4 @@
-# 식사할 상대를 찾아주는 매칭 서비스 < 한끼가치 >
+# 식사할 상대를 찾아주는 서비스 < 한끼가치 >
  
 ![logo1](https://user-images.githubusercontent.com/108128650/187671372-5a7c03bd-8602-498a-87e8-ba9b6c1a3d9f.png)
 
@@ -12,22 +12,23 @@
 
 <hr>
 
-## 1. 개발 환경
+## 개발 환경
 - OS : Windows
 - DB : MySQL
-- Language : Java, JSP, Javascript, HTML, CSS5
+- Language : Java, JSP, Javascript, HTML, CSS5, JQuery.Ajax
 - Tools/Server : Eclipse, Tomcat
 - Version Control : Git, Github
 - API : 다음 우편번호 서비스
 
 <hr>
 
-## 2. DB 설계 - ERD 다이어그램
+## DB 설계 
+- ERD 다이어그램
 ![갠플erd](https://user-images.githubusercontent.com/108128650/187724596-85c6e4fe-22c2-4e01-9659-3f17b0c0ddce.png)
 
 <hr>
 
-## 3. 프로젝트 화면
+## 프로젝트 화면
 ![pp1](https://user-images.githubusercontent.com/108128650/187724631-1f029458-bc1e-4f52-a2d3-0dac9edbf179.png)
 ![pp4](https://user-images.githubusercontent.com/108128650/187724626-4a9bfccf-1e02-44d4-999c-56867e1d8f8e.png)
 ![pp5](https://user-images.githubusercontent.com/108128650/187724622-6f77a9c3-4d1b-43b7-b91f-2e8dcac02023.png)
@@ -37,26 +38,74 @@
 
 <hr>
 
-## 관리자 페이지
-  - 회원 목록
-  - 회원 삭제
+## 구현 목록
+### + Pages
+ - [X] - 메인페이지 
+<br>
  
-## 회원 페이지
-  - 마이 페이지
-  - 회원 정보 수정
-  - 탈퇴
-  
-## 회원가입
-  - ID 중복 체크
-  - 다음 우편 API
-  - 각 항목 제약
-  - 비밀번호 보안 단계 설정
-  
-## 게시판
-  - 댓글 기능
-  - 자료 첨부 가능한 자료실
-    + 검색 기능
-    + 관리자만 작성 가능
-  - 이미지가 출력되는 갤러리 게시판
-  - 키워드가 포함된 검색이  주문 게시판
+ * 회원
+ - [X] - 로그인 페이지
+ - [X] - 회원가입 페이지
+<br>
+
+ * 마이페이지
+ - [X] - 회원 정보 조회 및 수정 페이지
+ - [X] - 리뷰 수정 페이지
+ - [X] - 회원 탈퇴 페이지
+ <br>
+ 
+ * 문의 게시판
+ - [X] 게시글 목록 페이지
+ - [X] 게시글 상세 페이지
+  <br>
+ 
+ * 자료실 게시판
+ - [X] 게시글 목록 페이지
+ - [X] 게시글 상세 페이지
+  <br>
+ 
+ * 갤러리 게시판
+ - [X] 게시글 목록 페이지
+ - [X] 게시글 상세 페이지
+  <br>
+ 
+ * 주문 게시판
+ - [X] 주문 등록, 목록 페이지
+  <br>
+ 
+ * 관리자
+ - [X] 회원 관리 페이지
+  <br>
+
+
+### + Function
+ * 회원
+ - [X] 로그인
+ - [X] 회원가입
+ <br>
+
+ * 마이페이지
+ - [X] - 회원 정보 수정
+ - [X] - 회원 정보 수정
+ - [X] - 회원 탈퇴
+ <br>
+   
+ * 문의 게시판
+ - [X] 게시글 등록, 수정, 삭제
+ - [X] 댓글 등록, 삭제
+ 
+ * 자료실 게시판
+ - [X] 게시글 등록, 수정, 삭제
+ - [X] 파일 업로드
+ - [X] 게시글 검색
+  <br>
+ 
+ * 주문 게시판
+ - [X] 게시글 등록, 수정, 삭제
+ - [X] 게시글 검색
+  <br>
+   
+ * 관리자
+ - [X] - 회원 관리(조회, 삭제)
+ - [X] - 게시글 작성, 삭제
 
