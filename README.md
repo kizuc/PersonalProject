@@ -18,10 +18,10 @@
 - Version Control : Git, Github
 - API : 다음 우편번호 서비스
 
-2. DB 설계 - ERD 다이어그램
+## 2. DB 설계 - ERD 다이어그램
 ![갠플erd](https://user-images.githubusercontent.com/108128650/187724596-85c6e4fe-22c2-4e01-9659-3f17b0c0ddce.png)
 
-3. 프로젝트 화면
+## 3. 프로젝트 화면
 ![pp1](https://user-images.githubusercontent.com/108128650/187724631-1f029458-bc1e-4f52-a2d3-0dac9edbf179.png)
 ![pp4](https://user-images.githubusercontent.com/108128650/187724626-4a9bfccf-1e02-44d4-999c-56867e1d8f8e.png)
 ![pp5](https://user-images.githubusercontent.com/108128650/187724622-6f77a9c3-4d1b-43b7-b91f-2e8dcac02023.png)
