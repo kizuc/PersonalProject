@@ -67,6 +67,7 @@ public class Board2DAO {
 				board2DTO.setReadcount(rs.getInt("readcount"));
 				board2DTO.setDate(rs.getTimestamp("date"));
 				board2DTO.setFile(rs.getString("file"));
+				board2DTO.setName(rs.getString("name"));
 				// 배열 한칸에 글 정보 저장
 				board2List.add(board2DTO);
 			}
@@ -103,6 +104,7 @@ public class Board2DAO {
 				board2DTO.setFile(rs.getString("file"));
 				board2DTO.setReadcount(rs.getInt("readcount"));
 				board2DTO.setDate(rs.getTimestamp("date"));
+				board2DTO.setName(rs.getString("name"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -129,7 +131,7 @@ public class Board2DAO {
 			if(rs.next()){
 				num=rs.getInt("max(num)")+1;
 			}
-			sql="insert into board2(num,pass,subject,content,file,readcount,date) values(?,?,?,?,?,?,now())";
+			sql="insert into board2(num,pass,subject,content,file,readcount,date,name) values(?,?,?,?,?,?,now(),?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, board2DTO.getPass());
@@ -137,6 +139,7 @@ public class Board2DAO {
 			pstmt.setString(4, board2DTO.getContent());
 			pstmt.setString(5, board2DTO.getFile());
 			pstmt.setInt(6, board2DTO.getReadcount());
+			pstmt.setString(7, board2DTO.getName());
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -255,6 +258,7 @@ public class Board2DAO {
 				board2DTO.setFile(rs.getString("file"));
 				board2DTO.setReadcount(rs.getInt("readcount"));
 				board2DTO.setDate(rs.getTimestamp("date"));
+				board2DTO.setName(rs.getString("name")); 
 				
 				
 				// 파일 넣는거 없앴음 필요하면 추가

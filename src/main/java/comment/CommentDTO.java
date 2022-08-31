@@ -7,7 +7,7 @@ public class CommentDTO {
 	private String userID;
 	private int commentID;
 	private String content;
-	private Timestamp commetDate;
+	private Timestamp commentDate;
 	
 	
 	public int getBoardID() {
@@ -35,10 +35,10 @@ public class CommentDTO {
 		this.content = content;
 	}
 	public Timestamp getCommetDate() {
-		return commetDate;
+		return commentDate;
 	}
 	public void setCommetDate(Timestamp commetDate) {
-		this.commetDate = commetDate;
+		this.commentDate = commetDate;
 	}
 	
 	
