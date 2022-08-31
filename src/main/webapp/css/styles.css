@@ -279,6 +279,11 @@ sup {
   top: -0.5em;
 }
 
+.span1 {
+	float:right; width:35%;
+}
+
+
 a {
   color: #fd7e14;
   text-decoration: underline;
@@ -3185,6 +3190,12 @@ textarea.form-control-lg {
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+.btn-none {
+  all: unset;
+  color: #ff8000;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .btn {
     transition: none;
@@ -7725,6 +7736,10 @@ text-decoration: none;
 .py-7 {
   padding-top: 5rem !important;
   padding-bottom: 7rem !important;
+}
+.py-71 {
+  padding-top: 5rem !important;
+  padding-bottom: 4rem !important;
 }
 
 .py-8 {

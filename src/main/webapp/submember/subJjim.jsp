@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="oboard.JjimDAO"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="member.MemberDAO"%>
@@ -45,6 +47,11 @@ if(id==null)	response.sendRedirect("../member/login.jsp");
 	// MemberDTO memberDTO = getMember(id) 메서드 호출
 	MemberDTO memberDTO=memberDAO.getMember(id);
 	SimpleDateFormat dateFormat=new SimpleDateFormat("YYYY.MM.dd");
+	
+	int pageNumber = 1; //기본페이지
+	if (request.getParameter("pageNumber") != null){
+		pageNumber = Integer.parseInt(request.getParameter("pageNumber")); //파라미터는 꼭 이런식으로 바꿔줘야됨
+	}
 	%>
 	<div class="text-muted fst-italic mb-2">
 	<%=id%>님 어서오세요!
@@ -59,29 +66,20 @@ if(id==null)	response.sendRedirect("../member/login.jsp");
 	<!-- Post content-->
 	<section class="mb-5">
 	<table>
-		<tr>
-			<th colspan="4">개인 정보</th>
-		</tr>
-		<tr>
-			<td>이름</td>
-			<td><%=memberDTO.getName()%></td>
-			<td>닉네임</td>
-			<td><%=memberDTO.getNickname()%> &nbsp;
-			<input type="button" onclick="modNick('<%=memberDTO.getNickname()%>')" class="btn btn-outline-primary btn-sm" value="닉네임 바꾸기">
-			</td>
-		</tr>
-		<tr>
-			<td>연락처</td>
-			<td><%=memberDTO.getPhone()%></td>
-			<td>모바일</td>
-			<td><%=memberDTO.getMobile()%></td>
-		</tr>
-		<tr>
-			<td>주소</td>
-			<td><%=memberDTO.getAddress()%><%=memberDTO.getAddress2()%></td>
-			<td>가입일</td>
-			<td><%=dateFormat.format(memberDTO.getDate())%></td>
-		</tr>
+	<%
+		JjimDAO jjimDAO = new JjimDAO();
+		List jjimList = jjimDAO.getBoardList(id, pageNumber);
+		for(int i=0; i<jjimList.size(); i++){	
+	%>
+	<tr>
+		<td><%= jjimList.get(i).getBbsID() %></td>
+		<td><a href="view.jsp?boardID=<%=jjimList.get(i).getBoardID()%>&bbsID=<%= jjimList.get(i).getBbsID() %>"><%= jjimList.get(i).getBbsTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>") %></a></td>
+		<td><%= jjimList.get(i).getUserID() %></td>
+		<td><%= jjimList.get(i).getBbsDate().substring(0,11) + jjimList.get(i).getBbsDate().substring(11,13) + "시" + jjimList.get(i).getBbsDate().substring(14,16) + "분" %></td>
+	</tr>
+	<%
+		}
+	%>
 	</table>
 </section>
 </article>
