@@ -24,7 +24,7 @@
 ### 먹는 시간은 소중합니다!
 ##### "혼자 먹긴 심심할 때, 이것저것 다양하게 먹고싶을 때, 당장 친구 부르긴 힘들 때"
 1인 가구를 타겟으로 같이 식사할 수 있는 상대를 간편하게 찾을 수 있는 커뮤니티 웹사이트<br>
-한끼의 가치에서 비롯되어, 같이 가치있는 순간을 즐기기 위한 서비스 입니다.
+한끼의 가치에서 비롯되어, 같이 가치있는 순간을 빠르고 간편하게 즐기기 위한 서비스 입니다.
 <hr>
 
 ## 기술 스택
@@ -43,7 +43,9 @@
 ## DB 설계 
 ### - ERD 다이어그램
 ![갠플erd](https://user-images.githubusercontent.com/108128650/187724596-85c6e4fe-22c2-4e01-9659-3f17b0c0ddce.png)
-
+<br>
+### - 기능 설계
+[기능 및 URI / 데이터 형식](https://docs.google.com/document/d/1Jch3LnzDisf-O3bRKLbuFJuYcbUi9md0EIB5YIxlRjk/edit?usp=sharing)
 <hr>
 
 ## 프로젝트 화면
