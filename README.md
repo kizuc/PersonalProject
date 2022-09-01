@@ -1,6 +1,6 @@
 # 식사할 상대를 찾아주는 서비스 < 한끼가치 >
  
-![logo1](https://user-images.githubusercontent.com/108128650/187671372-5a7c03bd-8602-498a-87e8-ba9b6c1a3d9f.png)
+> 게시판 형태의 프로젝트 과제로 제출, 개인 프로젝트에 대한 기록 입니다.
 
 💡 [업데이트 내역](https://github.com/kizuc/project1/blob/main/update.md)<br>
 ‼ [에러 로그](https://github.com/kizuc/project1/blob/main/error.md)
